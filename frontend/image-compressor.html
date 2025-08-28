@@ -368,72 +368,61 @@
 
     <script src="js/api.js"></script>
     <script>
-        // Sidebar Logic
+        // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
 
         function openSidebar() {
             sidebar.classList.add('mobile-open');
             sidebarOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
         }
 
         function closeSidebar() {
             sidebar.classList.remove('mobile-open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
         }
 
         mobileMenuToggle.addEventListener('click', openSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
         sidebarToggle.addEventListener('click', closeSidebar);
 
-        const desktopMenuToggle = document.getElementById('menuToggle');
         desktopMenuToggle.addEventListener('click', function() {
             if (window.innerWidth > 1024) {
                 sidebar.classList.toggle('collapsed');
                 document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
             } else {
                 openSidebar();
             }
         });
 
-        // Theme Toggle Logic
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const themeText = themeToggle.querySelector('span');
         
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeText.textContent = 'Light Mode';
         }
 
@@ -442,7 +431,11 @@
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 try {
-                    await window.oneClickAPI.logout();
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
                     alert('Logout successful!');
                     window.location.href = 'index.html';
                 } catch (error) {
@@ -455,37 +448,67 @@
         });
 
         // Authentication Check and User Data Loading
-        async function loadUserData() {
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
 
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
+                if (response.ok && data.success && data.user) {
                     updateUserUI(data.user);
+                    init(); // Initialize compressor logic after user data is loaded
                 } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
+                    window.location.href = 'login.html';
                 }
             } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
+                console.error('Auth check error:', error);
                 window.location.href = 'login.html';
             }
-        }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
 
         function updateUserUI(user) {
             document.getElementById('userName').textContent = user.full_name || user.email;
             document.getElementById('userEmail').textContent = user.email;
-            
             const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
         }
+
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
 
         // Compressor Logic
         let selectedFiles = [];
@@ -754,10 +777,10 @@
                     </div>
                 </div>
                 <div class="result-actions">
-                    <button class="tool-btn download-btn" data-index="${index}">
+                    <button class="tool-btn download-btn" data-index="${index}" aria-label="Download compressed image">
                         <i class="fas fa-download"></i> Download
                     </button>
-                    <button class="tool-btn secondary preview-btn" data-index="${index}">
+                    <button class="tool-btn secondary preview-btn" data-index="${index}" aria-label="Preview compressed image">
                         <i class="fas fa-eye"></i> Preview
                     </button>
                 </div>
@@ -797,7 +820,7 @@
             errorDiv.innerHTML = `
                 <i class="fas fa-exclamation-circle"></i>
                 <span>${message}</span>
-                <button class="error-close">&times;</button>
+                <button class="error-close" aria-label="Close error notification">&times;</button>
             `;
 
             document.body.appendChild(errorDiv);
@@ -831,7 +854,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Image Preview</h3>
-                        <button class="modal-close">&times;</button>
+                        <button class="modal-close" aria-label="Close preview modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="preview-comparison">
@@ -915,27 +938,6 @@
                 }
             });
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUserData();
-            init();
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-        });
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 1024) {
-                closeSidebar();
-                sidebar.classList.remove('collapsed');
-                document.querySelector('.main-content').classList.remove('expanded');
-            }
-        });
     </script>
 </body>
 </html>
