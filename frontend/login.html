@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to check if session is still valid
         async function checkSessionValidity() {
             try {
-                const response = await fetch('http://localhost:5000/api/user', {
+                const response = await fetch('/api/user', {
                     method: 'GET',
                     credentials: 'include',
                     headers: {
