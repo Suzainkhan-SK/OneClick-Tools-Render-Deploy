@@ -10,34 +10,34 @@
 </head>
 <body>
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-rocket"></i>
-            <span>OneClick</span>
+            <span>OneClick-Tools</span>
         </div>
         <div class="mobile-user">
-            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
         </div>
     </header>
 
     <!-- Navigation Sidebar -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
         <div class="sidebar-header">
             <div class="logo-wrapper">
                 <i class="fas fa-rocket logo-icon"></i>
-                <h1 class="logo-text">OneClick</h1>
+                <h1 class="logo-text">OneClick-Tools</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="user-profile">
             <div class="user-avatar">
-                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
                 <div class="status-indicator"></div>
             </div>
             <div class="user-info">
@@ -47,29 +47,29 @@
         </div>
         
         <div class="sidebar-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
         </div>
         
-        <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="dashboard.html">
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
                     <div class="menu-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
                     <div class="menu-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <span class="menu-text">Recent</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
                     <div class="menu-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -79,56 +79,56 @@
             <li class="menu-divider">
                 <span>Categories</span>
             </li>
-            <li class="menu-item">
-                <a href="pdf-tools.html">
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
                     <div class="menu-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <span class="menu-text">PDF Tools</span>
                 </a>
             </li>
-            <li class="menu-item active">
-                <a href="image-tools.html">
+            <li class="menu-item active" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
                     <div class="menu-icon">
                         <i class="fas fa-image"></i>
                     </div>
                     <span class="menu-text">Image Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="video-tools.html">
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
                     <div class="menu-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <span class="menu-text">Video Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="audio-tools.html">
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
                     <div class="menu-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <span class="menu-text">Audio Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="text-tools.html">
+            <li class="menu-item" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
                     <div class="menu-icon">
                         <i class="fas fa-font"></i>
                     </div>
                     <span class="menu-text">Text Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="ai-chatbots.html">
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
                     <div class="menu-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <span class="menu-text">AI Chat Bots</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="utility-tools.html">
+            <li class="menu-item" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
                     <div class="menu-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -139,22 +139,22 @@
         
         <div class="sidebar-footer">
             <div class="theme-toggle">
-                <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <span>Dark Mode</span>
                 </button>
             </div>
             
             <div class="footer-links">
-                <a href="profile.html">
+                <a href="profile.html" data-tooltip="User Profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="settings.html">
+                <a href="settings.html" data-tooltip="Settings">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="#" id="logoutBtn">
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -163,27 +163,27 @@
     </nav>
 
     <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" aria-label="Main content">
         <header class="content-header">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2>Image Enhancer</h2>
             </div>
             <div class="header-right">
                 <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
                     </button>
                 </div>
                 <div class="user-menu">
                     <div class="user-avatar-sm">
-                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
             </section>
 
             <section class="tool-content">
-                <a href="image-tools.html" class="back-button">
+                <a href="image-tools.html" class="back-button" aria-label="Back to Image Tools">
                     <i class="fas fa-arrow-left"></i> Back to Image Tools
                 </a>
 
@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="image-preview" id="imagePreview" style="display: none;">
                                     <img id="previewImage" src="" alt="Image Preview">
-                                    <button class="tool-btn secondary remove-image-btn" id="removeImageBtn">
+                                    <button class="tool-btn secondary remove-image-btn" id="removeImageBtn" aria-label="Remove uploaded image">
                                         <i class="fas fa-times"></i> Remove
                                     </button>
                                 </div>
@@ -260,7 +260,7 @@
                             </div>
 
                             <!-- Enhance Button -->
-                            <button id="enhanceButton" class="tool-btn" disabled>
+                            <button id="enhanceButton" class="tool-btn" disabled aria-label="Enhance Image">
                                 <i class="fas fa-magic"></i> Enhance Image
                             </button>
                         </div>
@@ -271,7 +271,7 @@
                 <div class="results-section" id="resultsSection" style="display: none;">
                     <div class="results-header">
                         <h3>Enhanced Image</h3>
-                        <button class="tool-btn secondary" id="clearResultsBtn">
+                        <button class="tool-btn secondary" id="clearResultsBtn" aria-label="Clear enhanced image">
                             <i class="fas fa-trash-alt"></i> Clear Result
                         </button>
                     </div>
@@ -287,10 +287,10 @@
                                 <div class="label after-label">After</div>
                             </div>
                         </div>
-                        <input type="range" class="slider" id="comparisonSlider" min="0" max="100" value="50">
+                        <input type="range" class="slider" id="comparisonSlider" min="0" max="100" value="50" aria-label="Adjust before/after comparison">
                     </div>
                     <div class="results-actions">
-                        <a id="downloadEnhancedBtn" class="tool-btn" style="display: none;">
+                        <a id="downloadEnhancedBtn" class="tool-btn" style="display: none;" aria-label="Download enhanced image">
                             <i class="fas fa-download"></i> Download Enhanced Image
                         </a>
                     </div>
@@ -326,72 +326,61 @@
 
     <script src="js/api.js"></script>
     <script>
-        // Sidebar Logic
+        // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
 
         function openSidebar() {
             sidebar.classList.add('mobile-open');
             sidebarOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
         }
 
         function closeSidebar() {
             sidebar.classList.remove('mobile-open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
         }
 
         mobileMenuToggle.addEventListener('click', openSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
         sidebarToggle.addEventListener('click', closeSidebar);
 
-        const desktopMenuToggle = document.getElementById('menuToggle');
         desktopMenuToggle.addEventListener('click', function() {
             if (window.innerWidth > 1024) {
                 sidebar.classList.toggle('collapsed');
                 document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
             } else {
                 openSidebar();
             }
         });
 
-        // Theme Toggle Logic
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const themeText = themeToggle.querySelector('span');
         
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeText.textContent = 'Light Mode';
         }
 
@@ -400,7 +389,11 @@
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 try {
-                    await window.oneClickAPI.logout();
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
                     alert('Logout successful!');
                     window.location.href = 'index.html';
                 } catch (error) {
@@ -413,37 +406,67 @@
         });
 
         // Authentication Check and User Data Loading
-        async function loadUserData() {
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
 
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
+                if (response.ok && data.success && data.user) {
                     updateUserUI(data.user);
+                    init(); // Initialize image enhancer logic after user data is loaded
                 } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
+                    window.location.href = 'login.html';
                 }
             } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
+                console.error('Auth check error:', error);
                 window.location.href = 'login.html';
             }
-        }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
 
         function updateUserUI(user) {
             document.getElementById('userName').textContent = user.full_name || user.email;
             document.getElementById('userEmail').textContent = user.email;
-            
             const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
         }
+
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .remove-image-btn').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
 
         // Image Enhancer Logic
         const imageUpload = document.getElementById('imageUpload');
@@ -467,8 +490,162 @@
         let selectedFile = null;
         let originalSrc = null;
 
+        function init() {
+            dropZone.style.display = 'flex';
+            imagePreview.style.display = 'none';
+            resultsSection.style.display = 'none';
+            updateStatus('Upload an image to get started.');
+            updateSlider(50);
+
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('highlight');
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('highlight');
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('highlight');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFile(files[0]);
+                }
+            });
+
+            browseLink.addEventListener('click', () => imageUpload.click());
+            imageUpload.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFile(e.target.files[0]);
+                }
+            });
+
+            removeImageBtn.addEventListener('click', () => {
+                selectedFile = null;
+                imageUpload.value = '';
+                imagePreview.style.display = 'none';
+                dropZone.style.display = 'flex';
+                enhanceButton.disabled = true;
+                updateStatus('Upload an image to get started.', 'info');
+                clearResults();
+            });
+
+            clearResultsBtn.addEventListener('click', clearResults);
+
+            enhanceButton.addEventListener('click', async () => {
+                if (!selectedFile) {
+                    updateStatus('Please upload an image first.', 'error');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('image', selectedFile);
+                formData.append('upscale_factor', upscaleFactorSelect.value);
+                formData.append('format', outputFormatSelect.value);
+
+                enhanceButton.disabled = true;
+                enhanceButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enhancing...';
+                updateStatus('Enhancing image... This may take a moment.', 'info');
+
+                try {
+                    const response = await fetch('/api/enhance-image', {
+                        method: 'POST',
+                        body: formData,
+                        credentials: 'include'
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        originalImage.src = originalSrc;
+                        enhancedImage.src = data.enhanced_image_url;
+                        downloadEnhancedBtn.href = data.enhanced_image_url;
+                        downloadEnhancedBtn.download = `enhanced-image-${Date.now()}.${outputFormatSelect.value.toLowerCase()}`;
+                        resultsSection.style.display = 'block';
+                        downloadEnhancedBtn.style.display = 'flex';
+                        updateStatus('Image enhanced successfully!', 'success');
+                        comparisonSlider.value = 50;
+                        updateSlider(50);
+                    } else {
+                        updateStatus(`Enhancement failed: ${data.message || 'Unknown error'}`, 'error');
+                        resultsSection.style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error('Error during image enhancement:', error);
+                    updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
+                    resultsSection.style.display = 'none';
+                } finally {
+                    enhanceButton.disabled = false;
+                    enhanceButton.innerHTML = '<i class="fas fa-magic"></i> Enhance Image';
+                }
+            });
+
+            // Before-After Slider Logic
+            let isDragging = false;
+            let animationFrameId = null;
+
+            function updateSlider(value) {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                animationFrameId = requestAnimationFrame(() => {
+                    enhancedImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+                    divider.style.left = `${value}%`;
+                });
+            }
+
+            const debouncedUpdateSlider = debounce(updateSlider, 5);
+
+            comparisonSlider.addEventListener('input', (e) => {
+                const value = e.target.value;
+                debouncedUpdateSlider(value);
+            });
+
+            const imageWrapper = document.querySelector('.image-wrapper');
+            imageWrapper.addEventListener('mousedown', startDrag);
+            imageWrapper.addEventListener('mousemove', drag);
+            imageWrapper.addEventListener('mouseup', endDrag);
+            imageWrapper.addEventListener('mouseleave', endDrag);
+            imageWrapper.addEventListener('touchstart', startDrag);
+            imageWrapper.addEventListener('touchmove', drag);
+            imageWrapper.addEventListener('touchend', endDrag);
+
+            function startDrag(e) {
+                isDragging = true;
+                imageWrapper.style.cursor = 'ew-resize';
+                drag(e);
+            }
+
+            function endDrag() {
+                isDragging = false;
+                imageWrapper.style.cursor = 'default';
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const rect = imageWrapper.getBoundingClientRect();
+                const x = (e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX) - rect.left;
+                const value = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+                comparisonSlider.value = value;
+                debouncedUpdateSlider(value);
+            }
+
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
         function updateStatus(message, type = 'info') {
-            statusMessage.textContent = message;
+            statusMessage.innerHTML = `<span>${message}</span>`;
             statusMessage.className = `status-message ${type}`;
         }
 
@@ -491,41 +668,6 @@
             }
         }
 
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('highlight');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('highlight');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('highlight');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleFile(files[0]);
-            }
-        });
-
-        browseLink.addEventListener('click', () => imageUpload.click());
-        imageUpload.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleFile(e.target.files[0]);
-            }
-        });
-
-        removeImageBtn.addEventListener('click', () => {
-            selectedFile = null;
-            imageUpload.value = '';
-            imagePreview.style.display = 'none';
-            dropZone.style.display = 'flex';
-            enhanceButton.disabled = true;
-            updateStatus('Upload an image to get started.', 'info');
-            clearResults();
-        });
-
         function clearResults() {
             originalImage.src = '';
             enhancedImage.src = '';
@@ -533,143 +675,6 @@
             downloadEnhancedBtn.style.display = 'none';
             updateStatus('Upload an image to get started.', 'info');
         }
-
-        clearResultsBtn.addEventListener('click', clearResults);
-
-        enhanceButton.addEventListener('click', async () => {
-            if (!selectedFile) {
-                updateStatus('Please upload an image first.', 'error');
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('image', selectedFile);
-            formData.append('upscale_factor', upscaleFactorSelect.value);
-            formData.append('format', outputFormatSelect.value);
-
-            enhanceButton.disabled = true;
-            enhanceButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enhancing...';
-            updateStatus('Enhancing image... This may take a moment.', 'info');
-
-            try {
-                const response = await fetch('/api/enhance-image', {
-                    method: 'POST',
-                    body: formData,
-                    credentials: 'include'
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.success) {
-                    originalImage.src = originalSrc;
-                    enhancedImage.src = data.enhanced_image_url;
-                    downloadEnhancedBtn.href = data.enhanced_image_url;
-                    downloadEnhancedBtn.download = `enhanced-image-${Date.now()}.${outputFormatSelect.value.toLowerCase()}`;
-                    resultsSection.style.display = 'block';
-                    downloadEnhancedBtn.style.display = 'flex';
-                    updateStatus('Image enhanced successfully!', 'success');
-                    comparisonSlider.value = 50;
-                    updateSlider(50);
-                } else {
-                    updateStatus(`Enhancement failed: ${data.message || 'Unknown error'}`, 'error');
-                    resultsSection.style.display = 'none';
-                }
-            } catch (error) {
-                console.error('Error during image enhancement:', error);
-                updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
-                resultsSection.style.display = 'none';
-            } finally {
-                enhanceButton.disabled = false;
-                enhanceButton.innerHTML = '<i class="fas fa-magic"></i> Enhance Image';
-            }
-        });
-
-        // Before-After Slider Logic
-        let isDragging = false;
-        let animationFrameId = null;
-
-        function updateSlider(value) {
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
-            animationFrameId = requestAnimationFrame(() => {
-                enhancedImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-                divider.style.left = `${value}%`;
-            });
-        }
-
-        const debouncedUpdateSlider = debounce(updateSlider, 5);
-
-        comparisonSlider.addEventListener('input', (e) => {
-            const value = e.target.value;
-            debouncedUpdateSlider(value);
-        });
-
-        const imageWrapper = document.querySelector('.image-wrapper');
-        imageWrapper.addEventListener('mousedown', startDrag);
-        imageWrapper.addEventListener('mousemove', drag);
-        imageWrapper.addEventListener('mouseup', endDrag);
-        imageWrapper.addEventListener('mouseleave', endDrag);
-        imageWrapper.addEventListener('touchstart', startDrag);
-        imageWrapper.addEventListener('touchmove', drag);
-        imageWrapper.addEventListener('touchend', endDrag);
-
-        function startDrag(e) {
-            isDragging = true;
-            imageWrapper.style.cursor = 'ew-resize';
-            drag(e);
-        }
-
-        function endDrag() {
-            isDragging = false;
-            imageWrapper.style.cursor = 'default';
-        }
-
-        function drag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            const rect = imageWrapper.getBoundingClientRect();
-            const x = (e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX) - rect.left;
-            const value = Math.min(Math.max((x / rect.width) * 100, 0), 100);
-            comparisonSlider.value = value;
-            debouncedUpdateSlider(value);
-        }
-
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUserData();
-            updateStatus('Upload an image to get started.');
-            dropZone.style.display = 'flex';
-            imagePreview.style.display = 'none';
-            resultsSection.style.display = 'none';
-            updateSlider(50);
-
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-        });
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 1024) {
-                closeSidebar();
-                sidebar.classList.remove('collapsed');
-                document.querySelector('.main-content').classList.remove('expanded');
-            }
-        });
     </script>
 </body>
 </html>
