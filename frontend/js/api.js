@@ -1,6 +1,6 @@
 class OneClickAPI {
     constructor() {
-        this.baseURL = 'http://localhost:5000/api';
+        this.baseURL = 'https://oneclick-tools.onrender.com/api';
     }
 
     async request(endpoint, options = {}) {
