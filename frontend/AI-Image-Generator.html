@@ -10,34 +10,34 @@
 </head>
 <body>
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-rocket"></i>
-            <span>OneClick</span>
+            <span>OneClick-Tools</span>
         </div>
         <div class="mobile-user">
-            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
         </div>
     </header>
 
     <!-- Navigation Sidebar -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
         <div class="sidebar-header">
             <div class="logo-wrapper">
                 <i class="fas fa-rocket logo-icon"></i>
-                <h1 class="logo-text">OneClick</h1>
+                <h1 class="logo-text">OneClick-Tools</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="user-profile">
             <div class="user-avatar">
-                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
                 <div class="status-indicator"></div>
             </div>
             <div class="user-info">
@@ -47,29 +47,29 @@
         </div>
         
         <div class="sidebar-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
         </div>
         
-        <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="dashboard.html">
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
                     <div class="menu-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
                     <div class="menu-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <span class="menu-text">Recent</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
                     <div class="menu-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -79,56 +79,56 @@
             <li class="menu-divider">
                 <span>Categories</span>
             </li>
-            <li class="menu-item">
-                <a href="pdf-tools.html">
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
                     <div class="menu-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <span class="menu-text">PDF Tools</span>
                 </a>
             </li>
-            <li class="menu-item active">
-                <a href="image-tools.html">
+            <li class="menu-item active" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
                     <div class="menu-icon">
                         <i class="fas fa-image"></i>
                     </div>
                     <span class="menu-text">Image Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="video-tools.html">
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
                     <div class="menu-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <span class="menu-text">Video Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="audio-tools.html">
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
                     <div class="menu-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <span class="menu-text">Audio Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="text-tools.html">
+            <li class="menu-item" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
                     <div class="menu-icon">
                         <i class="fas fa-font"></i>
                     </div>
                     <span class="menu-text">Text Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="ai-chatbots.html">
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
                     <div class="menu-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <span class="menu-text">AI Chat Bots</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="utility-tools.html">
+            <li class="menu-item" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
                     <div class="menu-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -139,22 +139,22 @@
         
         <div class="sidebar-footer">
             <div class="theme-toggle">
-                <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <span>Dark Mode</span>
                 </button>
             </div>
             
             <div class="footer-links">
-                <a href="profile.html">
+                <a href="profile.html" data-tooltip="User Profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="settings.html">
+                <a href="settings.html" data-tooltip="Settings">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="#" id="logoutBtn">
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -163,27 +163,27 @@
     </nav>
 
     <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" aria-label="Main content">
         <header class="content-header">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2>AI Image Generator</h2>
             </div>
             <div class="header-right">
                 <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
                     </button>
                 </div>
                 <div class="user-menu">
                     <div class="user-avatar-sm">
-                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
             </section>
 
             <section class="tool-content">
-                <a href="image-tools.html" class="back-button">
+                <a href="image-tools.html" class="back-button" aria-label="Back to Image Tools">
                     <i class="fas fa-arrow-left"></i> Back to Image Tools
                 </a>
 
@@ -261,7 +261,7 @@
                             </div>
 
                             <!-- Generate Button -->
-                            <button id="generateButton" class="tool-btn">
+                            <button id="generateButton" class="tool-btn" aria-label="Generate Image">
                                 <i class="fas fa-sparkles"></i> Generate Image
                             </button>
                         </div>
@@ -272,13 +272,13 @@
                 <div class="results-section" id="resultsSection" style="display: none;">
                     <div class="results-header">
                         <h3>Generated Images</h3>
-                        <button class="tool-btn secondary" id="clearResultsBtn">
+                        <button class="tool-btn secondary" id="clearResultsBtn" aria-label="Clear All Generated Images">
                             <i class="fas fa-trash-alt"></i> Clear All
                         </button>
                     </div>
                     <div class="image-grid" id="imageGrid"></div>
                     <div class="results-actions">
-                        <button id="downloadAllBtn" class="tool-btn" style="display: none;">
+                        <button id="downloadAllBtn" class="tool-btn" style="display: none;" aria-label="Download All Generated Images">
                             <i class="fas fa-download"></i> Download All
                         </button>
                     </div>
@@ -316,72 +316,61 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="js/api.js"></script>
     <script>
-        // Sidebar Logic
+        // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
 
         function openSidebar() {
             sidebar.classList.add('mobile-open');
             sidebarOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
         }
 
         function closeSidebar() {
             sidebar.classList.remove('mobile-open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
         }
 
         mobileMenuToggle.addEventListener('click', openSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
         sidebarToggle.addEventListener('click', closeSidebar);
 
-        const desktopMenuToggle = document.getElementById('menuToggle');
         desktopMenuToggle.addEventListener('click', function() {
             if (window.innerWidth > 1024) {
                 sidebar.classList.toggle('collapsed');
                 document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
             } else {
                 openSidebar();
             }
         });
 
-        // Theme Toggle Logic
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const themeText = themeToggle.querySelector('span');
         
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeText.textContent = 'Light Mode';
         }
 
@@ -390,7 +379,11 @@
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 try {
-                    await window.oneClickAPI.logout();
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
                     alert('Logout successful!');
                     window.location.href = 'index.html';
                 } catch (error) {
@@ -403,37 +396,67 @@
         });
 
         // Authentication Check and User Data Loading
-        async function loadUserData() {
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
 
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
+                if (response.ok && data.success && data.user) {
                     updateUserUI(data.user);
+                    init(); // Initialize AI image generator logic after user data is loaded
                 } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
+                    window.location.href = 'login.html';
                 }
             } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
+                console.error('Auth check error:', error);
                 window.location.href = 'login.html';
             }
-        }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
 
         function updateUserUI(user) {
             document.getElementById('userName').textContent = user.full_name || user.email;
             document.getElementById('userEmail').textContent = user.email;
-            
             const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
         }
+
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
 
         // AI Image Generator Logic
         const promptInput = document.getElementById('prompt');
@@ -482,20 +505,82 @@
             }
         };
 
-        modelSelect.addEventListener('change', function() {
-            const selectedModel = this.value;
-            const info = modelInfo[selectedModel];
-            
-            if (info) {
-                document.getElementById('modelDescription').textContent = info.description;
-                numImagesInput.max = info.maxImages;
-                if (parseInt(numImagesInput.value) > info.maxImages) {
-                    numImagesInput.value = info.maxImages;
+        function init() {
+            modelSelect.dispatchEvent(new Event('change'));
+            updateStatus('Enter a prompt and click "Generate Image".');
+
+            modelSelect.addEventListener('change', function() {
+                const selectedModel = this.value;
+                const info = modelInfo[selectedModel];
+                
+                if (info) {
+                    document.getElementById('modelDescription').textContent = info.description;
+                    numImagesInput.max = info.maxImages;
+                    if (parseInt(numImagesInput.value) > info.maxImages) {
+                        numImagesInput.value = info.maxImages;
+                    }
+                    updateSizeOptions(info.supportedSizes);
+                    showModelStrengths(info.strengths);
                 }
-                updateSizeOptions(info.supportedSizes);
-                showModelStrengths(info.strengths);
-            }
-        });
+            });
+
+            generateButton.addEventListener('click', async () => {
+                const prompt = promptInput.value.trim();
+                const model = modelSelect.value;
+                const size = sizeSelect.value;
+                const n = parseInt(numImagesInput.value);
+
+                if (!prompt) {
+                    updateStatus('Please enter a prompt to generate an image.', 'error');
+                    return;
+                }
+                if (n < 1 || n > parseInt(numImagesInput.max)) {
+                    updateStatus(`Number of images must be between 1 and ${numImagesInput.max}.`, 'error');
+                    return;
+                }
+
+                updateStatus('Generating image(s)... This may take a moment.', 'info');
+                setGeneratingState(true);
+
+                try {
+                    const response = await fetch('/api/generate-image', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ prompt, model, size, n }),
+                        credentials: 'include' // Ensure session cookies are sent
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        displayImages(data.image_urls);
+                        updateStatus('Image(s) generated successfully!', 'success');
+                    } else {
+                        updateStatus(`Generation failed: ${data.message || 'Unknown error'}`, 'error');
+                    }
+                } catch (error) {
+                    console.error('Error during image generation:', error);
+                    updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
+                } finally {
+                    setGeneratingState(false);
+                }
+            });
+
+            clearResultsBtn.addEventListener('click', clearAllImages);
+            downloadAllBtn.addEventListener('click', downloadAllImages);
+            imageGrid.addEventListener('click', (e) => {
+                const viewBtn = e.target.closest('.view-full-btn');
+                const downloadBtn = e.target.closest('.download-single-btn');
+                if (viewBtn) {
+                    openFullSizeModal(viewBtn.dataset.src);
+                } else if (downloadBtn) {
+                    saveAs(downloadBtn.dataset.url, `ai-generated-image-${Date.now()}.png`);
+                    updateStatus('Downloading image...', 'info');
+                }
+            });
+        }
 
         function updateSizeOptions(supportedSizes) {
             const currentValue = sizeSelect.value;
@@ -538,7 +623,7 @@
         }
 
         function updateStatus(message, type = 'info') {
-            statusMessage.textContent = message;
+            statusMessage.innerHTML = `<span>${message}</span>`;
             statusMessage.className = `status-message ${type}`;
         }
 
@@ -557,10 +642,10 @@
                 imageCard.innerHTML = `
                     <img src="${url}" alt="Generated Image">
                     <div class="image-actions">
-                        <button class="tool-btn secondary download-single-btn" data-url="${url}">
+                        <button class="tool-btn secondary download-single-btn" data-url="${url}" aria-label="Download generated image">
                             <i class="fas fa-download"></i> Download
                         </button>
-                        <button class="tool-btn secondary view-full-btn" data-src="${url}">
+                        <button class="tool-btn secondary view-full-btn" data-src="${url}" aria-label="View full size image">
                             <i class="fas fa-expand"></i> View Full Size
                         </button>
                     </div>
@@ -617,9 +702,9 @@
             modal.className = 'full-size-modal';
             modal.innerHTML = `
                 <div class="modal-content">
-                    <span class="close-button">&times;</span>
+                    <span class="close-button" aria-label="Close full size modal">&times;</span>
                     <img src="${imageUrl}" alt="Full Size Image">
-                    <button class="tool-btn modal-download-btn" data-url="${imageUrl}">
+                    <button class="tool-btn modal-download-btn" data-url="${imageUrl}" aria-label="Download full size image">
                         <i class="fas fa-download"></i> Download
                     </button>
                 </div>
@@ -635,85 +720,6 @@
                 if (e.target === modal) modal.remove();
             });
         }
-
-        generateButton.addEventListener('click', async () => {
-            const prompt = promptInput.value.trim();
-            const model = modelSelect.value;
-            const size = sizeSelect.value;
-            const n = parseInt(numImagesInput.value);
-
-            if (!prompt) {
-                updateStatus('Please enter a prompt to generate an image.', 'error');
-                return;
-            }
-            if (n < 1 || n > parseInt(numImagesInput.max)) {
-                updateStatus(`Number of images must be between 1 and ${numImagesInput.max}.`, 'error');
-                return;
-            }
-
-            updateStatus('Generating image(s)... This may take a moment.', 'info');
-            setGeneratingState(true);
-
-            try {
-                const response = await fetch('/api/generate-image', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ prompt, model, size, n }),
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.success) {
-                    displayImages(data.image_urls);
-                    updateStatus('Image(s) generated successfully!', 'success');
-                } else {
-                    updateStatus(`Generation failed: ${data.message || 'Unknown error'}`, 'error');
-                }
-            } catch (error) {
-                console.error('Error during image generation:', error);
-                updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
-            } finally {
-                setGeneratingState(false);
-            }
-        });
-
-        clearResultsBtn.addEventListener('click', clearAllImages);
-        downloadAllBtn.addEventListener('click', downloadAllImages);
-        imageGrid.addEventListener('click', (e) => {
-            const viewBtn = e.target.closest('.view-full-btn');
-            const downloadBtn = e.target.closest('.download-single-btn');
-            if (viewBtn) {
-                openFullSizeModal(viewBtn.dataset.src);
-            } else if (downloadBtn) {
-                saveAs(downloadBtn.dataset.url, `ai-generated-image-${Date.now()}.png`);
-                updateStatus('Downloading image...', 'info');
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUserData();
-            updateStatus('Enter a prompt and click "Generate Image".');
-            modelSelect.dispatchEvent(new Event('change'));
-
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-        });
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 1024) {
-                closeSidebar();
-                sidebar.classList.remove('collapsed');
-                document.querySelector('.main-content').classList.remove('expanded');
-            }
-        });
     </script>
 </body>
 </html>
