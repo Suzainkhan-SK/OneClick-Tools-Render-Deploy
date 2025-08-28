@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepseek Bot - OneClick AI Chat 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/ai-chatbots.css">
+    <link rel="stylesheet" href="css/deepseekbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header (from dashboard.html) -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar (from dashboard.html) -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Deepseek Bot</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body chat-page">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-model-info">
+                        <i class="fas fa-robot"></i>
+                        <h3 id="modelName">Deepseek Bot</h3>
+                        <span class="model-status online">Online</span>
+                    </div>
+                    <div class="chat-actions">
+                        <button id="clearChatBtn" class="action-btn" title="Clear Chat">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <button id="modelInfoBtn" class="action-btn" title="Model Info">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Chat messages will be appended here -->
+                    <div class="message bot-message">
+                        <div class="avatar bot-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">
+                            <p>Hello! I'm Deepseek. How can I assist you today?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <select id="chatModelSelect" class="chat-model-select">
+                        <option value="provider-3/deepseek-v3" selected>Deepseek V3</option>
+                        <option value="provider-6/deepseek-r1-0528-turbo">Deepseek R1 Turbo</option>
+                    </select>
+                    <textarea id="userMessageInput" placeholder="Type your message here..." rows="1"></textarea>
+                    <button id="sendMessageBtn" class="send-message-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Re-use dashboard's mobile menu and theme toggle logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await fetch('http://localhost:5000/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication check and user data loading
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.user) {
+                        updateUserUI(data.user);
+                    } else {
+                        window.location.href = '/login.html';
+                    }
+                } else {
+                    window.location.href = '/login.html';
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+                window.location.href = '/login.html';
+            }
+        });
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('mobileUserAvatar').alt = user.full_name || user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+        }
+
+        // Chatbot specific logic
+        const chatMessages = document.getElementById('chatMessages');
+        const userMessageInput = document.getElementById('userMessageInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const chatModelSelect = document.getElementById('chatModelSelect');
+        const clearChatBtn = document.getElementById('clearChatBtn');
+        const modelInfoBtn = document.getElementById('modelInfoBtn');
+        const modelNameDisplay = document.getElementById('modelName');
+
+        let conversationHistory = [{ role: "system", content: "You are a helpful assistant." }];
+        let currentModel = chatModelSelect.value;
+
+        const modelDescriptions = {
+            'provider-3/deepseek-v3': 'Deepseek V3: Advanced model from Deepseek AI, strong in reasoning and multimodal tasks.',
+            'provider-6/deepseek-r1-0528-turbo': 'Deepseek R1 Turbo: Optimized for speed and reasoning tasks.'
+        };
+
+        function appendMessage(role, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${role}-message`);
+
+            const avatarDiv = document.createElement('div');
+            avatarDiv.classList.add('avatar', `${role}-avatar`);
+            avatarDiv.innerHTML = role === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('message-content');
+            contentDiv.innerHTML = `<p>${content}</p>`;
+
+            messageDiv.appendChild(avatarDiv);
+            messageDiv.appendChild(contentDiv);
+            chatMessages.appendChild(messageDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+        }
+
+        async function sendMessage() {
+            const userMessage = userMessageInput.value.trim();
+            if (!userMessage) return;
+
+            appendMessage('user', userMessage);
+            conversationHistory.push({ role: "user", content: userMessage });
+            userMessageInput.value = ''; // Clear input
+
+            sendMessageBtn.disabled = true;
+            sendMessageBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+            try {
+                const response = await fetch('/api/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: currentModel,
+                        messages: conversationHistory,
+                        temperature: 0.7,
+                        max_tokens: 500
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    const botResponse = data.response.content;
+                    appendMessage('bot', botResponse);
+                    conversationHistory.push({ role: "assistant", content: botResponse });
+                } else {
+                    appendMessage('bot', `Error: ${data.message || 'Could not get a response.'}`);
+                    // Optionally, remove the last user message from history if bot failed
+                    conversationHistory.pop(); 
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+                appendMessage('bot', 'An unexpected error occurred. Please try again.');
+                conversationHistory.pop(); // Remove user message if request failed
+            } finally {
+                sendMessageBtn.disabled = false;
+                sendMessageBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            }
+        }
+
+        userMessageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // Prevent new line
+                sendMessage();
+            }
+        });
+
+        sendMessageBtn.addEventListener('click', sendMessage);
+
+        chatModelSelect.addEventListener('change', function() {
+            currentModel = this.value;
+            modelNameDisplay.textContent = this.options[this.selectedIndex].textContent.replace(/\s*\(.*\)/, ''); // Clean up name
+            // Optionally, clear chat or add a system message about model change
+            // clearChat(); 
+            // appendMessage('bot', `Switched to ${modelNameDisplay.textContent}. How can I help you with this model?`);
+        });
+
+        clearChatBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear the chat history?')) {
+                chatMessages.innerHTML = `
+                    <div class="message bot-message">
+                        <div class="avatar bot-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">
+                            <p>Hello! I'm ${modelNameDisplay.textContent}. How can I assist you today?</p>
+                        </div>
+                    </div>
+                `;
+                conversationHistory = [{ role: "system", content: "You are a helpful assistant." }];
+            }
+        });
+
+        modelInfoBtn.addEventListener('click', function() {
+            const description = modelDescriptions[currentModel] || 'No detailed description available for this model.';
+            alert(`Model: ${modelNameDisplay.textContent}\n\nDescription: ${description}`);
+        });
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial model name display
+            modelNameDisplay.textContent = chatModelSelect.options[chatModelSelect.selectedIndex].textContent.replace(/\s*\(.*\)/, '');
+        });
+    </script>
+</body>
+</html>

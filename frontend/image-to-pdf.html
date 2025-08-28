@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to PDF Converter - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/image-to-pdf.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Image to PDF Converter</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="tool-page">
+            <div class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-file-pdf category-main-icon"></i> Image to PDF Converter</h1>
+                    <p>Effortlessly convert your images into a single, high-quality PDF document. Arrange, customize, and secure your PDFs with ease.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </div>
+
+            <div class="tool-content">
+                <a href="pdf-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to PDF Tools</a>
+
+                <div class="converter-card">
+                    <div class="card-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="converter-header">
+                            <h2>Convert Images to PDF</h2>
+                            <span class="status-message info" id="statusMessage">Ready</span>
+                        </div>
+
+                        <div class="upload-section">
+                            <div id="dropZone" class="drop-zone">
+                                <input type="file" id="imageUpload" accept="image/*" multiple hidden>
+                                <div class="drop-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h3>Drag & Drop your images here</h3>
+                                    <p>or <span class="browse-link">browse files</span></p>
+                                    <span class="file-types">Supported formats: JPG, PNG, BMP, GIF, WebP</span>
+                                </div>
+                            </div>
+                            <div id="imagePreviewContainer" class="image-preview-container"></div>
+                        </div>
+
+                        <div class="conversion-options">
+                            <h3>PDF Settings</h3>
+                            <div class="options-grid">
+                                <div class="option-group">
+                                    <label for="pageSize">Page Size</label>
+                                    <div class="select-wrapper">
+                                        <select id="pageSize">
+                                            <option value="A4">A4 (210 x 297 mm)</option>
+                                            <option value="Letter">Letter (216 x 279 mm)</option>
+                                            <option value="Legal">Legal (216 x 356 mm)</option>
+                                            <option value="A3">A3 (297 x 420 mm)</option>
+                                            <option value="Custom">Custom (px)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="option-group" id="customSizeGroup" style="display: none;">
+                                    <label for="customWidth">Custom Width (px)</label>
+                                    <input type="number" id="customWidth" value="595" min="1">
+                                </div>
+                                <div class="option-group" id="customHeightGroup" style="display: none;">
+                                    <label for="customHeight">Custom Height (px)</label>
+                                    <input type="number" id="customHeight" value="842" min="1">
+                                </div>
+                                <div class="option-group">
+                                    <label for="pageOrientation">Page Orientation</label>
+                                    <div class="select-wrapper">
+                                        <select id="pageOrientation">
+                                            <option value="portrait">Portrait</option>
+                                            <option value="landscape">Landscape</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="option-group">
+                                    <label for="imageFit">Image Fit</label>
+                                    <div class="select-wrapper">
+                                        <select id="imageFit">
+                                            <option value="fit">Fit to Page</option>
+                                            <option value="fill">Fill Page</option>
+                                            <option value="original">Original Size</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="option-group">
+                                    <label for="jpegQuality">JPEG Quality</label>
+                                    <input type="range" id="jpegQuality" min="1" max="100" value="90">
+                                    <small>Quality: <span id="jpegQualityValue">90</span>%</small>
+                                </div>
+                                <div class="option-group">
+                                    <label for="passwordProtection">Password Protection (Optional)</label>
+                                    <div class="password-input-wrapper">
+                                        <input type="password" id="passwordProtection" placeholder="Enter password">
+                                        <i class="fas fa-eye toggle-password"></i>
+                                    </div>
+                                    <small>Protect your PDF with a password.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tool-actions">
+                            <button id="clearAllBtn" class="tool-btn secondary" disabled><i class="fas fa-times-circle"></i> Clear All</button>
+                            <button id="convertBtn" class="tool-btn" disabled><i class="fas fa-file-pdf"></i> Convert to PDF</button>
+                        </div>
+
+                        <div id="progressSection" class="progress-section" style="display: none;">
+                            <div class="progress-header">
+                                <h3>Conversion Progress</h3>
+                                <span id="progressText" class="progress-text">0%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar">
+                                    <div id="progressBarFill" class="progress-fill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Processing...
+                            </div>
+                            <span id="currentFileProgress" class="current-file"></span>
+                        </div>
+
+                        <div id="resultsSection" class="results-section" style="display: none;">
+                            <div class="results-header">
+                                <h3>Conversion Complete!</h3>
+                            </div>
+                            <div class="converted-pdf-card">
+                                <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
+                                <div class="pdf-info">
+                                    <h4><span id="convertedFileName"></span></h4>
+                                    <div class="pdf-stats">
+                                        <span>Original Images: <span id="originalImageCount"></span></span>
+                                        <span>PDF Size: <span id="pdfSize"></span></span>
+                                    </div>
+                                </div>
+                                <button id="downloadPdfBtn" class="tool-btn download-btn"><i class="fas fa-download"></i> Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-magic"></i></div>
+                        <h3>High Quality Conversion</h3>
+                        <p>Transform images into PDFs with preserved details and clarity.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-sort-numeric-up-alt"></i></div>
+                        <h3>Easy Reordering</h3>
+                        <p>Drag and drop images to arrange them in your preferred order.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-lock"></i></div>
+                        <h3>Secure Documents</h3>
+                        <p>Add a password to your PDF to protect sensitive information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // Image to PDF Converter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            let uploadedFiles = [];
+            let imageOrder = [];
+            const dropZone = document.getElementById('dropZone');
+            const imageUpload = document.getElementById('imageUpload');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            const convertBtn = document.getElementById('convertBtn');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            const progressSection = document.getElementById('progressSection');
+            const progressBarFill = document.getElementById('progressBarFill');
+            const progressText = document.getElementById('progressText');
+            const currentFileProgress = document.getElementById('currentFileProgress');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const resultsSection = document.getElementById('resultsSection');
+            const convertedFileName = document.getElementById('convertedFileName');
+            const originalImageCount = document.getElementById('originalImageCount');
+            const pdfSize = document.getElementById('pdfSize');
+            const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+            const pageSizeSelect = document.getElementById('pageSize');
+            const customSizeGroup = document.getElementById('customSizeGroup');
+            const customHeightGroup = document.getElementById('customHeightGroup');
+            const customWidthInput = document.getElementById('customWidth');
+            const customHeightInput = document.getElementById('customHeight');
+            const jpegQualityInput = document.getElementById('jpegQuality');
+            const jpegQualityValueSpan = document.getElementById('jpegQualityValue');
+            const passwordProtectionInput = document.getElementById('passwordProtection');
+
+            // Initialize UI
+            function resetUI() {
+                uploadedFiles = [];
+                imageOrder = [];
+                imagePreviewContainer.innerHTML = '';
+                updateButtons();
+                showStatusMessage('Ready', 'info');
+                progressSection.style.display = 'none';
+                resultsSection.style.display = 'none';
+                progressBarFill.style.width = '0%';
+                progressText.textContent = '0%';
+                currentFileProgress.textContent = '';
+                loadingSpinner.style.display = 'none';
+                passwordProtectionInput.value = '';
+                const passwordIcon = passwordProtectionInput.nextElementSibling;
+                if (passwordIcon && passwordProtectionInput.type === 'text') {
+                    passwordProtectionInput.type = 'password';
+                    passwordIcon.classList.remove('fa-eye-slash');
+                    passwordIcon.classList.add('fa-eye');
+                }
+            }
+
+            // Update button states
+            function updateButtons() {
+                const hasFiles = imageOrder.length > 0;
+                convertBtn.disabled = !hasFiles;
+                clearAllBtn.disabled = !hasFiles;
+            }
+
+            // Show status message
+            function showStatusMessage(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = `status-message ${type}`;
+            }
+
+            // Show error notification
+            function showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-notification';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                    <button class="error-close">&times;</button>
+                `;
+                
+                document.querySelectorAll('.error-notification').forEach(el => el.remove());
+                document.querySelector('.converter-card .card-content').prepend(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+                
+                errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                    errorDiv.remove();
+                });
+            }
+
+            // Drag & Drop functionality
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('highlight');
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('highlight');
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('highlight');
+                handleFiles(e.dataTransfer.files);
+            });
+
+            imageUpload.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+
+            document.querySelector('.browse-link').addEventListener('click', () => {
+                imageUpload.click();
+            });
+
+            function handleFiles(files) {
+                for (const file of files) {
+                    if (file.type.startsWith('image/')) {
+                        const uniqueId = Date.now() + Math.random().toString(36).substring(2, 9);
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const imgData = {
+                                file: file,
+                                id: uniqueId,
+                                previewUrl: e.target.result
+                            };
+                            imageOrder.push(imgData);
+                            renderImagePreviews();
+                            updateButtons();
+                            showStatusMessage(`${file.name} added`, 'success');
+                        };
+                        reader.onerror = () => {
+                            showError('Failed to read file: ' + file.name);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        showError('Unsupported file type: ' + file.name);
+                    }
+                }
+            }
+
+            function renderImagePreviews() {
+                imagePreviewContainer.innerHTML = '';
+                imageOrder.forEach((imgData, index) => {
+                    const previewCard = document.createElement('div');
+                    previewCard.classList.add('image-preview-card');
+                    previewCard.setAttribute('draggable', 'true');
+                    previewCard.dataset.id = imgData.id;
+                    previewCard.dataset.index = index;
+
+                    previewCard.innerHTML = `
+                        <img src="${imgData.previewUrl}" alt="${imgData.file.name}">
+                        <span class="file-name">${imgData.file.name}</span>
+                        <button class="remove-image-btn" data-id="${imgData.id}"><i class="fas fa-times"></i></button>
+                        <div class="reorder-handle"><i class="fas fa-grip-vertical"></i></div>
+                    `;
+                    imagePreviewContainer.appendChild(previewCard);
+                });
+
+                addDragListeners();
+                addRemoveListeners();
+            }
+
+            function addRemoveListeners() {
+                document.querySelectorAll('.remove-image-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const idToRemove = e.currentTarget.dataset.id;
+                        imageOrder = imageOrder.filter(img => img.id !== idToRemove);
+                        renderImagePreviews();
+                        updateButtons();
+                        showStatusMessage('Image removed', 'success');
+                    });
+                });
+            }
+
+            let dragSrcEl = null;
+
+            function addDragListeners() {
+                document.querySelectorAll('.image-preview-card').forEach(card => {
+                    card.addEventListener('dragstart', handleDragStart);
+                    card.addEventListener('dragover', handleDragOver);
+                    card.addEventListener('dragleave', handleDragLeave);
+                    card.addEventListener('drop', handleDrop);
+                    card.addEventListener('dragend', handleDragEnd);
+                });
+            }
+
+            function handleDragStart(e) {
+                dragSrcEl = this;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', this.dataset.id);
+                this.classList.add('dragging');
+            }
+
+            function handleDragOver(e) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                if (this !== dragSrcEl && this.classList.contains('image-preview-card')) {
+                    this.classList.add('drag-over');
+                }
+            }
+
+            function handleDragLeave() {
+                this.classList.remove('drag-over');
+            }
+
+            function handleDrop(e) {
+                e.stopPropagation();
+                this.classList.remove('drag-over');
+
+                if (dragSrcEl !== this) {
+                    const dragId = dragSrcEl.dataset.id;
+                    const dropId = this.dataset.id;
+
+                    const dragIndex = imageOrder.findIndex(img => img.id === dragId);
+                    const dropIndex = imageOrder.findIndex(img => img.id === dropId);
+
+                    const [draggedItem] = imageOrder.splice(dragIndex, 1);
+                    imageOrder.splice(dropIndex, 0, draggedItem);
+
+                    renderImagePreviews();
+                    showStatusMessage('Images reordered', 'success');
+                }
+            }
+
+            function handleDragEnd() {
+                document.querySelectorAll('.image-preview-card').forEach(card => {
+                    card.classList.remove('dragging', 'drag-over');
+                });
+                dragSrcEl = null;
+            }
+
+            // PDF Settings
+            pageSizeSelect.addEventListener('change', () => {
+                if (pageSizeSelect.value === 'Custom') {
+                    customSizeGroup.style.display = 'block';
+                    customHeightGroup.style.display = 'block';
+                } else {
+                    customSizeGroup.style.display = 'none';
+                    customHeightGroup.style.display = 'none';
+                }
+            });
+
+            jpegQualityInput.addEventListener('input', () => {
+                jpegQualityValueSpan.textContent = jpegQualityInput.value;
+            });
+
+            document.querySelector('.toggle-password').addEventListener('click', () => {
+                const input = passwordProtectionInput;
+                const icon = input.nextElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+
+            // Clear button
+            clearAllBtn.addEventListener('click', resetUI);
+
+            // Convert button
+            convertBtn.addEventListener('click', async () => {
+                if (imageOrder.length === 0) {
+                    showError('Please upload images first.');
+                    return;
+                }
+
+                if (pageSizeSelect.value === 'Custom') {
+                    const width = parseInt(customWidthInput.value);
+                    const height = parseInt(customHeightInput.value);
+                    if (!width || !height || width < 1 || height < 1) {
+                        showError('Please enter valid custom dimensions.');
+                        return;
+                    }
+                }
+
+                showStatusMessage('Converting...', 'info');
+                convertBtn.disabled = true;
+                clearAllBtn.disabled = true;
+                progressSection.style.display = 'block';
+                loadingSpinner.style.display = 'flex';
+                resultsSection.style.display = 'none';
+
+                const formData = new FormData();
+                imageOrder.forEach((imgData, index) => {
+                    formData.append('images', imgData.file, imgData.file.name);
+                });
+
+                formData.append('pageSize', pageSizeSelect.value);
+                formData.append('pageOrientation', pageOrientation.value);
+                formData.append('imageFit', imageFit.value);
+                formData.append('jpegQuality', jpegQualityInput.value);
+
+                const password = passwordProtectionInput.value.trim();
+                if (password) {
+                    formData.append('password', password);
+                }
+
+                try {
+                    const response = await fetch('/api/convert-images-to-pdf', {
+                        method: 'POST',
+                        body: formData,
+                        credentials: 'include'
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Conversion failed.');
+                    }
+
+                    const blob = await response.blob();
+                    const downloadUrl = URL.createObjectURL(blob);
+                    
+                    const originalCount = imageOrder.length;
+                    const convertedSize = (blob.size / (1024 * 1024)).toFixed(2) + ' MB';
+                    const fileName = response.headers.get('X-Converted-Filename') || 'converted.pdf';
+
+                    convertedFileName.textContent = fileName;
+                    originalImageCount.textContent = originalCount;
+                    pdfSize.textContent = convertedSize;
+                    downloadPdfBtn.onclick = () => {
+                        const a = document.createElement('a');
+                        a.href = downloadUrl;
+                        a.download = fileName;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(downloadUrl);
+                    };
+
+                    showStatusMessage('Conversion successful!', 'success');
+                    progressSection.style.display = 'none';
+                    loadingSpinner.style.display = 'none';
+                    resultsSection.style.display = 'block';
+
+                } catch (error) {
+                    console.error('Error during PDF conversion:', error);
+                    showError(`Conversion failed: ${error.message}`);
+                    progressSection.style.display = 'none';
+                    loadingSpinner.style.display = 'none';
+                    convertBtn.disabled = false;
+                    clearAllBtn.disabled = false;
+                }
+            });
+
+            // Initial setup
+            loadUserData();
+            resetUI();
+
+            // Close mobile sidebar on outside click
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1024) {
+                    closeSidebar();
+                    sidebar.classList.remove('collapsed');
+                    document.querySelector('.main-content').classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

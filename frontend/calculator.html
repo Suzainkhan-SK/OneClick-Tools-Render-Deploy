@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Advanced Calculator</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="tool-page">
+            <div class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-calculator category-main-icon"></i> Advanced Calculator</h1>
+                    <p>Perform basic arithmetic, scientific calculations, and manage memory with an intuitive interface. Track your calculation history for easy reference.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </div>
+
+            <div class="tool-content">
+                <a href="utility-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Utility Tools</a>
+
+                <div class="calculator-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="calculator-header">
+                            <h2>Advanced Calculator</h2>
+                            <span class="status-message info" id="statusMessage">Ready to calculate</span>
+                        </div>
+
+                        <div class="calculator-display">
+                            <input type="text" id="calcInput" readonly value="0">
+                            <div class="memory-indicator" id="memoryIndicator" style="display: none;">M</div>
+                        </div>
+
+                        <div class="calculator-buttons">
+                            <button class="calc-btn memory" data-action="memory-clear">MC</button>
+                            <button class="calc-btn memory" data-action="memory-recall">MR</button>
+                            <button class="calc-btn memory" data-action="memory-add">M+</button>
+                            <button class="calc-btn memory" data-action="memory-subtract">M-</button>
+                            <button class="calc-btn operation" data-action="clear">C</button>
+                            
+                            <button class="calc-btn function" data-action="sin">sin</button>
+                            <button class="calc-btn function" data-action="cos">cos</button>
+                            <button class="calc-btn function" data-action="tan">tan</button>
+                            <button class="calc-btn function" data-action="log">log</button>
+                            <button class="calc-btn operation" data-action="divide">÷</button>
+                            
+                            <button class="calc-btn number">7</button>
+                            <button class="calc-btn number">8</button>
+                            <button class="calc-btn number">9</button>
+                            <button class="calc-btn operation" data-action="multiply">×</button>
+                            <button class="calc-btn function" data-action="sqrt">√</button>
+                            
+                            <button class="calc-btn number">4</button>
+                            <button class="calc-btn number">5</button>
+                            <button class="calc-btn number">6</button>
+                            <button class="calc-btn operation" data-action="subtract">-</button>
+                            <button class="calc-btn function" data-action="square">x²</button>
+                            
+                            <button class="calc-btn number">1</button>
+                            <button class="calc-btn number">2</button>
+                            <button class="calc-btn number">3</button>
+                            <button class="calc-btn operation" data-action="add">+</button>
+                            <button class="calc-btn function" data-action="pi">π</button>
+                            
+                            <button class="calc-btn number">0</button>
+                            <button class="calc-btn number">.</button>
+                            <button class="calc-btn operation" data-action="percent">%</button>
+                            <button class="calc-btn operation" data-action="equals">=</button>
+                            <button class="calc-btn function" data-action="toggle-sign">±</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="history-section" id="historySection">
+                    <div class="history-header">
+                        <h3>Calculation History</h3>
+                        <button class="tool-btn secondary" id="clearHistoryBtn"><i class="fas fa-trash"></i> Clear History</button>
+                    </div>
+                    <div class="history-list" id="historyList"></div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Versatile Calculations</h3>
+                        <p>Perform basic arithmetic and advanced scientific functions like trigonometry, logarithms, and square roots.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-memory"></i></div>
+                        <h3>Memory Functions</h3>
+                        <p>Store and recall values with memory functions to simplify complex calculations.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-history"></i></div>
+                        <h3>Calculation History</h3>
+                        <p>Track your previous calculations for quick reference or reuse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // Calculator Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const calcInput = document.getElementById('calcInput');
+            const statusMessage = document.getElementById('statusMessage');
+            const memoryIndicator = document.getElementById('memoryIndicator');
+            const historyList = document.getElementById('historyList');
+            const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+            let currentInput = '0';
+            let memory = 0;
+            let history = [];
+            let lastResult = null;
+
+            // Update display
+            function updateDisplay(value) {
+                calcInput.value = value;
+            }
+
+            // Update status
+            function updateStatus(message, type = 'info') {
+                statusMessage.textContent = message;
+                statusMessage.className = `status-message ${type}`;
+            }
+
+            // Show error notification
+            function showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-notification';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                    <button class="error-close">&times;</button>
+                `;
+                
+                document.querySelectorAll('.error-notification').forEach(el => el.remove());
+                document.querySelector('.calculator-card .card-content').prepend(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+                
+                errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                    errorDiv.remove();
+                });
+            }
+
+            // Update history
+            function updateHistory(expression, result) {
+                history.push({ expression, result });
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.innerHTML = `<span>${expression} = ${result}</span>`;
+                historyList.prepend(historyItem);
+                if (history.length > 10) {
+                    history.shift();
+                    historyList.removeChild(historyList.lastChild);
+                }
+            }
+
+            // Clear history
+            clearHistoryBtn.addEventListener('click', () => {
+                history = [];
+                historyList.innerHTML = '';
+                updateStatus('History cleared', 'success');
+            });
+
+            // Calculator button logic
+            document.querySelectorAll('.calc-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const action = button.dataset.action;
+                    const value = button.textContent;
+
+                    try {
+                        if (button.classList.contains('number') || value === '.') {
+                            if (currentInput === '0' || lastResult !== null) {
+                                currentInput = value;
+                                lastResult = null;
+                            } else {
+                                currentInput += value;
+                            }
+                            updateDisplay(currentInput);
+                        } else if (button.classList.contains('operation')) {
+                            if (action === 'clear') {
+                                currentInput = '0';
+                                lastResult = null;
+                                updateDisplay(currentInput);
+                                updateStatus('Cleared', 'info');
+                            } else if (action === 'equals') {
+                                const expression = currentInput;
+                                const result = eval(currentInput.replace('÷', '/').replace('×', '*'));
+                                if (isNaN(result) || !isFinite(result)) {
+                                    throw new Error('Invalid calculation');
+                                }
+                                currentInput = result.toString();
+                                updateDisplay(currentInput);
+                                updateHistory(expression, result);
+                                lastResult = result;
+                                updateStatus('Result: ' + result, 'success');
+                            } else {
+                                currentInput += ` ${value} `;
+                                updateDisplay(currentInput);
+                            }
+                        } else if (button.classList.contains('function')) {
+                            if (action === 'sin' || action === 'cos' || action === 'tan') {
+                                const radians = eval(currentInput) * Math.PI / 180;
+                                const result = Math[action](radians);
+                                if (isNaN(result)) {
+                                    throw new Error('Invalid input for ' + action);
+                                }
+                                currentInput = result.toFixed(8);
+                                updateDisplay(currentInput);
+                                updateHistory(`${action}(${eval(currentInput) * 180 / Math.PI}°)`, currentInput);
+                                lastResult = result;
+                            } else if (action === 'log') {
+                                const result = Math.log10(eval(currentInput));
+                                if (isNaN(result) || !isFinite(result)) {
+                                    throw new Error('Invalid input for log');
+                                }
+                                currentInput = result.toFixed(8);
+                                updateDisplay(currentInput);
+                                updateHistory(`log(${eval(currentInput)})`, currentInput);
+                                lastResult = result;
+                            } else if (action === 'sqrt') {
+                                const result = Math.sqrt(eval(currentInput));
+                                if (isNaN(result)) {
+                                    throw new Error('Invalid input for sqrt');
+                                }
+                                currentInput = result.toFixed(8);
+                                updateDisplay(currentInput);
+                                updateHistory(`√(${eval(currentInput)})`, currentInput);
+                                lastResult = result;
+                            } else if (action === 'square') {
+                                const result = eval(currentInput) ** 2;
+                                currentInput = result.toString();
+                                updateDisplay(currentInput);
+                                updateHistory(`(${eval(currentInput)})²`, currentInput);
+                                lastResult = result;
+                            } else if (action === 'pi') {
+                                currentInput = Math.PI.toString();
+                                updateDisplay(currentInput);
+                            } else if (action === 'toggle-sign') {
+                                currentInput = (-eval(currentInput)).toString();
+                                updateDisplay(currentInput);
+                            }
+                        } else if (button.classList.contains('memory')) {
+                            if (action === 'memory-clear') {
+                                memory = 0;
+                                memoryIndicator.style.display = 'none';
+                                updateStatus('Memory cleared', 'success');
+                            } else if (action === 'memory-recall') {
+                                currentInput = memory.toString();
+                                updateDisplay(currentInput);
+                                updateStatus('Memory recalled', 'success');
+                            } else if (action === 'memory-add') {
+                                memory += eval(currentInput);
+                                memoryIndicator.style.display = 'block';
+                                updateStatus('Added to memory', 'success');
+                            } else if (action === 'memory-subtract') {
+                                memory -= eval(currentInput);
+                                memoryIndicator.style.display = 'block';
+                                updateStatus('Subtracted from memory', 'success');
+                            }
+                        }
+                    } catch (error) {
+                        showError(error.message || 'Calculation error');
+                        updateStatus('Error', 'error');
+                    }
+                });
+            });
+
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                const keyMap = {
+                    '0': '0', '1': '1', '2': '2', '3': '3', '4': '4',
+                    '5': '5', '6': '6', '7': '7', '8': '8', '9': '9',
+                    '.': '.', '+': '+', '-': '-', '*': '×', '/': '÷',
+                    'Enter': '=', 'Escape': 'clear'
+                };
+                if (keyMap[e.key]) {
+                    document.querySelector(`.calc-btn[data-action="${keyMap[e.key]}"],
+                        .calc-btn:not([data-action])[textContent="${keyMap[e.key]}"]`).click();
+                }
+            });
+
+            // Initial setup
+            loadUserData();
+            updateDisplay(currentInput);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/ai-image-generator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>AI Image Generator</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body tool-page">
+            <section class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-magic category-main-icon"></i> AI Image Generator</h1>
+                    <p>Unleash your creativity! Generate stunning images from text prompts using advanced AI models.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </section>
+
+            <section class="tool-content">
+                <a href="image-tools.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Image Tools
+                </a>
+
+                <!-- Generator Card -->
+                <div class="generator-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="generator-header">
+                            <h2>Generate Your Masterpiece</h2>
+                            <div class="status-message" id="statusMessage">
+                                <span>Ready to generate!</span>
+                            </div>
+                        </div>
+
+                        <div class="generator-body">
+                            <!-- Prompt Input -->
+                            <div class="input-group">
+                                <label for="prompt">Image Prompt</label>
+                                <textarea id="prompt" placeholder="e.g., A futuristic city at sunset, cyberpunk style, highly detailed, 8k" rows="4"></textarea>
+                                <small>Describe the image you want to create.</small>
+                            </div>
+
+                            <!-- Generation Settings -->
+                            <div class="settings-grid">
+                                <div class="option-group">
+                                    <label for="model">AI Model</label>
+                                    <select id="model">
+                                        <option value="provider-4/imagen-4" selected>Imagen 4 (Latest Google)</option>
+                                        <option value="provider-4/imagen-3">Imagen 3 (Google)</option>
+                                        <option value="provider-6/sana-1.5-flash">Sana 1.5 Flash</option>
+                                        <option value="provider-6/sana-1.5">Sana 1.5</option>
+                                        <option value="provider-3/FLUX.1-dev">FLUX.1 Dev (Black Forest Labs)</option>
+                                    </select>
+                                    <small id="modelDescription">Choose the AI model for generation. Each model has unique strengths.</small>
+                                    <div class="model-strengths" id="modelStrengths"></div>
+                                </div>
+                                <div class="option-group">
+                                    <label for="size">Image Size</label>
+                                    <select id="size">
+                                        <option value="1024x1024" selected>1024×1024 (Square)</option>
+                                        <option value="1152x896">1152×896 (Landscape)</option>
+                                        <option value="896x1152">896×1152 (Portrait)</option>
+                                        <option value="1216x832">1216×832 (Landscape Wide)</option>
+                                        <option value="832x1216">832×1216 (Portrait Tall)</option>
+                                        <option value="1344x768">1344×768 (Landscape Ultra-Wide)</option>
+                                        <option value="768x1344">768×1344 (Portrait Ultra-Tall)</option>
+                                        <option value="1536x640">1536×640 (Landscape Panoramic)</option>
+                                        <option value="640x1536">640×1536 (Portrait Panoramic)</option>
+                                    </select>
+                                    <small>Select the resolution of the generated image.</small>
+                                </div>
+                                <div class="option-group">
+                                    <label for="numImages">Number of Images</label>
+                                    <input type="number" id="numImages" value="1" min="1" max="4">
+                                    <small>How many variations to generate (max 2-4).</small>
+                                </div>
+                            </div>
+
+                            <!-- Generate Button -->
+                            <button id="generateButton" class="tool-btn">
+                                <i class="fas fa-sparkles"></i> Generate Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h3>Generated Images</h3>
+                        <button class="tool-btn secondary" id="clearResultsBtn">
+                            <i class="fas fa-trash-alt"></i> Clear All
+                        </button>
+                    </div>
+                    <div class="image-grid" id="imageGrid"></div>
+                    <div class="results-actions">
+                        <button id="downloadAllBtn" class="tool-btn" style="display: none;">
+                            <i class="fas fa-download"></i> Download All
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Grid -->
+            <section class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Prompt Tips</h3>
+                    <p>Be descriptive! Include details about style, lighting, colors, and composition for better results.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Explore Styles</h3>
+                    <p>Try adding keywords like "oil painting," "photorealistic," "anime," "cyberpunk," or "watercolor."</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Aspect Ratios</h3>
+                    <p>Experiment with different image sizes to fit your specific needs, from square to panoramic.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // AI Image Generator Logic
+        const promptInput = document.getElementById('prompt');
+        const modelSelect = document.getElementById('model');
+        const sizeSelect = document.getElementById('size');
+        const numImagesInput = document.getElementById('numImages');
+        const generateButton = document.getElementById('generateButton');
+        const statusMessage = document.getElementById('statusMessage');
+        const resultsSection = document.getElementById('resultsSection');
+        const imageGrid = document.getElementById('imageGrid');
+        const clearResultsBtn = document.getElementById('clearResultsBtn');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+
+        let generatedImageUrls = [];
+
+        const modelInfo = {
+            'provider-4/imagen-4': {
+                description: 'Google\'s latest model with photorealistic quality and excellent prompt adherence.',
+                maxImages: 4,
+                supportedSizes: ['1024x1024', '1152x896', '896x1152', '1216x832', '832x1216'],
+                strengths: ['Photorealism', 'Text rendering', 'Complex scenes']
+            },
+            'provider-4/imagen-3': {
+                description: 'Google\'s previous generation with reliable quality and fast generation.',
+                maxImages: 4,
+                supportedSizes: ['1024x1024', '1152x896', '896x1152'],
+                strengths: ['Consistency', 'Speed', 'Reliability']
+            },
+            'provider-6/sana-1.5-flash': {
+                description: 'Fast and efficient model for quick image generation with good quality.',
+                maxImages: 4,
+                supportedSizes: ['1024x1024', '1152x896', '896x1152'],
+                strengths: ['Speed', 'Efficiency', 'Good quality']
+            },
+            'provider-6/sana-1.5': {
+                description: 'Versatile model with balanced performance across various styles.',
+                maxImages: 4,
+                supportedSizes: ['1024x1024', '1152x896', '896x1152'],
+                strengths: ['Versatility', 'Balanced performance', 'Various styles']
+            },
+            'provider-3/FLUX.1-dev': {
+                description: 'Black Forest Labs\' development model with exceptional detail and artistic quality.',
+                maxImages: 2,
+                supportedSizes: ['1024x1024', '1152x896', '896x1152', '1344x768', '768x1344'],
+                strengths: ['Artistic quality', 'Fine details', 'Creative interpretation']
+            }
+        };
+
+        modelSelect.addEventListener('change', function() {
+            const selectedModel = this.value;
+            const info = modelInfo[selectedModel];
+            
+            if (info) {
+                document.getElementById('modelDescription').textContent = info.description;
+                numImagesInput.max = info.maxImages;
+                if (parseInt(numImagesInput.value) > info.maxImages) {
+                    numImagesInput.value = info.maxImages;
+                }
+                updateSizeOptions(info.supportedSizes);
+                showModelStrengths(info.strengths);
+            }
+        });
+
+        function updateSizeOptions(supportedSizes) {
+            const currentValue = sizeSelect.value;
+            sizeSelect.innerHTML = '';
+            
+            const sizeLabels = {
+                '1024x1024': '1024×1024 (Square)',
+                '1152x896': '1152×896 (Landscape)',
+                '896x1152': '896×1152 (Portrait)',
+                '1216x832': '1216×832 (Landscape Wide)',
+                '832x1216': '832×1216 (Portrait Tall)',
+                '1344x768': '1344×768 (Landscape Ultra-Wide)',
+                '768x1344': '768×1344 (Portrait Ultra-Tall)',
+                '1536x640': '1536×640 (Landscape Panoramic)',
+                '640x1536': '640×1536 (Portrait Panoramic)'
+            };
+            
+            supportedSizes.forEach(size => {
+                const option = document.createElement('option');
+                option.value = size;
+                option.textContent = sizeLabels[size] || size;
+                sizeSelect.appendChild(option);
+            });
+            
+            if (supportedSizes.includes(currentValue)) {
+                sizeSelect.value = currentValue;
+            } else {
+                sizeSelect.selectedIndex = 0;
+            }
+        }
+
+        function showModelStrengths(strengths) {
+            const strengthsDiv = document.getElementById('modelStrengths');
+            strengthsDiv.innerHTML = `
+                <div class="strengths-label">Model Strengths:</div>
+                <div class="strengths-tags">
+                    ${strengths.map(strength => `<span class="strength-tag">${strength}</span>`).join('')}
+                </div>
+            `;
+        }
+
+        function updateStatus(message, type = 'info') {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+        }
+
+        function setGeneratingState(isGenerating) {
+            generateButton.disabled = isGenerating;
+            generateButton.innerHTML = isGenerating 
+                ? '<i class="fas fa-spinner fa-spin"></i> Generating...' 
+                : '<i class="fas fa-sparkles"></i> Generate Image';
+        }
+
+        function displayImages(urls) {
+            resultsSection.style.display = 'block';
+            urls.forEach(url => {
+                const imageCard = document.createElement('div');
+                imageCard.className = 'image-card';
+                imageCard.innerHTML = `
+                    <img src="${url}" alt="Generated Image">
+                    <div class="image-actions">
+                        <button class="tool-btn secondary download-single-btn" data-url="${url}">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="tool-btn secondary view-full-btn" data-src="${url}">
+                            <i class="fas fa-expand"></i> View Full Size
+                        </button>
+                    </div>
+                `;
+                imageGrid.prepend(imageCard);
+                generatedImageUrls.push(url);
+            });
+            updateDownloadAllButton();
+        }
+
+        function clearAllImages() {
+            imageGrid.innerHTML = '';
+            resultsSection.style.display = 'none';
+            generatedImageUrls = [];
+            updateDownloadAllButton();
+            updateStatus('Results cleared.');
+        }
+
+        function updateDownloadAllButton() {
+            downloadAllBtn.style.display = generatedImageUrls.length > 0 ? 'flex' : 'none';
+        }
+
+        async function downloadAllImages() {
+            if (generatedImageUrls.length === 0) {
+                updateStatus('No images to download.', 'error');
+                return;
+            }
+
+            updateStatus('Preparing ZIP for download...', 'info');
+            const zip = new JSZip();
+            for (let i = 0; i < generatedImageUrls.length; i++) {
+                const url = generatedImageUrls[i];
+                try {
+                    const response = await fetch(url);
+                    const blob = await response.blob();
+                    zip.file(`ai-image-${Date.now()}-${i + 1}.png`, blob);
+                } catch (error) {
+                    console.error(`Error fetching image ${url}:`, error);
+                }
+            }
+
+            try {
+                const content = await zip.generateAsync({ type: 'blob' });
+                saveAs(content, 'ai-generated-images.zip');
+                updateStatus('ZIP file downloaded successfully!', 'success');
+            } catch (error) {
+                console.error('Error generating ZIP:', error);
+                updateStatus('Failed to create ZIP file.', 'error');
+            }
+        }
+
+        function openFullSizeModal(imageUrl) {
+            const modal = document.createElement('div');
+            modal.className = 'full-size-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <img src="${imageUrl}" alt="Full Size Image">
+                    <button class="tool-btn modal-download-btn" data-url="${imageUrl}">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            modal.querySelector('.close-button').addEventListener('click', () => modal.remove());
+            modal.querySelector('.modal-download-btn').addEventListener('click', () => {
+                saveAs(imageUrl, `ai-generated-image-full-${Date.now()}.png`);
+                updateStatus('Downloading image...', 'info');
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.remove();
+            });
+        }
+
+        generateButton.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim();
+            const model = modelSelect.value;
+            const size = sizeSelect.value;
+            const n = parseInt(numImagesInput.value);
+
+            if (!prompt) {
+                updateStatus('Please enter a prompt to generate an image.', 'error');
+                return;
+            }
+            if (n < 1 || n > parseInt(numImagesInput.max)) {
+                updateStatus(`Number of images must be between 1 and ${numImagesInput.max}.`, 'error');
+                return;
+            }
+
+            updateStatus('Generating image(s)... This may take a moment.', 'info');
+            setGeneratingState(true);
+
+            try {
+                const response = await fetch('/api/generate-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ prompt, model, size, n }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    displayImages(data.image_urls);
+                    updateStatus('Image(s) generated successfully!', 'success');
+                } else {
+                    updateStatus(`Generation failed: ${data.message || 'Unknown error'}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error during image generation:', error);
+                updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
+            } finally {
+                setGeneratingState(false);
+            }
+        });
+
+        clearResultsBtn.addEventListener('click', clearAllImages);
+        downloadAllBtn.addEventListener('click', downloadAllImages);
+        imageGrid.addEventListener('click', (e) => {
+            const viewBtn = e.target.closest('.view-full-btn');
+            const downloadBtn = e.target.closest('.download-single-btn');
+            if (viewBtn) {
+                openFullSizeModal(viewBtn.dataset.src);
+            } else if (downloadBtn) {
+                saveAs(downloadBtn.dataset.url, `ai-generated-image-${Date.now()}.png`);
+                updateStatus('Downloading image...', 'info');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            updateStatus('Enter a prompt and click "Generate Image".');
+            modelSelect.dispatchEvent(new Event('change'));
+
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

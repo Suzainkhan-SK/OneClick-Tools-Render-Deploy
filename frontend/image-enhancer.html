@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancer - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/image-enhancer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Image Enhancer</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body tool-page">
+            <section class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-magic category-main-icon"></i> Image Enhancer</h1>
+                    <p>Boost your image quality with AI! Upscale and enhance details for stunning results.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </section>
+
+            <section class="tool-content">
+                <a href="image-tools.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Image Tools
+                </a>
+
+                <!-- Enhancer Card -->
+                <div class="enhancer-card">
+                    <div class="card-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="enhancer-header">
+                            <h2>Enhance Your Image</h2>
+                            <div class="status-message" id="statusMessage">
+                                <span>Ready to enhance!</span>
+                            </div>
+                        </div>
+
+                        <div class="enhancer-body">
+                            <!-- Image Upload Section -->
+                            <div class="upload-section">
+                                <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/tiff,image/webp" style="display: none;">
+                                <div class="drop-zone" id="dropZone">
+                                    <div class="drop-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <h3>Drag & Drop Your Image</h3>
+                                        <p>or <span class="browse-link">Browse Files</span></p>
+                                        <small class="file-types">Supported: JPG, PNG, TIFF, WEBP</small>
+                                    </div>
+                                </div>
+                                <div class="image-preview" id="imagePreview" style="display: none;">
+                                    <img id="previewImage" src="" alt="Image Preview">
+                                    <button class="tool-btn secondary remove-image-btn" id="removeImageBtn">
+                                        <i class="fas fa-times"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Enhancement Options -->
+                            <div class="options-grid">
+                                <div class="option-group">
+                                    <label for="upscaleFactor">Upscale Factor</label>
+                                    <select id="upscaleFactor">
+                                        <option value="2" selected>2x (Default)</option>
+                                        <option value="4">4x</option>
+                                        <option value="8">8x</option>
+                                        <option value="16">16x (Max)</option>
+                                    </select>
+                                    <small>Increase image resolution by this factor.</small>
+                                </div>
+                                <div class="option-group">
+                                    <label for="outputFormat">Output Format</label>
+                                    <select id="outputFormat">
+                                        <option value="JPG" selected>JPG</option>
+                                        <option value="PNG">PNG</option>
+                                        <option value="WEBP">WEBP</option>
+                                    </select>
+                                    <small>Choose the desired output image format.</small>
+                                </div>
+                            </div>
+
+                            <!-- Enhance Button -->
+                            <button id="enhanceButton" class="tool-btn" disabled>
+                                <i class="fas fa-magic"></i> Enhance Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h3>Enhanced Image</h3>
+                        <button class="tool-btn secondary" id="clearResultsBtn">
+                            <i class="fas fa-trash-alt"></i> Clear Result
+                        </button>
+                    </div>
+                    <div class="before-after-container">
+                        <div class="image-wrapper">
+                            <img id="originalImage" class="before-image" src="" alt="Original Image">
+                            <img id="enhancedImage" class="after-image" src="" alt="Enhanced Image">
+                            <div class="divider" id="divider">
+                                <div class="handle">
+                                    <i class="fas fa-grip-lines-vertical"></i>
+                                </div>
+                                <div class="label before-label">Before</div>
+                                <div class="label after-label">After</div>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="comparisonSlider" min="0" max="100" value="50">
+                    </div>
+                    <div class="results-actions">
+                        <a id="downloadEnhancedBtn" class="tool-btn" style="display: none;">
+                            <i class="fas fa-download"></i> Download Enhanced Image
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Grid -->
+            <section class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Ultra Enhance</h3>
+                    <p>Utilizes a generative model for high-frequency detail, perfect for low-resolution images.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3>Flexible Upscaling</h3>
+                    <p>Upscale images up to 16 times their original resolution while preserving quality.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Multiple Formats</h3>
+                    <p>Supports input and output in JPG, PNG, TIFF, and WEBP formats.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // Image Enhancer Logic
+        const imageUpload = document.getElementById('imageUpload');
+        const dropZone = document.getElementById('dropZone');
+        const browseLink = document.querySelector('.browse-link');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImage = document.getElementById('previewImage');
+        const removeImageBtn = document.getElementById('removeImageBtn');
+        const upscaleFactorSelect = document.getElementById('upscaleFactor');
+        const outputFormatSelect = document.getElementById('outputFormat');
+        const enhanceButton = document.getElementById('enhanceButton');
+        const statusMessage = document.getElementById('statusMessage');
+        const resultsSection = document.getElementById('resultsSection');
+        const originalImage = document.getElementById('originalImage');
+        const enhancedImage = document.getElementById('enhancedImage');
+        const downloadEnhancedBtn = document.getElementById('downloadEnhancedBtn');
+        const clearResultsBtn = document.getElementById('clearResultsBtn');
+        const comparisonSlider = document.getElementById('comparisonSlider');
+        const divider = document.getElementById('divider');
+
+        let selectedFile = null;
+        let originalSrc = null;
+
+        function updateStatus(message, type = 'info') {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+        }
+
+        function handleFile(file) {
+            if (file && file.type.startsWith('image/')) {
+                selectedFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImage.src = e.target.result;
+                    originalSrc = e.target.result;
+                    imagePreview.style.display = 'flex';
+                    dropZone.style.display = 'none';
+                    enhanceButton.disabled = false;
+                    updateStatus('Image ready for enhancement.', 'success');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                updateStatus('Please upload a valid image file (JPG, PNG, TIFF, WEBP).', 'error');
+                enhanceButton.disabled = true;
+            }
+        }
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        browseLink.addEventListener('click', () => imageUpload.click());
+        imageUpload.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        removeImageBtn.addEventListener('click', () => {
+            selectedFile = null;
+            imageUpload.value = '';
+            imagePreview.style.display = 'none';
+            dropZone.style.display = 'flex';
+            enhanceButton.disabled = true;
+            updateStatus('Upload an image to get started.', 'info');
+            clearResults();
+        });
+
+        function clearResults() {
+            originalImage.src = '';
+            enhancedImage.src = '';
+            resultsSection.style.display = 'none';
+            downloadEnhancedBtn.style.display = 'none';
+            updateStatus('Upload an image to get started.', 'info');
+        }
+
+        clearResultsBtn.addEventListener('click', clearResults);
+
+        enhanceButton.addEventListener('click', async () => {
+            if (!selectedFile) {
+                updateStatus('Please upload an image first.', 'error');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', selectedFile);
+            formData.append('upscale_factor', upscaleFactorSelect.value);
+            formData.append('format', outputFormatSelect.value);
+
+            enhanceButton.disabled = true;
+            enhanceButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enhancing...';
+            updateStatus('Enhancing image... This may take a moment.', 'info');
+
+            try {
+                const response = await fetch('/api/enhance-image', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    originalImage.src = originalSrc;
+                    enhancedImage.src = data.enhanced_image_url;
+                    downloadEnhancedBtn.href = data.enhanced_image_url;
+                    downloadEnhancedBtn.download = `enhanced-image-${Date.now()}.${outputFormatSelect.value.toLowerCase()}`;
+                    resultsSection.style.display = 'block';
+                    downloadEnhancedBtn.style.display = 'flex';
+                    updateStatus('Image enhanced successfully!', 'success');
+                    comparisonSlider.value = 50;
+                    updateSlider(50);
+                } else {
+                    updateStatus(`Enhancement failed: ${data.message || 'Unknown error'}`, 'error');
+                    resultsSection.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error during image enhancement:', error);
+                updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
+                resultsSection.style.display = 'none';
+            } finally {
+                enhanceButton.disabled = false;
+                enhanceButton.innerHTML = '<i class="fas fa-magic"></i> Enhance Image';
+            }
+        });
+
+        // Before-After Slider Logic
+        let isDragging = false;
+        let animationFrameId = null;
+
+        function updateSlider(value) {
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(() => {
+                enhancedImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+                divider.style.left = `${value}%`;
+            });
+        }
+
+        const debouncedUpdateSlider = debounce(updateSlider, 5);
+
+        comparisonSlider.addEventListener('input', (e) => {
+            const value = e.target.value;
+            debouncedUpdateSlider(value);
+        });
+
+        const imageWrapper = document.querySelector('.image-wrapper');
+        imageWrapper.addEventListener('mousedown', startDrag);
+        imageWrapper.addEventListener('mousemove', drag);
+        imageWrapper.addEventListener('mouseup', endDrag);
+        imageWrapper.addEventListener('mouseleave', endDrag);
+        imageWrapper.addEventListener('touchstart', startDrag);
+        imageWrapper.addEventListener('touchmove', drag);
+        imageWrapper.addEventListener('touchend', endDrag);
+
+        function startDrag(e) {
+            isDragging = true;
+            imageWrapper.style.cursor = 'ew-resize';
+            drag(e);
+        }
+
+        function endDrag() {
+            isDragging = false;
+            imageWrapper.style.cursor = 'default';
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const rect = imageWrapper.getBoundingClientRect();
+            const x = (e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX) - rect.left;
+            const value = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+            comparisonSlider.value = value;
+            debouncedUpdateSlider(value);
+        }
+
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            updateStatus('Upload an image to get started.');
+            dropZone.style.display = 'flex';
+            imagePreview.style.display = 'none';
+            resultsSection.style.display = 'none';
+            updateSlider(50);
+
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

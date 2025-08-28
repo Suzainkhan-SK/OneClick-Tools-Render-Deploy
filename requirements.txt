@@ -1,0 +1,15 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+supabase==1.0.3
+python-dotenv==1.0.0
+python-dateutil==2.8.2
+pikepdf
+PyMuPDF
+Pillow
+reportlab
+PyPDF2
+pdf2image
+python-docx
+requests
+werkzeug
+gunicorn

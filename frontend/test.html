@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connection Test</title>
+</head>
+<body>
+    <h1>Connection Test</h1>
+    <button onclick="testConnection()">Test Connection</button>
+    <button onclick="testRegister()">Test Register</button>
+    <button onclick="testLogin()">Test Login</button>
+    <div id="result"></div>
+
+    <script>
+        async function testConnection() {
+            try {
+                const response = await fetch('http://localhost:5000/api/health', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    `<pre>Health Check: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+
+        async function testRegister() {
+            try {
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        password: 'TestPassword123!',
+                        fullName: 'Test User'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    `<pre>Register: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const response = await fetch('http://localhost:5000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        password: 'TestPassword123!'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    `<pre>Login: ${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/currency-converter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Currency Converter</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body tool-page">
+            <section class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-money-bill-wave category-main-icon"></i> Currency Converter</h1>
+                    <p>Convert between 150+ currencies with real-time exchange rates.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </section>
+
+            <section class="tool-content">
+                <a href="utility-tools.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Utilities
+                </a>
+
+                <!-- Converter Card -->
+                <div class="converter-card">
+                    <div class="card-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="converter-header">
+                            <h2>Live Currency Converter</h2>
+                            <div class="last-updated" id="lastUpdated">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Loading exchange rates...</span>
+                            </div>
+                        </div>
+
+                        <div class="converter-body">
+                            <div class="input-group">
+                                <label for="amount">Amount</label>
+                                <div class="amount-input">
+                                    <input type="number" id="amount" placeholder="Enter amount" value="100" min="0" step="0.01">
+                                    <span class="currency-symbol" id="fromSymbol">$</span>
+                                </div>
+                            </div>
+
+                            <div class="currency-selection">
+                                <div class="from-currency">
+                                    <label for="fromCurrency">From</label>
+                                    <div class="currency-dropdown">
+                                        <select id="fromCurrency">
+                                            <option value="USD" selected>US Dollar (USD)</option>
+                                            <option value="EUR">Euro (EUR)</option>
+                                            <option value="GBP">British Pound (GBP)</option>
+                                            <option value="JPY">Japanese Yen (JPY)</option>
+                                            <option value="CAD">Canadian Dollar (CAD)</option>
+                                            <option value="AUD">Australian Dollar (AUD)</option>
+                                            <option value="CHF">Swiss Franc (CHF)</option>
+                                            <option value="CNY">Chinese Yuan (CNY)</option>
+                                            <option value="INR">Indian Rupee (INR)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+
+                                <div class="swap-currencies">
+                                    <button id="swapButton" class="tool-btn swap-btn">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </button>
+                                </div>
+
+                                <div class="to-currency">
+                                    <label for="toCurrency">To</label>
+                                    <div class="currency-dropdown">
+                                        <select id="toCurrency">
+                                            <option value="EUR" selected>Euro (EUR)</option>
+                                            <option value="USD">US Dollar (USD)</option>
+                                            <option value="GBP">British Pound (GBP)</option>
+                                            <option value="JPY">Japanese Yen (JPY)</option>
+                                            <option value="CAD">Canadian Dollar (CAD)</option>
+                                            <option value="AUD">Australian Dollar (AUD)</option>
+                                            <option value="CHF">Swiss Franc (CHF)</option>
+                                            <option value="CNY">Chinese Yuan (CNY)</option>
+                                            <option value="INR">Indian Rupee (INR)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="convertButton" class="tool-btn">
+                                <i class="fas fa-sync-alt"></i> Convert Currency
+                            </button>
+
+                            <div class="result-container">
+                                <div class="result-amount" id="resultAmount">0.00</div>
+                                <div class="result-details">
+                                    <span id="fromAmount">100 USD</span> = 
+                                    <span id="toAmount">0.00 EUR</span>
+                                </div>
+                                <div class="exchange-rate" id="exchangeRate">
+                                    Exchange rate: Loading...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <section class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Real-time Rates</h3>
+                        <p>Get live exchange rates updated every 60 minutes from reliable financial sources.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3>150+ Currencies</h3>
+                        <p>Convert between all major world currencies and many exotic currencies.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Accurate Results</h3>
+                        <p>Professional-grade currency conversion for financial accuracy.</p>
+                    </div>
+                </section>
+
+                <!-- Popular Conversions -->
+                <section class="popular-conversions">
+                    <h2>Popular Conversions</h2>
+                    <div class="conversion-buttons">
+                        <button class="tool-btn quick-convert" data-from="USD" data-to="EUR">USD to EUR</button>
+                        <button class="tool-btn quick-convert" data-from="EUR" data-to="GBP">EUR to GBP</button>
+                        <button class="tool-btn quick-convert" data-from="GBP" data-to="USD">GBP to USD</button>
+                        <button class="tool-btn quick-convert" data-from="USD" data-to="JPY">USD to JPY</button>
+                        <button class="tool-btn quick-convert" data-from="USD" data-to="INR">USD to INR</button>
+                    </div>
+                </section>
+
+                <!-- Rate Table -->
+                <section class="rate-table">
+                    <h2>Today's Exchange Rates</h2>
+                    <div class="table-container">
+                        <table id="ratesTable">
+                            <thead>
+                                <tr>
+                                    <th>Currency</th>
+                                    <th>Code</th>
+                                    <th>Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="loading-text">Loading exchange rates...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // Converter Logic
+        const API_KEY = '2955dc729052af0a694dbe37';
+        const BASE_URL = 'https://v6.exchangerate-api.com/v6';
+        
+        let exchangeRates = {};
+        let lastUpdated = null;
+
+        const amountInput = document.getElementById('amount');
+        const fromCurrency = document.getElementById('fromCurrency');
+        const toCurrency = document.getElementById('toCurrency');
+        const fromSymbol = document.getElementById('fromSymbol');
+        const convertButton = document.getElementById('convertButton');
+        const swapButton = document.getElementById('swapButton');
+        const resultAmount = document.getElementById('resultAmount');
+        const fromAmount = document.getElementById('fromAmount');
+        const toAmount = document.getElementById('toAmount');
+        const exchangeRate = document.getElementById('exchangeRate');
+        const lastUpdatedEl = document.getElementById('lastUpdated');
+        const quickConvertButtons = document.querySelectorAll('.quick-convert');
+        const ratesTable = document.getElementById('ratesTable');
+
+        const currencySymbols = {
+            USD: '$', EUR: '€', GBP: '£', JPY: '¥', CAD: 'C$', 
+            AUD: 'A$', CHF: 'Fr', CNY: '¥', INR: '₹', BRL: 'R$',
+            RUB: '₽', KRW: '₩', MXN: '$', SGD: 'S$', NZD: 'NZ$',
+            TRY: '₺', ZAR: 'R', SEK: 'kr', NOK: 'kr', DKK: 'kr'
+        };
+
+        async function fetchExchangeRates(baseCurrency = 'USD') {
+            try {
+                showLoading();
+                const response = await fetch(`${BASE_URL}/${API_KEY}/latest/${baseCurrency}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch exchange rates');
+                }
+                
+                const data = await response.json();
+                
+                if (data.result !== 'success') {
+                    throw new Error(data['error-type'] || 'API error');
+                }
+                
+                exchangeRates = data.conversion_rates;
+                lastUpdated = new Date(data.time_last_update_utc);
+                
+                updateLastUpdated();
+                populateRatesTable();
+                convertCurrency();
+                
+            } catch (error) {
+                console.error('Error fetching exchange rates:', error);
+                showError('Failed to load exchange rates. Please try again.');
+            }
+        }
+
+        function convertCurrency() {
+            const amount = parseFloat(amountInput.value);
+            const fromCurr = fromCurrency.value;
+            const toCurr = toCurrency.value;
+            
+            if (isNaN(amount) || amount <= 0) {
+                showError('Please enter a valid amount');
+                return;
+            }
+            
+            if (!exchangeRates[toCurr]) {
+                showError('Exchange rate not available for selected currency');
+                return;
+            }
+            
+            const rate = exchangeRates[toCurr];
+            const result = amount * rate;
+            
+            resultAmount.textContent = formatNumber(result, 2);
+            fromAmount.textContent = `${formatNumber(amount, 2)} ${fromCurr}`;
+            toAmount.textContent = `${formatNumber(result, 2)} ${toCurr}`;
+            exchangeRate.textContent = `1 ${fromCurr} = ${formatNumber(rate, 4)} ${toCurr}`;
+        }
+
+        function swapCurrencies() {
+            const temp = fromCurrency.value;
+            fromCurrency.value = toCurrency.value;
+            toCurrency.value = temp;
+            updateCurrencySymbol();
+            
+            if (fromCurrency.value !== 'USD') {
+                fetchExchangeRates(fromCurrency.value);
+            } else {
+                convertCurrency();
+            }
+        }
+
+        function updateCurrencySymbol() {
+            const fromCurr = fromCurrency.value;
+            fromSymbol.textContent = currencySymbols[fromCurr] || fromCurr;
+        }
+
+        function formatNumber(number, decimals = 2) {
+            return new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            }).format(number);
+        }
+
+        function updateLastUpdated() {
+            if (lastUpdated) {
+                const timeString = lastUpdated.toLocaleTimeString();
+                const dateString = lastUpdated.toLocaleDateString();
+                lastUpdatedEl.querySelector('span').textContent = 
+                    `Rates updated: ${dateString} ${timeString}`;
+            }
+        }
+
+        function populateRatesTable() {
+            const tbody = ratesTable.querySelector('tbody');
+            tbody.innerHTML = '';
+            
+            const popularCurrencies = ['EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'CHF', 'CNY', 'INR'];
+            
+            popularCurrencies.forEach(currency => {
+                if (exchangeRates[currency]) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${getCurrencyName(currency)}</td>
+                        <td>${currency}</td>
+                        <td>${formatNumber(exchangeRates[currency], 4)}</td>
+                    `;
+                    tbody.appendChild(row);
+                }
+            });
+        }
+
+        function getCurrencyName(code) {
+            const names = {
+                USD: 'US Dollar', EUR: 'Euro', GBP: 'British Pound', 
+                JPY: 'Japanese Yen', CAD: 'Canadian Dollar', AUD: 'Australian Dollar',
+                CHF: 'Swiss Franc', CNY: 'Chinese Yuan', INR: 'Indian Rupee'
+            };
+            return names[code] || code;
+        }
+
+        function showLoading() {
+            lastUpdatedEl.querySelector('span').textContent = 'Loading exchange rates...';
+            ratesTable.querySelector('tbody').innerHTML = `
+                <tr>
+                    <td colspan="3" class="loading-text">Loading exchange rates...</td>
+                </tr>
+            `;
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-notification';
+            errorDiv.innerHTML = `
+                <i class="fas fa-exclamation-circle"></i>
+                <span>${message}</span>
+                <button class="error-close">&times;</button>
+            `;
+            
+            document.querySelectorAll('.error-notification').forEach(el => el.remove());
+            document.querySelector('.converter-body').prepend(errorDiv);
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+            
+            errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                errorDiv.remove();
+            });
+        }
+
+        function init() {
+            updateCurrencySymbol();
+            fetchExchangeRates();
+            
+            convertButton.addEventListener('click', convertCurrency);
+            swapButton.addEventListener('click', swapCurrencies);
+            fromCurrency.addEventListener('change', updateCurrencySymbol);
+            fromCurrency.addEventListener('change', () => fetchExchangeRates(fromCurrency.value));
+            toCurrency.addEventListener('change', convertCurrency);
+            amountInput.addEventListener('input', convertCurrency);
+            
+            quickConvertButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    fromCurrency.value = this.dataset.from;
+                    toCurrency.value = this.dataset.to;
+                    updateCurrencySymbol();
+                    fetchExchangeRates(fromCurrency.value);
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            init();
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

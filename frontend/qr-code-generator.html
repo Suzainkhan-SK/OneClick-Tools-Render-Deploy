@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/qr-code-generator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>QR Code Generator</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="tool-page">
+            <div class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-qrcode category-main-icon"></i> QR Code Generator</h1>
+                    <p>Create custom QR codes for URLs, text, or contact details instantly. Download high-quality QR codes for sharing or printing.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </div>
+
+            <div class="tool-content">
+                <a href="utility-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Utility Tools</a>
+
+                <div class="generator-card">
+                    <div class="card-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="generator-header">
+                            <h2>Generate QR Code</h2>
+                            <span class="status-message info" id="statusMessage">Ready to generate</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="qrInput">Text or URL</label>
+                            <textarea id="qrInput" placeholder="Enter text or URL to encode" rows="4"></textarea>
+                        </div>
+
+                        <div class="options-grid">
+                            <div class="option-group">
+                                <label for="qrSize">QR Code Size</label>
+                                <div class="select-wrapper">
+                                    <select id="qrSize">
+                                        <option value="150">150x150 px</option>
+                                        <option value="200" selected>200x200 px</option>
+                                        <option value="300">300x300 px</option>
+                                        <option value="500">500x500 px</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <small>Choose the size of the QR code image.</small>
+                            </div>
+                            <div class="option-group">
+                                <label for="qrColor">QR Code Color</label>
+                                <input type="color" id="qrColor" value="#000000">
+                                <small>Pick the color for the QR code pattern.</small>
+                            </div>
+                            <div class="option-group">
+                                <label for="qrBgColor">Background Color</label>
+                                <input type="color" id="qrBgColor" value="#ffffff">
+                                <small>Pick the background color for the QR code.</small>
+                            </div>
+                            <div class="option-group">
+                                <label for="qrErrorCorrection">Error Correction</label>
+                                <div class="select-wrapper">
+                                    <select id="qrErrorCorrection">
+                                        <option value="L">Low (7%)</option>
+                                        <option value="M" selected>Medium (15%)</option>
+                                        <option value="Q">Quartile (25%)</option>
+                                        <option value="H">High (30%)</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <small>Higher levels improve scan reliability.</small>
+                            </div>
+                        </div>
+
+                        <div class="tool-actions-bottom">
+                            <button class="tool-btn secondary" id="clearBtn" disabled><i class="fas fa-times"></i> Clear</button>
+                            <button class="tool-btn" id="generateBtn" disabled><i class="fas fa-qrcode"></i> Generate QR Code</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <div class="result-header">
+                        <h3>Generated QR Code</h3>
+                    </div>
+                    <div class="qr-preview">
+                        <div class="qr-loading" id="qrLoading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Generating...
+                        </div>
+                        <div id="qrCanvas"></div>
+                        <div class="qr-actions">
+                            <button class="tool-btn" id="downloadBtn" disabled><i class="fas fa-download"></i> Download PNG</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-magic"></i></div>
+                        <h3>Instant Generation</h3>
+                        <p>Create QR codes in seconds by entering text or URLs and customizing size, colors, and error correction levels.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h3>Customizable Design</h3>
+                        <p>Personalize your QR code with custom colors and sizes to match your branding or preferences.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>High Reliability</h3>
+                        <p>Adjust error correction levels to ensure your QR codes are scannable even if partially damaged.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // QR Code Generator Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const qrInput = document.getElementById('qrInput');
+            const qrSize = document.getElementById('qrSize');
+            const qrColor = document.getElementById('qrColor');
+            const qrBgColor = document.getElementById('qrBgColor');
+            const qrErrorCorrection = document.getElementById('qrErrorCorrection');
+            const generateBtn = document.getElementById('generateBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            const resultSection = document.getElementById('resultSection');
+            const qrCanvas = document.getElementById('qrCanvas');
+            const qrLoading = document.getElementById('qrLoading');
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            let qrCodeInstance = null;
+
+            // Show error notification
+            function showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-notification';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                    <button class="error-close">&times;</button>
+                `;
+                
+                document.querySelectorAll('.error-notification').forEach(el => el.remove());
+                document.querySelector('.generator-card .card-content').prepend(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+                
+                errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                    errorDiv.remove();
+                });
+            }
+
+            // Update button states
+            function updateButtonStates() {
+                const hasInput = qrInput.value.trim().length > 0;
+                generateBtn.disabled = !hasInput;
+                clearBtn.disabled = !hasInput;
+                downloadBtn.disabled = !qrCodeInstance;
+            }
+
+            // Validate URL if input is a URL
+            function isValidUrl(string) {
+                try {
+                    new URL(string);
+                    return true;
+                } catch {
+                    return false;
+                }
+            }
+
+            // Update status message
+            function updateStatus(message, type = 'info') {
+                statusMessage.textContent = message;
+                statusMessage.className = `status-message ${type}`;
+            }
+
+            // Input event to enable/disable buttons
+            qrInput.addEventListener('input', () => {
+                updateButtonStates();
+                if (qrInput.value.trim().length === 0) {
+                    updateStatus('Ready to generate', 'info');
+                } else {
+                    updateStatus('Input ready', 'info');
+                }
+            });
+
+            // Clear button logic
+            clearBtn.addEventListener('click', () => {
+                qrInput.value = '';
+                qrSize.value = '200';
+                qrColor.value = '#000000';
+                qrBgColor.value = '#ffffff';
+                qrErrorCorrection.value = 'M';
+                resultSection.style.display = 'none';
+                qrCanvas.innerHTML = '';
+                qrCodeInstance = null;
+                updateButtonStates();
+                updateStatus('Ready to generate', 'info');
+            });
+
+            // Generate QR Code
+            generateBtn.addEventListener('click', () => {
+                const text = qrInput.value.trim();
+                if (!text) {
+                    showError('Please enter text or a URL to generate a QR code.');
+                    return;
+                }
+
+                if (text.length > 1000) {
+                    showError('Input is too long. Maximum 1000 characters allowed.');
+                    return;
+                }
+
+                if (isValidUrl(text)) {
+                    try {
+                        new URL(text);
+                    } catch {
+                        showError('Invalid URL format.');
+                        return;
+                    }
+                }
+
+                generateBtn.disabled = true;
+                updateStatus('Generating QR code...', 'info');
+                qrLoading.style.display = 'flex';
+                resultSection.style.display = 'none';
+
+                setTimeout(() => {
+                    try {
+                        qrCanvas.innerHTML = ''; // Clear previous QR code
+                        qrCodeInstance = new QRCode(qrCanvas, {
+                            text: text,
+                            width: parseInt(qrSize.value),
+                            height: parseInt(qrSize.value),
+                            colorDark: qrColor.value,
+                            colorLight: qrBgColor.value,
+                            correctLevel: QRCode.CorrectLevel[qrErrorCorrection.value]
+                        });
+
+                        resultSection.style.display = 'block';
+                        qrLoading.style.display = 'none';
+                        updateStatus('QR code generated successfully!', 'success');
+                        downloadBtn.disabled = false;
+                    } catch (error) {
+                        console.error('Error generating QR code:', error);
+                        showError('Failed to generate QR code.');
+                        qrLoading.style.display = 'none';
+                        generateBtn.disabled = false;
+                    }
+                }, 100); // Small delay to ensure DOM update
+            });
+
+            // Download QR Code
+            downloadBtn.addEventListener('click', () => {
+                if (!qrCodeInstance) {
+                    showError('No QR code available to download.');
+                    return;
+                }
+
+                const canvas = qrCanvas.querySelector('canvas');
+                if (!canvas) {
+                    showError('No QR code available to download.');
+                    return;
+                }
+
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'qrcode.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                updateStatus('QR code downloaded!', 'success');
+            });
+
+            // Initial setup
+            loadUserData();
+            updateButtonStates();
+
+            // Close mobile sidebar on outside click
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1024) {
+                    closeSidebar();
+                    sidebar.classList.remove('collapsed');
+                    document.querySelector('.main-content').classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

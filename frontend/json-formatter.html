@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/json-formatter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>JSON Formatter</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="tool-page">
+            <div class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-code category-main-icon"></i> JSON Formatter</h1>
+                    <p>Format, validate, and minify JSON data with ease. Copy formatted or minified JSON for your projects.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </div>
+
+            <div class="tool-content">
+                <a href="utility-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Utility Tools</a>
+
+                <div class="generator-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="generator-header">
+                            <h2>Format JSON</h2>
+                            <span class="status-message info" id="statusMessage">Ready to format</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="jsonInput">Enter JSON</label>
+                            <textarea id="jsonInput" placeholder='Paste your JSON here (e.g., {"key": "value"})' rows="8"></textarea>
+                        </div>
+
+                        <div class="options-grid">
+                            <div class="option-group">
+                                <label for="indentSize">Indent Size</label>
+                                <div class="select-wrapper">
+                                    <select id="indentSize">
+                                        <option value="2" selected>2 Spaces</option>
+                                        <option value="4">4 Spaces</option>
+                                        <option value="8">8 Spaces</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <small>Choose the indentation for formatted JSON.</small>
+                            </div>
+                        </div>
+
+                        <div class="tool-actions-bottom">
+                            <button class="tool-btn secondary" id="clearBtn" disabled><i class="fas fa-times"></i> Clear</button>
+                            <button class="tool-btn" id="formatBtn" disabled><i class="fas fa-code"></i> Format JSON</button>
+                            <button class="tool-btn" id="minifyBtn" disabled><i class="fas fa-compress"></i> Minify JSON</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <div class="result-header">
+                        <h3>Formatted JSON</h3>
+                    </div>
+                    <div class="json-preview">
+                        <pre><code id="jsonOutput"></code></pre>
+                        <div class="json-actions">
+                            <button class="tool-btn" id="copyBtn"><i class="fas fa-copy"></i> Copy JSON</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Validate JSON</h3>
+                        <p>Instantly validate your JSON input to ensure it’s correctly structured.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-indent"></i></div>
+                        <h3>Custom Formatting</h3>
+                        <p>Format JSON with customizable indentation for better readability.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-compress"></i></div>
+                        <h3>Minify JSON</h3>
+                        <p>Minify JSON to reduce size for APIs or storage with a single click.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // JSON Formatter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const jsonInput = document.getElementById('jsonInput');
+            const indentSize = document.getElementById('indentSize');
+            const formatBtn = document.getElementById('formatBtn');
+            const minifyBtn = document.getElementById('minifyBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const statusMessage = document.getElementById('statusMessage');
+            const resultSection = document.getElementById('resultSection');
+            const jsonOutput = document.getElementById('jsonOutput');
+            const copyBtn = document.getElementById('copyBtn');
+
+            // Show error notification
+            function showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-notification';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                    <button class="error-close">&times;</button>
+                `;
+                
+                document.querySelectorAll('.error-notification').forEach(el => el.remove());
+                document.querySelector('.generator-card .card-content').prepend(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+                
+                errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                    errorDiv.remove();
+                });
+            }
+
+            // Update button states
+            function updateButtonStates() {
+                const hasInput = jsonInput.value.trim().length > 0;
+                formatBtn.disabled = !hasInput;
+                minifyBtn.disabled = !hasInput;
+                clearBtn.disabled = !hasInput;
+                copyBtn.disabled = !jsonOutput.textContent;
+            }
+
+            // Update status message
+            function updateStatus(message, type = 'info') {
+                statusMessage.textContent = message;
+                statusMessage.className = `status-message ${type}`;
+            }
+
+            // Validate JSON
+            function validateJSON(input) {
+                try {
+                    JSON.parse(input);
+                    return { valid: true };
+                } catch (error) {
+                    return { valid: false, error: error.message };
+                }
+            }
+
+            // Input event to enable/disable buttons
+            jsonInput.addEventListener('input', () => {
+                updateButtonStates();
+                if (jsonInput.value.trim().length === 0) {
+                    updateStatus('Ready to format', 'info');
+                } else {
+                    updateStatus('Input ready', 'info');
+                }
+            });
+
+            // Clear button logic
+            clearBtn.addEventListener('click', () => {
+                jsonInput.value = '';
+                indentSize.value = '2';
+                resultSection.style.display = 'none';
+                jsonOutput.textContent = '';
+                updateButtonStates();
+                updateStatus('Ready to format', 'info');
+            });
+
+            // Format JSON
+            formatBtn.addEventListener('click', () => {
+                const input = jsonInput.value.trim();
+                if (!input) {
+                    showError('Please enter JSON data.');
+                    return;
+                }
+
+                const validation = validateJSON(input);
+                if (!validation.valid) {
+                    showError(`Invalid JSON: ${validation.error}`);
+                    return;
+                }
+
+                formatBtn.disabled = true;
+                minifyBtn.disabled = true;
+                updateStatus('Formatting JSON...', 'info');
+
+                setTimeout(() => {
+                    try {
+                        const parsed = JSON.parse(input);
+                        jsonOutput.textContent = JSON.stringify(parsed, null, parseInt(indentSize.value));
+                        resultSection.style.display = 'block';
+                        updateStatus('JSON formatted successfully!', 'success');
+                        updateButtonStates();
+                    } catch (error) {
+                        showError(`Failed to format JSON: ${error.message}`);
+                    }
+                    formatBtn.disabled = false;
+                    minifyBtn.disabled = false;
+                }, 100);
+            });
+
+            // Minify JSON
+            minifyBtn.addEventListener('click', () => {
+                const input = jsonInput.value.trim();
+                if (!input) {
+                    showError('Please enter JSON data.');
+                    return;
+                }
+
+                const validation = validateJSON(input);
+                if (!validation.valid) {
+                    showError(`Invalid JSON: ${validation.error}`);
+                    return;
+                }
+
+                formatBtn.disabled = true;
+                minifyBtn.disabled = true;
+                updateStatus('Minifying JSON...', 'info');
+
+                setTimeout(() => {
+                    try {
+                        const parsed = JSON.parse(input);
+                        jsonOutput.textContent = JSON.stringify(parsed);
+                        resultSection.style.display = 'block';
+                        updateStatus('JSON minified successfully!', 'success');
+                        updateButtonStates();
+                    } catch (error) {
+                        showError(`Failed to minify JSON: ${error.message}`);
+                    }
+                    formatBtn.disabled = false;
+                    minifyBtn.disabled = false;
+                }, 100);
+            });
+
+            // Copy JSON
+            copyBtn.addEventListener('click', () => {
+                if (!jsonOutput.textContent) {
+                    showError('No JSON output to copy.');
+                    return;
+                }
+
+                const range = document.createRange();
+                range.selectNode(jsonOutput);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                try {
+                    document.execCommand('copy');
+                    updateStatus('JSON copied to clipboard!', 'success');
+                } catch (error) {
+                    console.error('Copy failed:', error);
+                    showError('Failed to copy JSON.');
+                }
+
+                window.getSelection().removeAllRanges();
+            });
+
+            // Initial setup
+            loadUserData();
+            updateButtonStates();
+
+            // Close mobile sidebar on outside click
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1024) {
+                    closeSidebar();
+                    sidebar.classList.remove('collapsed');
+                    document.querySelector('.main-content').classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

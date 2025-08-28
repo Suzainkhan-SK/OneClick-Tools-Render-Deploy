@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick-Tools</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick-Tools</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
+        </div>
+        
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item active" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            <!--
+            </li>
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+        -->
+            <!--
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+        -->
+        
+            <li class="menu-item" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html" data-tooltip="User Profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html" data-tooltip="Settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" aria-label="Main content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body" id="contentBody">
+            <!-- Hero Section -->
+            <section class="dashboard-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-home category-main-icon"></i> Welcome to Your Dashboard</h1>
+                    <p>Explore powerful tools to boost your productivity with OneClick Tools.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner" aria-hidden="true">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+
+            <!-- Welcome Section -->
+            <section class="welcome-section" id="welcomeSection" hidden>
+                <div class="welcome-card">
+                    <div class="welcome-avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="welcomeAvatar">
+                    </div>
+                    <div class="welcome-content">
+                        <h1>Hello, <span id="welcomeName">User</span>! <span class="hand-wave">✋</span></h1>
+                        <p>Unleash your productivity with our suite of innovative tools.</p>
+                        <a href="#quickAccessSection" class="welcome-btn" aria-label="Get Started with OneClick Tools">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Access Section -->
+            <section class="quick-access" id="quickAccessSection" hidden>
+                <div class="section-header">
+                    <h2>Quick Access</h2>
+                    <p>Jump straight into your favorite tools.</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool-id="ai-image-generator">
+                        <div class="tool-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h4>AI Image Generator <span class="popular-badge">Popular</span></h4>
+                        <p>Generate stunning images from text prompts using advanced AI.</p>
+                        <div class="tool-actions">
+                            <a href="AI-Image-Generator.html" class="tool-btn use" aria-label="Use AI Image Generator">Use Tool</a>
+                            <button class="tool-btn favorite" data-tooltip="Toggle Favorite" aria-label="Toggle favorite for AI Image Generator">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-tool-id="image-compressor">
+                        <div class="tool-icon">
+                            <i class="fas fa-compress"></i>
+                        </div>
+                        <h4>Image Compressor <span class="popular-badge">Popular</span></h4>
+                        <p>Reduce image file sizes without compromising quality.</p>
+                        <div class="tool-actions">
+                            <a href="image-compressor.html" class="tool-btn use" aria-label="Use Image Compressor">Use Tool</a>
+                            <button class="tool-btn favorite" data-tooltip="Toggle Favorite" aria-label="Toggle favorite for Image Compressor">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-tool-id="currency-converter">
+                        <div class="tool-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4>Currency Converter <span class="popular-badge">Popular</span></h4>
+                        <p>Convert between 150+ currencies with real-time exchange rates.</p>
+                        <div class="tool-actions">
+                            <a href="currency-converter.html" class="tool-btn use" aria-label="Use Currency Converter">Use Tool</a>
+                            <button class="tool-btn favorite" data-tooltip="Toggle Favorite" aria-label="Toggle favorite for Currency Converter">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-tool-id="ai-chatbots">
+                        <div class="tool-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>AI Chat Bots <span class="popular-badge">Popular</span></h4>
+                        <p>Engage with cutting-edge AI models from leading providers.</p>
+                        <div class="tool-actions">
+                            <a href="ai-chatbots.html" class="tool-btn use" aria-label="Use AI Chat Bots">Use Tool</a>
+                            <button class="tool-btn favorite" data-tooltip="Toggle Favorite" aria-label="Toggle favorite for AI Chat Bots">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="categories-section" id="categoriesSection" hidden>
+                <div class="section-header">
+                    <h2>Explore Categories</h2>
+                    <p>Browse tools by category to find exactly what you need.</p>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="pdf" role="button" aria-expanded="false" aria-label="PDF Tools Category">
+                        <div class="category-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>PDF Tools</h3>
+                            <p>Convert, compress and edit your PDF files.</p>
+                            <span class="tool-count">4 Tools</span>
+                            <div class="category-tools">
+                        
+                                <a href="image-to-pdf.html" class="tool-link" aria-label="Image to PDF"><i class="fas fa-file-import"></i> Image to PDF</a>
+                                <a href="pdf-to-word.html" class="tool-link" aria-label="PDF to Word"><i class="fas fa-file-export"></i> PDF to Word</a>
+                                <a href="pdf-to-image.html" class="tool-link" aria-label="PDF to Image"><i class="fas fa-file-import"></i> PDF to Image</a>
+                                <a href="pdf-compressor.html" class="tool-link" aria-label="Compress PDF"><i class="fas fa-compress-alt"></i> Compress PDF</a>
+                                <a href="pdf-tools.html" class="view-all-link" aria-label="View all PDF tools">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="image" role="button" aria-expanded="false" aria-label="Image Tools Category">
+                        <div class="category-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Image Tools</h3>
+                            <p>Generate, convert, compress, and enhance your images.</p>
+                            <span class="tool-count">4 Tools</span>
+                            <div class="category-tools">
+                                <a href="AI-Image-Generator.html" class="tool-link" aria-label="AI Image Generator"><i class="fas fa-magic"></i> AI Image Generator</a>
+                                <a href="image-compressor.html" class="tool-link" aria-label="Image Compressor"><i class="fas fa-compress"></i> Image Compressor</a>
+                                
+                                <a href="image-enhancer.html" class="tool-link" aria-label="Enhance"><i class="fas fa-expand-arrows-alt"></i> Enhance Image</a>
+                                <a href="image-formatconverter.html" class="tool-link" aria-label="Image Converter"><i class="fas fa-exchange-alt"></i> Image Converter</a>
+                                <a href="image-tools.html" class="view-all-link" aria-label="View all Image tools">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="category-card" data-category="video" role="button" aria-expanded="false" aria-label="Video Tools Category">
+                        <div class="category-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Video Tools</h3>
+                            <p>Convert, trim, merge, and compress your videos.</p>
+                            <span class="tool-count">4 Tools</span>
+                            <div class="category-tools">
+                                <a href="#" class="tool-link" aria-label="Video Trimmer"><i class="fas fa-cut"></i> Video Trimmer</a>
+                                <a href="#" class="tool-link" aria-label="Video Converter"><i class="fas fa-exchange-alt"></i> Video Converter</a>
+                                <a href="#" class="tool-link" aria-label="Video Compressor"><i class="fas fa-compress-alt"></i> Video Compressor</a>
+                                <a href="#" class="tool-link" aria-label="Merge Videos"><i class="fas fa-object-group"></i> Merge Videos</a>
+                                <a href="video-tools.html" class="view-all-link" aria-label="View all Video tools">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                    <!--
+                    <div class="category-card" data-category="audio" role="button" aria-expanded="false" aria-label="Audio Tools Category">
+                        <div class="category-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Audio Tools</h3>
+                            <p>Convert, cut, join, and enhance audio files.</p>
+                            <span class="tool-count">4 Tools</span>
+                            <div class="category-tools">
+                                <a href="#" class="tool-link" aria-label="Audio Converter"><i class="fas fa-exchange-alt"></i> Audio Converter</a>
+
+                                <a href="#" class="tool-link" aria-label="Audio Joiner"><i class="fas fa-object-group"></i> Audio Joiner</a>
+                                <a href="#" class="tool-link" aria-label="Audio Compressor"><i class="fas fa-compress-arrows-alt"></i> Audio Compressor</a>
+                                <a href="#" class="tool-link" aria-label="Video to Audio"><i class="fas fa-video"></i> Video to Audio</a>
+                                <a href="audio-tools.html" class="view-all-link" aria-label="View all Audio tools">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                    <div class="category-card" data-category="text" role="button" aria-expanded="false" aria-label="Text Tools Category">
+                        <div class="category-icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Text Tools</h3>
+                            <p>Format, analyze, and manipulate your text content.</p>
+                            <span class="tool-count">4 Tools</span>
+                            <div class="category-tools">
+                                <a href="password-generator.html" class="tool-link" aria-label="Password Generator"><i class="fas fa-text-height"></i> Password Generator</a>
+                                <a href="json-formatter.html" class="tool-link" aria-label="JSON Formatter"><i class="fas fa-sort-alpha-down"></i> JSON Formatter</a>
+                                <a href="word-counter.html" class="tool-link" aria-label="Word Counter"><i class="fas fa-calculator"></i> Word Counter</a>
+                                <a href="md5-generator.html" class="tool-link" aria-label="MD5 Generator"><i class="fas fa-text-height"></i> MD5 Generator</a>
+                                <a href="text-tools.html" class="view-all-link" aria-label="View all Text tools">View All <i class="fas fa-arrow-right"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="ai-chatbots" role="button" aria-expanded="false" aria-label="AI Chat Bots Category">
+                        <div class="category-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>AI Chat Bots</h3>
+                            <p>Engage with cutting-edge AI models from leading providers.</p>
+                            <span class="tool-count">4 Bots</span>
+                            <div class="category-tools">
+                                <a href="chatgptbot.html" class="tool-link" aria-label="ChatGPT Bot"><i class="fas fa-robot"></i> ChatGPT Bot</a>
+                                <a href="deepseekbot.html" class="tool-link" aria-label="Deepseek Bot"><i class="fas fa-brain"></i> Deepseek Bot</a>
+                                <a href="geminibot.html" class="tool-link" aria-label="Gemini Bot"><i class="fas fa-gem"></i> Gemini Bot</a>
+                                <a href="qwenbot.html" class="tool-link" aria-label="Qwen Bot"><i class="fas fa-cogs"></i> Qwen Bot</a>
+                                <a href="ai-chatbots.html" class="view-all-link" aria-label="View all AI Chat Bots">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="utilities" role="button" aria-expanded="false" aria-label="Utilities Category">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Utilities</h3>
+                            <p>Handy tools for everyday tasks and calculations.</p>
+                            <span class="tool-count">4 Tools</span>
+                            <div class="category-tools">
+                                <a href="currency-converter.html" class="tool-link" aria-label="Currency Converter"><i class="fas fa-money-bill-wave"></i> Currency Converter</a>
+                                <a href="calculator.html" class="tool-link" aria-label="Calculator"><i class="fas fa-calculator"></i> Calculator</a>
+                                <a href="qr-code-generator.html" class="tool-link" aria-label="QR Code Generator"><i class="fas fa-qrcode"></i> QR Code Generator</a>
+                                <a href="unit-converter.html" class="tool-link" aria-label="Unit Converter"><i class="fas fa-random"></i> Unit Converter</a>
+                                <a href="utility-tools.html" class="view-all-link" aria-label="View all Utility tools">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Toggle Functions
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                    showContent();
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success && data.user) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                    showContent();
+                } else {
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+                window.location.href = 'login.html';
+            }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('welcomeName').textContent = user.full_name || user.email.split('@')[0];
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('welcomeAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('welcomeAvatar').src = avatarUrl;
+        }
+
+        function showContent() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('welcomeSection').removeAttribute('hidden');
+            document.getElementById('quickAccessSection').removeAttribute('hidden');
+            document.getElementById('categoriesSection').removeAttribute('hidden');
+        }
+
+        // Category Card Toggle
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.tool-link, .view-all-link')) return;
+                this.classList.toggle('expanded');
+                this.setAttribute('aria-expanded', this.classList.contains('expanded'));
+            });
+        });
+
+        // Favorite Button Toggle
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        document.querySelectorAll('.tool-btn.favorite').forEach(button => {
+            const toolId = button.closest('.tool-card').dataset.toolId;
+            if (favorites.includes(toolId)) {
+                button.classList.add('active');
+            }
+            button.addEventListener('click', function() {
+                const isActive = this.classList.toggle('active');
+                if (isActive) {
+                    favorites.push(toolId);
+                } else {
+                    const index = favorites.indexOf(toolId);
+                    if (index > -1) favorites.splice(index, 1);
+                }
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                this.setAttribute('aria-label', `Toggle favorite for ${this.closest('.tool-card').querySelector('h4').textContent}`);
+            });
+        });
+
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .welcome-btn').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

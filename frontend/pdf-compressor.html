@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Compressor - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/pdf-compressor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item active">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>PDF Compressor</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="tool-page">
+            <div class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-compress category-main-icon"></i> Compress PDF Files</h1>
+                    <p>Reduce the size of your PDF documents without losing quality. Optimize PDFs for web, email, or storage.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </div>
+
+            <div class="tool-content">
+                <a href="pdf-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to PDF Tools</a>
+
+                <div class="compressor-card">
+                    <div class="card-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="compressor-header">
+                            <h2>Compress Your PDFs</h2>
+                            <span class="status-message info" id="statusMessage">Ready to compress</span>
+                        </div>
+
+                        <div class="upload-section">
+                            <div class="drop-zone" id="dropZone">
+                                <input type="file" id="pdfFileInput" accept=".pdf" multiple hidden>
+                                <div class="drop-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h3>Drag & Drop your PDFs here</h3>
+                                    <p>or <span class="browse-link" id="browseFiles">browse files</span></p>
+                                    <span class="file-types">Supports: .pdf (Max 10 files)</span>
+                                </div>
+                            </div>
+                            <div class="uploaded-files-preview" id="uploadedFilesPreview"></div>
+                        </div>
+
+                        <div class="compression-options">
+                            <h3>Compression Settings</h3>
+                            <div class="options-grid">
+                                <div class="option-group">
+                                    <label for="compressionLevel">Compression Level</label>
+                                    <div class="select-wrapper">
+                                        <select id="compressionLevel">
+                                            <option value="extreme">Extreme Compression (Smallest File)</option>
+                                            <option value="high" selected>High Compression (Good Quality)</option>
+                                            <option value="medium">Medium Compression (Balanced)</option>
+                                            <option value="low">Low Compression (Highest Quality)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <small>Choose how much you want to reduce the file size.</small>
+                                </div>
+                                <div class="option-group">
+                                    <label for="passwordProtect">Password Protect Output</label>
+                                    <div class="password-input-wrapper">
+                                        <input type="password" id="passwordProtect" placeholder="Optional password">
+                                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                                    </div>
+                                    <small>Add a password to the compressed PDF (optional).</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tool-actions-bottom">
+                            <button class="tool-btn secondary" id="clearAllBtn" disabled><i class="fas fa-times"></i> Clear All</button>
+                            <button class="tool-btn" id="compressPdfBtn" disabled><i class="fas fa-compress"></i> Compress PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-header">
+                        <h3>Compression Progress</h3>
+                        <span class="progress-stats" id="progressStats">0% Complete</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBarFill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text" id="progressBarText">0%</span>
+                    </div>
+                    <p class="current-file" id="currentFileProgress">Processing: None</p>
+                </div>
+
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h3>Compressed PDFs</h3>
+                        <div class="results-summary">
+                            <span class="summary-item"><i class="fas fa-file-upload"></i> Original Size: <span id="originalTotalSize">0 MB</span></span>
+                            <span class="summary-item"><i class="fas fa-file-download"></i> Compressed Size: <span id="compressedTotalSize">0 MB</span></span>
+                            <span class="summary-item"><i class="fas fa-percent"></i> Total Reduction: <span id="totalReduction">0%</span></span>
+                        </div>
+                    </div>
+                    <div class="compressed-pdf-grid" id="compressedPdfGrid"></div>
+                    <div class="results-actions">
+                        <button class="tool-btn" id="downloadAllBtn" disabled><i class="fas fa-download"></i> Download All</button>
+                    </div>
+                    <p class="no-results-message" id="noResultsMessage" style="display: block;">No compressed PDFs to display yet.</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-magic"></i></div>
+                        <h3>Smart Compression</h3>
+                        <p>Our advanced algorithms analyze your PDF content to apply optimal compression without compromising visual quality.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-lock"></i></div>
+                        <h3>Secure & Private</h3>
+                        <p>Your files are processed securely and deleted from our servers shortly after compression. Your privacy is our priority.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Fast & Efficient</h3>
+                        <p>Experience lightning-fast compression speeds, allowing you to quickly optimize multiple PDF documents in no time.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Customizable Levels</h3>
+                        <p>Choose from various compression levels to balance file size reduction with document quality according to your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // PDF Compressor Logic
+        const dropZone = document.getElementById('dropZone');
+        const pdfFileInput = document.getElementById('pdfFileInput');
+        const browseFiles = document.getElementById('browseFiles');
+        const uploadedFilesPreview = document.getElementById('uploadedFilesPreview');
+        const compressPdfBtn = document.getElementById('compressPdfBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const compressionLevel = document.getElementById('compressionLevel');
+        const passwordProtect = document.getElementById('passwordProtect');
+        const togglePassword = document.getElementById('togglePassword');
+
+        const progressSection = document.getElementById('progressSection');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const progressBarText = document.getElementById('progressBarText');
+        const currentFileProgress = document.getElementById('currentFileProgress');
+
+        const resultsSection = document.getElementById('resultsSection');
+        const compressedPdfGrid = document.getElementById('compressedPdfGrid');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const originalTotalSize = document.getElementById('originalTotalSize');
+        const compressedTotalSize = document.getElementById('compressedTotalSize');
+        const totalReduction = document.getElementById('totalReduction');
+        const noResultsMessage = document.getElementById('noResultsMessage');
+
+        let uploadedFiles = [];
+        let compressedResults = [];
+        let totalOriginalSize = 0;
+        let totalCompressedSize = 0;
+
+        // Helper to format file size
+        const formatBytes = (bytes, decimals = 2) => {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        };
+
+        // Update button states
+        const updateButtonStates = () => {
+            const hasFiles = uploadedFiles.length > 0;
+            compressPdfBtn.disabled = !hasFiles;
+            clearAllBtn.disabled = !hasFiles;
+            downloadAllBtn.disabled = compressedResults.length === 0;
+            noResultsMessage.style.display = compressedResults.length === 0 ? 'block' : 'none';
+        };
+
+        // Display uploaded files
+        const displayUploadedFiles = () => {
+            uploadedFilesPreview.innerHTML = '';
+            uploadedFiles.forEach((file, index) => {
+                const fileCard = document.createElement('div');
+                fileCard.classList.add('uploaded-file-card');
+                fileCard.innerHTML = `
+                    <i class="fas fa-file-pdf file-icon"></i>
+                    <div class="file-info">
+                        <span>${file.name}</span>
+                        <small>${formatBytes(file.size)}</small>
+                    </div>
+                    <button class="remove-file-btn" data-index="${index}"><i class="fas fa-times"></i></button>
+                `;
+                uploadedFilesPreview.appendChild(fileCard);
+            });
+            updateButtonStates();
+        };
+
+        // Show error notification
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-notification';
+            errorDiv.innerHTML = `
+                <i class="fas fa-exclamation-circle"></i>
+                <span>${message}</span>
+                <button class="error-close">&times;</button>
+            `;
+            
+            document.querySelectorAll('.error-notification').forEach(el => el.remove());
+            document.querySelector('.compressor-card .card-content').prepend(errorDiv);
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+            
+            errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                errorDiv.remove();
+            });
+        }
+
+        // Handle file selection
+        const handleFiles = (files) => {
+            const newFiles = Array.from(files).filter(file => {
+                if (file.type !== 'application/pdf') {
+                    showError(`${file.name} is not a PDF file.`);
+                    return false;
+                }
+                if (uploadedFiles.length >= 10) {
+                    showError('Maximum 10 files allowed.');
+                    return false;
+                }
+                return true;
+            });
+            uploadedFiles = [...uploadedFiles, ...newFiles];
+            displayUploadedFiles();
+            statusMessage.textContent = `${uploadedFiles.length} PDF(s) ready for compression.`;
+            statusMessage.className = 'status-message info';
+        };
+
+        // Event Listeners for Drop Zone
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        browseFiles.addEventListener('click', () => {
+            pdfFileInput.click();
+        });
+
+        pdfFileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+            e.target.value = ''; // Clear input to allow re-uploading same file
+        });
+
+        uploadedFilesPreview.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-file-btn')) {
+                const index = parseInt(e.target.closest('.remove-file-btn').dataset.index);
+                uploadedFiles.splice(index, 1);
+                displayUploadedFiles();
+                if (uploadedFiles.length === 0) {
+                    statusMessage.textContent = 'Ready to compress';
+                    statusMessage.className = 'status-message info';
+                } else {
+                    statusMessage.textContent = `${uploadedFiles.length} PDF(s) ready for compression.`;
+                }
+            }
+        });
+
+        clearAllBtn.addEventListener('click', () => {
+            uploadedFiles = [];
+            compressedResults = [];
+            totalOriginalSize = 0;
+            totalCompressedSize = 0;
+            displayUploadedFiles();
+            compressedPdfGrid.innerHTML = '';
+            statusMessage.textContent = 'Ready to compress';
+            statusMessage.className = 'status-message info';
+            progressSection.style.display = 'none';
+            resultsSection.style.display = 'none';
+            updateButtonStates();
+            updateSummary();
+        });
+
+        // Update summary statistics
+        const updateSummary = () => {
+            originalTotalSize.textContent = formatBytes(totalOriginalSize);
+            compressedTotalSize.textContent = formatBytes(totalCompressedSize);
+            const reduction = totalOriginalSize > 0 ? ((totalOriginalSize - totalCompressedSize) / totalOriginalSize * 100).toFixed(2) : 0;
+            totalReduction.textContent = `${reduction}%`;
+        };
+
+        // Password Toggle
+        togglePassword.addEventListener('click', () => {
+            const type = passwordProtect.type === 'password' ? 'text' : 'password';
+            passwordProtect.type = type;
+            togglePassword.classList.toggle('fa-eye');
+            togglePassword.classList.toggle('fa-eye-slash');
+        });
+
+        // Compression Logic
+        compressPdfBtn.addEventListener('click', async () => {
+            if (uploadedFiles.length === 0) {
+                showError('Please upload PDF files first.');
+                return;
+            }
+
+            statusMessage.textContent = 'Compressing PDFs...';
+            statusMessage.className = 'status-message info';
+            compressPdfBtn.disabled = true;
+            clearAllBtn.disabled = true;
+            progressSection.style.display = 'block';
+            resultsSection.style.display = 'block';
+            compressedPdfGrid.innerHTML = '';
+            compressedResults = [];
+            totalOriginalSize = 0;
+            totalCompressedSize = 0;
+            updateSummary();
+
+            const level = compressionLevel.value;
+            const password = passwordProtect.value;
+
+            for (let i = 0; i < uploadedFiles.length; i++) {
+                const file = uploadedFiles[i];
+                currentFileProgress.textContent = `Processing: ${file.name} (${i + 1}/${uploadedFiles.length})`;
+                
+                const progressPercent = (i / uploadedFiles.length) * 100;
+                progressBarFill.style.width = `${progressPercent}%`;
+                progressBarText.textContent = `${progressPercent.toFixed(0)}%`;
+
+                const formData = new FormData();
+                formData.append('pdf_file', file);
+                formData.append('compression_level', level);
+                if (password && password.trim()) {
+                    formData.append('password', password);
+                }
+
+                try {
+                    const response = await fetch('/api/compress-pdf', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        let errorMessage = 'Compression failed';
+                        try {
+                            const errorData = await response.json();
+                            errorMessage = errorData.message || errorMessage;
+                        } catch {
+                            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                        }
+                        throw new Error(errorMessage);
+                    }
+
+                    const blob = await response.blob();
+                    const compressedFileName = response.headers.get('X-Compressed-Filename') || `compressed_${file.name}`;
+                    const originalSize = parseInt(response.headers.get('X-Original-Size')) || file.size;
+                    const compressedSize = parseInt(response.headers.get('X-Compressed-Size')) || blob.size;
+
+                    totalOriginalSize += originalSize;
+                    totalCompressedSize += compressedSize;
+
+                    const reduction = originalSize > 0 ? ((originalSize - compressedSize) / originalSize * 100).toFixed(2) : 0;
+
+                    const result = {
+                        originalName: file.name,
+                        compressedName: compressedFileName,
+                        originalSize: originalSize,
+                        compressedSize: compressedSize,
+                        reduction: reduction,
+                        blob: blob,
+                        url: URL.createObjectURL(blob)
+                    };
+                    compressedResults.push(result);
+
+                    const resultCard = document.createElement('div');
+                    resultCard.classList.add('compressed-pdf-card');
+                    resultCard.innerHTML = `
+                        <i class="fas fa-file-pdf file-icon"></i>
+                        <div class="pdf-info">
+                            <h4>${result.compressedName}</h4>
+                            <div class="pdf-stats">
+                                <span>Original: ${formatBytes(result.originalSize)}</span>
+                                <span>Compressed: ${formatBytes(result.compressedSize)}</span>
+                            </div>
+                            <p class="reduction-info">Reduction: <span class="reduction-percentage">${result.reduction}%</span></p>
+                        </div>
+                        <a href="${result.url}" download="${result.compressedName}" class="tool-btn download-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    `;
+                    compressedPdfGrid.appendChild(resultCard);
+                    updateSummary();
+
+                } catch (error) {
+                    console.error(`Error compressing ${file.name}:`, error);
+                    const errorCard = document.createElement('div');
+                    errorCard.classList.add('compressed-pdf-card', 'error-card');
+                    errorCard.innerHTML = `
+                        <i class="fas fa-exclamation-triangle file-icon"></i>
+                        <div class="pdf-info">
+                            <h4>${file.name}</h4>
+                            <p class="error-message">Error: ${error.message}</p>
+                        </div>
+                        <button class="tool-btn download-btn" disabled>
+                            <i class="fas fa-times"></i> Failed
+                        </button>
+                    `;
+                    compressedPdfGrid.appendChild(errorCard);
+                }
+            }
+
+            progressBarFill.style.width = '100%';
+            progressBarText.textContent = '100%';
+            currentFileProgress.textContent = 'Compression complete!';
+            
+            if (compressedResults.length > 0) {
+                statusMessage.textContent = `Successfully compressed ${compressedResults.length} of ${uploadedFiles.length} PDFs!`;
+                statusMessage.className = 'status-message success';
+            } else {
+                statusMessage.textContent = 'No PDFs were successfully compressed.';
+                statusMessage.className = 'status-message error';
+            }
+            
+            compressPdfBtn.disabled = false;
+            clearAllBtn.disabled = false;
+            updateButtonStates();
+        });
+
+        downloadAllBtn.addEventListener('click', async () => {
+            if (compressedResults.length === 0) return;
+
+            if (compressedResults.length === 1) {
+                const result = compressedResults[0];
+                const link = document.createElement('a');
+                link.href = result.url;
+                link.download = result.compressedName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                statusMessage.textContent = 'Preparing zip file...';
+                statusMessage.className = 'status-message info';
+                downloadAllBtn.disabled = true;
+
+                try {
+                    const zip = new JSZip();
+                    compressedResults.forEach(result => {
+                        zip.file(result.compressedName, result.blob);
+                    });
+
+                    const zipBlob = await zip.generateAsync({ type: "blob" });
+                    const zipUrl = URL.createObjectURL(zipBlob);
+
+                    const link = document.createElement('a');
+                    link.href = zipUrl;
+                    link.download = 'compressed_pdfs.zip';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(zipUrl);
+
+                    statusMessage.textContent = 'Zip file downloaded!';
+                    statusMessage.className = 'status-message success';
+                } catch (error) {
+                    console.error('Error creating zip file:', error);
+                    showError('Error creating zip file.');
+                } finally {
+                    downloadAllBtn.disabled = false;
+                }
+            }
+        });
+
+        // Initial state update
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            updateButtonStates();
+            updateSummary();
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/image-compressor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Image Compressor</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body tool-page">
+            <section class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-compress-arrows-alt category-main-icon"></i> Image Compressor</h1>
+                    <p>Reduce image file sizes without losing quality using browser-based compression.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </section>
+
+            <section class="tool-content">
+                <a href="image-tools.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Image Tools
+                </a>
+
+                <!-- Compressor Card -->
+                <div class="compressor-card">
+                    <div class="card-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="compressor-header">
+                            <h2>Compress Your Images</h2>
+                            <div class="upload-info">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Supports JPG, PNG, and WebP formats</span>
+                            </div>
+                        </div>
+
+                        <div class="compressor-body">
+                            <div class="drop-zone" id="dropZone">
+                                <div class="drop-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h3>Drop Your Images Here</h3>
+                                    <p>or <span class="browse-link">Browse Files</span></p>
+                                    <span class="file-types">JPG, PNG, WebP - Max 10MB each</span>
+                                </div>
+                                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.webp" multiple hidden>
+                            </div>
+
+                            <div class="compression-options">
+                                <h3>Compression Settings</h3>
+                                <div class="options-grid">
+                                    <div class="option-group">
+                                        <label for="compressionLevel">Compression Level</label>
+                                        <select id="compressionLevel">
+                                            <option value="0.3">High Compression (Smaller Size)</option>
+                                            <option value="0.6" selected>Medium Compression (Recommended)</option>
+                                            <option value="0.8">Low Compression (Better Quality)</option>
+                                        </select>
+                                    </div>
+                                    <div class="option-group">
+                                        <label for="outputFormat">Output Format</label>
+                                        <select id="outputFormat">
+                                            <option value="jpeg">JPG (Best for photos)</option>
+                                            <option value="png">PNG (Best for graphics)</option>
+                                            <option value="webp">WebP (Modern format)</option>
+                                        </select>
+                                    </div>
+                                    <div class="option-group">
+                                        <label for="maxWidth">Max Width (px)</label>
+                                        <input type="number" id="maxWidth" placeholder="Original size" min="100" max="10000">
+                                    </div>
+                                    <div class="option-group">
+                                        <label for="maxHeight">Max Height (px)</label>
+                                        <input type="number" id="maxHeight" placeholder="Original size" min="100" max="10000">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="compressButton" class="tool-btn" disabled>
+                                <i class="fas fa-compress-arrows-alt"></i> Compress Images
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-header">
+                        <h3>Compression Progress</h3>
+                        <div class="progress-stats">
+                            <span id="processedCount">0</span> of <span id="totalCount">0</span> images processed
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">0%</div>
+                    </div>
+                    <div class="current-file" id="currentFile">
+                        Ready to start compression...
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h3>Compression Results</h3>
+                        <div class="results-summary">
+                            <div class="summary-item">
+                                <i class="fas fa-database"></i>
+                                <span>Total Saved: <strong id="totalSaved">0 KB</strong></span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-percentage"></i>
+                                <span>Average Reduction: <strong id="averageReduction">0%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-grid" id="resultsGrid"></div>
+                    <div class="results-actions">
+                        <button id="downloadAllBtn" class="tool-btn">
+                            <i class="fas fa-download"></i> Download All
+                        </button>
+                        <button id="compressMoreBtn" class="tool-btn secondary">
+                            <i class="fas fa-plus"></i> Compress More
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Grid -->
+            <section class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Client-Side Processing</h3>
+                    <p>All compression happens in your browser - no server uploads required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>100% Private</h3>
+                    <p>Your images never leave your device - complete privacy guaranteed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Unlimited Usage</h3>
+                    <p>Compress as many images as you want with no API limits.</p>
+                </div>
+            </section>
+
+            <!-- Tips Grid -->
+            <section class="tips-grid">
+                <h2>Compression Tips</h2>
+                <div class="grid-container">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Quality Settings</h3>
+                        <p>Use 0.6-0.8 for good quality with decent compression. Lower values give smaller files but lower quality.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </div>
+                        <h3>Resize Smartly</h3>
+                        <p>Set maximum dimensions to reduce file size significantly while maintaining aspect ratio.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fas fa-vector-square"></i>
+                        </div>
+                        <h3>Format Choice</h3>
+                        <p>Use WebP for best compression, JPG for photos, and PNG for graphics with transparency.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // Compressor Logic
+        let selectedFiles = [];
+        let compressionResults = [];
+
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const compressButton = document.getElementById('compressButton');
+        const progressSection = document.getElementById('progressSection');
+        const resultsSection = document.getElementById('resultsSection');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const currentFile = document.getElementById('currentFile');
+        const processedCount = document.getElementById('processedCount');
+        const totalCount = document.getElementById('totalCount');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const totalSaved = document.getElementById('totalSaved');
+        const averageReduction = document.getElementById('averageReduction');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const compressMoreBtn = document.getElementById('compressMoreBtn');
+
+        function initDragAndDrop() {
+            dropZone.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, highlight, false);
+            });
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, unhighlight, false);
+            });
+            dropZone.addEventListener('drop', handleDrop, false);
+        }
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function highlight() {
+            dropZone.classList.add('highlight');
+        }
+
+        function unhighlight() {
+            dropZone.classList.remove('highlight');
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            selectedFiles = Array.from(files).filter(file => 
+                file.type.match('image.*') && 
+                file.size <= 10 * 1024 * 1024
+            );
+
+            if (selectedFiles.length === 0) {
+                showError('Please select valid image files (JPG, PNG, WebP) under 10MB');
+                return;
+            }
+
+            compressButton.disabled = false;
+            dropZone.querySelector('.drop-content').innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <h3>${selectedFiles.length} file${selectedFiles.length !== 1 ? 's' : ''} selected</h3>
+                <p>Click to select different files</p>
+                <span class="file-types">JPG, PNG, WebP - Max 10MB each</span>
+            `;
+            resetResults();
+        }
+
+        async function compressImages() {
+            if (selectedFiles.length === 0) return;
+
+            progressSection.style.display = 'block';
+            resultsSection.style.display = 'none';
+            compressButton.disabled = true;
+
+            const compressionLevel = parseFloat(document.getElementById('compressionLevel').value);
+            const outputFormat = document.getElementById('outputFormat').value;
+            const maxWidth = document.getElementById('maxWidth').value ? parseInt(document.getElementById('maxWidth').value) : null;
+            const maxHeight = document.getElementById('maxHeight').value ? parseInt(document.getElementById('maxHeight').value) : null;
+
+            compressionResults = [];
+            let totalOriginalSize = 0;
+            let totalCompressedSize = 0;
+
+            totalCount.textContent = selectedFiles.length;
+            processedCount.textContent = '0';
+
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const file = selectedFiles[i];
+                currentFile.textContent = `Processing: ${file.name}`;
+                
+                try {
+                    const result = await compressSingleImage(file, compressionLevel, outputFormat, maxWidth, maxHeight);
+                    compressionResults.push(result);
+                    
+                    totalOriginalSize += result.originalSize;
+                    totalCompressedSize += result.compressedSize;
+                    
+                    const progress = ((i + 1) / selectedFiles.length) * 100;
+                    updateProgress(progress, i + 1);
+                } catch (error) {
+                    console.error('Error compressing image:', error);
+                    showError(`Failed to compress ${file.name}: ${error.message}`);
+                }
+            }
+
+            showResults(totalOriginalSize, totalCompressedSize);
+        }
+
+        async function compressSingleImage(file, quality, format, maxWidth, maxHeight) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        try {
+                            let width = img.width;
+                            let height = img.height;
+
+                            if (maxWidth && width > maxWidth) {
+                                height = (height * maxWidth) / width;
+                                width = maxWidth;
+                            }
+
+                            if (maxHeight && height > maxHeight) {
+                                width = (width * maxHeight) / height;
+                                height = maxHeight;
+                            }
+
+                            const canvas = document.createElement('canvas');
+                            canvas.width = width;
+                            canvas.height = height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, width, height);
+
+                            let mimeType = 'image/jpeg';
+                            let compressionQuality = quality;
+
+                            switch (format) {
+                                case 'png':
+                                    mimeType = 'image/png';
+                                    break;
+                                case 'webp':
+                                    mimeType = 'image/webp';
+                                    break;
+                                default:
+                                    mimeType = 'image/jpeg';
+                            }
+
+                            canvas.toBlob((blob) => {
+                                if (!blob) {
+                                    reject(new Error('Compression failed'));
+                                    return;
+                                }
+
+                                const reduction = ((file.size - blob.size) / file.size) * 100;
+
+                                resolve({
+                                    originalFile: file,
+                                    compressedBlob: blob,
+                                    originalSize: file.size,
+                                    compressedSize: blob.size,
+                                    reduction: reduction,
+                                    format: format,
+                                    width: width,
+                                    height: height
+                                });
+                            }, mimeType, compressionQuality);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    };
+
+                    img.onerror = function() {
+                        reject(new Error('Failed to load image'));
+                    };
+
+                    img.src = e.target.result;
+                };
+
+                reader.onerror = function() {
+                    reject(new Error('Failed to read file'));
+                };
+
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function updateProgress(percentage, processed) {
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = Math.round(percentage) + '%';
+            processedCount.textContent = processed;
+        }
+
+        function showResults(totalOriginal, totalCompressed) {
+            progressSection.style.display = 'none';
+            resultsSection.style.display = 'block';
+
+            const totalSavedBytes = totalOriginal - totalCompressed;
+            const averageReductionPercent = totalOriginal ? ((totalOriginal - totalCompressed) / totalOriginal) * 100 : 0;
+
+            totalSaved.textContent = formatFileSize(totalSavedBytes);
+            averageReduction.textContent = averageReductionPercent.toFixed(1) + '%';
+
+            resultsGrid.innerHTML = '';
+            compressionResults.forEach((result, index) => {
+                const resultCard = createResultCard(result, index);
+                resultsGrid.appendChild(resultCard);
+            });
+        }
+
+        function createResultCard(result, index) {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            
+            const originalUrl = URL.createObjectURL(result.originalFile);
+            const compressedUrl = URL.createObjectURL(result.compressedBlob);
+            
+            card.innerHTML = `
+                <div class="result-preview">
+                    <div class="image-comparison">
+                        <div class="original-image">
+                            <img src="${originalUrl}" alt="Original">
+                            <span class="image-label">Original</span>
+                        </div>
+                        <div class="compressed-image">
+                            <img src="${compressedUrl}" alt="Compressed">
+                            <span class="image-label">Compressed</span>
+                        </div>
+                    </div>
+                    <div class="comparison-badge">
+                        <span class="original-size">${formatFileSize(result.originalSize)}</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span class="compressed-size">${formatFileSize(result.compressedSize)}</span>
+                    </div>
+                </div>
+                <div class="result-info">
+                    <h4>${result.originalFile.name}</h4>
+                    <div class="result-details">
+                        <span class="dimensions">${result.width}×${result.height}px</span>
+                        <span class="format">${result.format.toUpperCase()}</span>
+                    </div>
+                    <div class="result-stats">
+                        <div class="stat">
+                            <span class="stat-label">Reduction</span>
+                            <span class="stat-value reduction">${result.reduction.toFixed(1)}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Saved</span>
+                            <span class="stat-value saved">${formatFileSize(result.originalSize - result.compressedSize)}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button class="tool-btn download-btn" data-index="${index}">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="tool-btn secondary preview-btn" data-index="${index}">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                </div>
+            `;
+
+            card.addEventListener('DOMNodeRemoved', () => {
+                URL.revokeObjectURL(originalUrl);
+                URL.revokeObjectURL(compressedUrl);
+            });
+
+            return card;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function resetResults() {
+            compressionResults.forEach(result => {
+                if (result.originalUrl) URL.revokeObjectURL(result.originalUrl);
+                if (result.compressedUrl) URL.revokeObjectURL(result.compressedUrl);
+            });
+            
+            compressionResults = [];
+            resultsGrid.innerHTML = '';
+            resultsSection.style.display = 'none';
+            progressSection.style.display = 'none';
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-notification';
+            errorDiv.innerHTML = `
+                <i class="fas fa-exclamation-circle"></i>
+                <span>${message}</span>
+                <button class="error-close">&times;</button>
+            `;
+
+            document.body.appendChild(errorDiv);
+
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+
+            errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                errorDiv.remove();
+            });
+        }
+
+        function downloadCompressedImage(result) {
+            const link = document.createElement('a');
+            const fileName = `compressed-${result.originalFile.name.split('.')[0]}.${result.format}`;
+            
+            link.href = URL.createObjectURL(result.compressedBlob);
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => URL.revokeObjectURL(link.href), 100);
+        }
+
+        function previewImage(result) {
+            const modal = document.createElement('div');
+            modal.className = 'preview-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Image Preview</h3>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="preview-comparison">
+                            <div class="preview-original">
+                                <img src="${URL.createObjectURL(result.originalFile)}" alt="Original">
+                                <div class="preview-info">
+                                    <span>Original: ${formatFileSize(result.originalSize)}</span>
+                                    <span>${result.originalFile.name}</span>
+                                </div>
+                            </div>
+                            <div class="preview-compressed">
+                                <img src="${URL.createObjectURL(result.compressedBlob)}" alt="Compressed">
+                                <div class="preview-info">
+                                    <span>Compressed: ${formatFileSize(result.compressedSize)}</span>
+                                    <span>${result.reduction.toFixed(1)}% smaller</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            modal.querySelector('.modal-close').addEventListener('click', () => {
+                modal.remove();
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+
+            modal.addEventListener('DOMNodeRemoved', () => {
+                URL.revokeObjectURL(modal.querySelector('.preview-original img').src);
+                URL.revokeObjectURL(modal.querySelector('.preview-compressed img').src);
+            });
+        }
+
+        function downloadAllCompressed() {
+            compressionResults.forEach(result => {
+                downloadCompressedImage(result);
+            });
+        }
+
+        function resetUpload() {
+            selectedFiles = [];
+            fileInput.value = '';
+            compressButton.disabled = true;
+            resultsSection.style.display = 'none';
+            
+            dropZone.querySelector('.drop-content').innerHTML = `
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Drop Your Images Here</h3>
+                <p>or <span class="browse-link">Browse Files</span></p>
+                <span class="file-types">JPG, PNG, WebP - Max 10MB each</span>
+            `;
+            
+            document.getElementById('compressionLevel').value = '0.6';
+            document.getElementById('outputFormat').value = 'jpeg';
+            document.getElementById('maxWidth').value = '';
+            document.getElementById('maxHeight').value = '';
+        }
+
+        function init() {
+            initDragAndDrop();
+            compressButton.addEventListener('click', compressImages);
+            downloadAllBtn.addEventListener('click', downloadAllCompressed);
+            compressMoreBtn.addEventListener('click', resetUpload);
+
+            resultsGrid.addEventListener('click', (e) => {
+                if (e.target.closest('.download-btn')) {
+                    const index = e.target.closest('.download-btn').dataset.index;
+                    downloadCompressedImage(compressionResults[index]);
+                }
+                
+                if (e.target.closest('.preview-btn')) {
+                    const index = e.target.closest('.preview-btn').dataset.index;
+                    previewImage(compressionResults[index]);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            init();
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>

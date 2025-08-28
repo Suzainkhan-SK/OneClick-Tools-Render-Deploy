@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1><i class="fas fa-user-plus"></i> Create Account</h1>
+                <p>Join thousands of users who boost their productivity with our tools</p>
+            </div>
+
+            <form class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText">Password strength</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+
+                <button type="submit" class="auth-btn">
+                    <span class="btn-text">Create Account</span>
+                    <div class="btn-loader" id="btnLoader">
+                        <div class="loader"></div>
+                    </div>
+                </button>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Sign in here</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-background">
+            <div class="auth-background-content">
+                <h2>Join Our Community</h2>
+                <p>Access 20+ powerful tools designed to make your work easier and more efficient</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Fast and reliable tools</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Secure and private</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-infinity"></i>
+                        <span>No usage limits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+
+        // Password strength meter
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+            
+            let strength = 0;
+            let remarks = '';
+            
+            if (password.length > 0) {
+                if (password.length < 6) {
+                    strength = 20;
+                    remarks = 'Too short';
+                } else {
+                    if (/[A-Z]/.test(password)) strength += 20;
+                    if (/[a-z]/.test(password)) strength += 20;
+                    if (/[0-9]/.test(password)) strength += 20;
+                    if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+                    if (password.length > 10) strength += 20;
+                    
+                    strength = Math.min(strength, 100);
+                    
+                    if (strength < 40) remarks = 'Weak';
+                    else if (strength < 70) remarks = 'Medium';
+                    else if (strength < 90) remarks = 'Strong';
+                    else remarks = 'Very Strong';
+                }
+                
+                strengthFill.style.width = strength + '%';
+                
+                if (strength < 40) {
+                    strengthFill.style.backgroundColor = '#e74c3c';
+                } else if (strength < 70) {
+                    strengthFill.style.backgroundColor = '#f39c12';
+                } else {
+                    strengthFill.style.backgroundColor = '#2ecc71';
+                }
+                
+                strengthText.textContent = remarks;
+            } else {
+                strengthFill.style.width = '0';
+                strengthText.textContent = 'Password strength';
+            }
+        });
+
+        // Form submission
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const fullName = document.getElementById('fullName').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+    
+    try {
+        const btnLoader = document.getElementById('btnLoader');
+        const btnText = document.querySelector('.btn-text');
+        const authBtn = document.querySelector('.auth-btn');
+        
+        btnText.style.opacity = '0';
+        btnLoader.style.display = 'flex';
+        authBtn.disabled = true;
+
+        console.log('Attempting registration...'); // Debug log
+
+        const response = await fetch('/api/register', {  // Use relative URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({ email, password, fullName })
+        });
+
+        console.log('Response status:', response.status); // Debug log
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Response data:', data); // Debug log
+        
+        if (data.success) {
+            alert('Registration successful! You can now login.');
+            window.location.href = 'login.html';
+        } else {
+            alert('Registration failed: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Registration error:', error);
+        alert('Registration error: ' + error.message);
+    } finally {
+        const btnLoader = document.getElementById('btnLoader');
+        const btnText = document.querySelector('.btn-text');
+        const authBtn = document.querySelector('.auth-btn');
+        
+        if (btnText) btnText.style.opacity = '1';
+        if (btnLoader) btnLoader.style.display = 'none';
+        if (authBtn) authBtn.disabled = false;
+    }
+});
+    </script>
+</body>
+</html>

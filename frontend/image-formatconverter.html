@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Format Converter - OneClick Tools 🚀</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/image-formatconverter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-rocket"></i>
+            <span>OneClick</span>
+        </div>
+        <div class="mobile-user">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1 class="logo-text">OneClick</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <div class="status-indicator"></div>
+            </div>
+            <div class="user-info">
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item">
+                <a href="dashboard.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <span class="menu-text">Recent</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="menu-text">Favorites</span>
+                </a>
+            </li>
+            <li class="menu-divider">
+                <span>Categories</span>
+            </li>
+            <li class="menu-item">
+                <a href="pdf-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <span class="menu-text">PDF Tools</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="image-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <span class="menu-text">Image Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="video-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <span class="menu-text">Video Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="audio-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="menu-text">Audio Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="text-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <span class="menu-text">Text Tools</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="ai-chatbots.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="menu-text">AI Chat Bots</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="utility-tools.html">
+                    <div class="menu-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="footer-links">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Image Format Converter</h2>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar-sm">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body tool-page">
+            <section class="tool-hero">
+                <div class="hero-content">
+                    <h1><i class="fas fa-exchange-alt category-main-icon"></i> Image Format Converter</h1>
+                    <p>Effortlessly convert your images to various formats like JPG, PNG, WebP, BMP, GIF, and TIFF with fast, secure, browser-based processing.</p>
+                </div>
+                <div class="hero-bg"></div>
+            </section>
+
+            <section class="tool-content">
+                <a href="image-tools.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Image Tools
+                </a>
+
+                <!-- Converter Card -->
+                <div class="converter-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="converter-header">
+                            <h2>Convert Images</h2>
+                            <div class="status-message" id="statusMessage">
+                                <span>Ready to convert!</span>
+                            </div>
+                        </div>
+
+                        <div class="converter-body">
+                            <!-- Upload Section -->
+                            <div class="upload-section">
+                                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                                <div class="drop-zone" id="dropZone">
+                                    <div class="drop-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <h3>Drag & Drop your images here</h3>
+                                        <p>or <span class="browse-link" id="browseLink">Browse Files</span></p>
+                                        <p class="file-types">Supported formats: JPG, PNG, WebP, BMP, GIF, TIFF</p>
+                                    </div>
+                                </div>
+                                <div class="uploaded-files-preview" id="uploadedFilesPreview"></div>
+                                <button class="tool-btn secondary" id="clearAllUploadsBtn" style="display: none;">
+                                    <i class="fas fa-trash-alt"></i> Clear All Uploaded Images
+                                </button>
+                            </div>
+
+                            <!-- Conversion Options -->
+                            <div class="conversion-options">
+                                <h3>Conversion Settings</h3>
+                                <div class="options-grid">
+                                    <div class="option-group">
+                                        <label for="outputFormat">Output Format</label>
+                                        <select id="outputFormat">
+                                            <option value="image/jpeg">JPG</option>
+                                            <option value="image/png">PNG</option>
+                                            <option value="image/webp">WebP</option>
+                                            <option value="image/bmp">BMP</option>
+                                            <option value="image/gif">GIF</option>
+                                            <option value="image/tiff">TIFF</option>
+                                        </select>
+                                        <small>Choose the desired output format for your images.</small>
+                                    </div>
+                                    <div class="option-group" id="jpegQualityGroup" style="display: none;">
+                                        <label for="jpegQuality">JPG/WebP Quality</label>
+                                        <input type="range" id="jpegQuality" min="0.1" max="1.0" step="0.05" value="0.9">
+                                        <small><span id="jpegQualityValue">90%</span> (Lower quality = smaller file size)</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Convert Button -->
+                            <button id="convertButton" class="tool-btn" disabled>
+                                <i class="fas fa-sync-alt"></i> Convert Image(s)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h3>Converted Images</h3>
+                        <button class="tool-btn secondary" id="clearResultsBtn">
+                            <i class="fas fa-trash-alt"></i> Clear All
+                        </button>
+                    </div>
+                    <div class="converted-image-grid" id="convertedImageGrid"></div>
+                    <div class="results-actions">
+                        <button id="downloadAllConvertedBtn" class="tool-btn" style="display: none;">
+                            <i class="fas fa-download"></i> Download All Converted
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Grid -->
+            <section class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your images are processed directly in your browser, ensuring complete privacy with no server uploads.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Blazing Fast</h3>
+                    <p>Client-side processing delivers instant conversions, powered by your device's performance.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>Wide Format Support</h3>
+                    <p>Convert to and from popular formats like JPG, PNG, WebP, BMP, GIF, and TIFF with ease.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Sidebar Logic
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        const desktopMenuToggle = document.getElementById('menuToggle');
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                
+                const icon = document.querySelector('.sidebar-toggle i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-times');
+                }
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await window.oneClickAPI.logout();
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        async function loadUserData() {
+            try {
+                const localUser = window.oneClickAPI.getLocalUser();
+                if (localUser) {
+                    updateUserUI(localUser);
+                }
+
+                const data = await window.oneClickAPI.getCurrentUser();
+                if (data.success) {
+                    window.oneClickAPI.setLocalUser(data.user);
+                    updateUserUI(data.user);
+                } else {
+                    throw new Error(data.message || 'Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Session expired or failed to load profile. Please login again.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
+                img.src = avatarUrl;
+                img.alt = user.full_name || user.email;
+            });
+        }
+
+        // Image Format Converter Logic
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+        const browseLink = document.getElementById('browseLink');
+        const uploadedFilesPreview = document.getElementById('uploadedFilesPreview');
+        const clearAllUploadsBtn = document.getElementById('clearAllUploadsBtn');
+        const outputFormatSelect = document.getElementById('outputFormat');
+        const jpegQualityGroup = document.getElementById('jpegQualityGroup');
+        const jpegQualityInput = document.getElementById('jpegQuality');
+        const jpegQualityValueSpan = document.getElementById('jpegQualityValue');
+        const convertButton = document.getElementById('convertButton');
+        const statusMessage = document.getElementById('statusMessage');
+        const resultsSection = document.getElementById('resultsSection');
+        const convertedImageGrid = document.getElementById('convertedImageGrid');
+        const clearResultsBtn = document.getElementById('clearResultsBtn');
+        const downloadAllConvertedBtn = document.getElementById('downloadAllConvertedBtn');
+
+        let uploadedFiles = [];
+        let convertedFiles = [];
+
+        function updateStatus(message, type = 'info') {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        browseLink.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        function handleFiles(files) {
+            for (const file of files) {
+                if (file.type.startsWith('image/')) {
+                    if (!uploadedFiles.some(f => f.name === file.name && f.size === file.size)) {
+                        uploadedFiles.push(file);
+                        displayUploadedFile(file);
+                    }
+                } else {
+                    updateStatus(`Skipped non-image file: ${file.name}`, 'warning');
+                }
+            }
+            updateConvertButtonState();
+            updateClearAllUploadsButtonState();
+        }
+
+        function displayUploadedFile(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const fileCard = document.createElement('div');
+                fileCard.className = 'uploaded-file-card';
+                fileCard.dataset.fileName = file.name;
+
+                fileCard.innerHTML = `
+                    <img src="${e.target.result}" alt="${file.name}">
+                    <div class="file-info">
+                        ${file.name}<br>
+                        <small>${(file.size / 1024).toFixed(2)} KB</small>
+                    </div>
+                    <button class="remove-file-btn" data-file-name="${file.name}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                uploadedFilesPreview.appendChild(fileCard);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        uploadedFilesPreview.addEventListener('click', (e) => {
+            const removeBtn = e.target.closest('.remove-file-btn');
+            if (removeBtn) {
+                const fileNameToRemove = removeBtn.dataset.fileName;
+                uploadedFiles = uploadedFiles.filter(file => file.name !== fileNameToRemove);
+                removeBtn.closest('.uploaded-file-card').remove();
+                updateConvertButtonState();
+                updateClearAllUploadsButtonState();
+            }
+        });
+
+        clearAllUploadsBtn.addEventListener('click', () => {
+            uploadedFiles = [];
+            uploadedFilesPreview.innerHTML = '';
+            updateConvertButtonState();
+            updateClearAllUploadsButtonState();
+            updateStatus('All uploaded images cleared.');
+        });
+
+        function updateConvertButtonState() {
+            convertButton.disabled = uploadedFiles.length === 0;
+        }
+
+        function updateClearAllUploadsButtonState() {
+            clearAllUploadsBtn.style.display = uploadedFiles.length > 0 ? 'flex' : 'none';
+        }
+
+        outputFormatSelect.addEventListener('change', () => {
+            const selectedFormat = outputFormatSelect.value;
+            if (selectedFormat === 'image/jpeg' || selectedFormat === 'image/webp') {
+                jpegQualityGroup.style.display = 'block';
+            } else {
+                jpegQualityGroup.style.display = 'none';
+            }
+        });
+
+        jpegQualityInput.addEventListener('input', () => {
+            jpegQualityValueSpan.textContent = `${Math.round(jpegQualityInput.value * 100)}%`;
+        });
+
+        convertButton.addEventListener('click', async () => {
+            if (uploadedFiles.length === 0) {
+                updateStatus('Please upload images first.', 'error');
+                return;
+            }
+
+            setConvertingState(true);
+            convertedFiles = [];
+            convertedImageGrid.innerHTML = '';
+            resultsSection.style.display = 'none';
+            updateDownloadAllConvertedButtonState();
+
+            const outputFormat = outputFormatSelect.value;
+            const quality = parseFloat(jpegQualityInput.value);
+
+            for (const file of uploadedFiles) {
+                await convertImage(file, outputFormat, quality);
+            }
+
+            setConvertingState(false);
+            if (convertedFiles.length > 0) {
+                resultsSection.style.display = 'block';
+                updateDownloadAllConvertedButtonState();
+                updateStatus('Conversion complete!', 'success');
+            } else {
+                updateStatus('No images were converted. Please check file types.', 'error');
+            }
+        });
+
+        async function convertImage(file, outputFormat, quality) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img, 0, 0);
+
+                        canvas.toBlob((blob) => {
+                            if (blob) {
+                                const newFileName = file.name.split('.').slice(0, -1).join('.') + '.' + outputFormat.split('/')[1];
+                                const convertedFile = {
+                                    name: newFileName,
+                                    blob: blob,
+                                    url: URL.createObjectURL(blob)
+                                };
+                                convertedFiles.push(convertedFile);
+                                displayConvertedImage(convertedFile);
+                                updateStatus(`Converted ${file.name} to ${outputFormat.split('/')[1].toUpperCase()}`, 'info');
+                            } else {
+                                updateStatus(`Failed to convert ${file.name}.`, 'error');
+                            }
+                            resolve();
+                        }, outputFormat, quality);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function displayConvertedImage(convertedFile) {
+            const imageCard = document.createElement('div');
+            imageCard.className = 'converted-image-card';
+            imageCard.innerHTML = `
+                <img src="${convertedFile.url}" alt="${convertedFile.name}">
+                <div class="converted-info">
+                    ${convertedFile.name}<br>
+                    <small>${(convertedFile.blob.size / 1024).toFixed(2)} KB</small>
+                </div>
+                <button class="tool-btn secondary download-converted-btn" data-file-name="${convertedFile.name}" data-file-url="${convertedFile.url}">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            `;
+            convertedImageGrid.appendChild(imageCard);
+        }
+
+        function setConvertingState(isConverting) {
+            convertButton.disabled = isConverting;
+            convertButton.innerHTML = isConverting
+                ? '<i class="fas fa-spinner fa-spin"></i> Converting...'
+                : '<i class="fas fa-sync-alt"></i> Convert Image(s)';
+            fileInput.disabled = isConverting;
+            dropZone.style.pointerEvents = isConverting ? 'none' : 'auto';
+            outputFormatSelect.disabled = isConverting;
+            jpegQualityInput.disabled = isConverting;
+            clearAllUploadsBtn.disabled = isConverting;
+        }
+
+        clearResultsBtn.addEventListener('click', () => {
+            convertedFiles.forEach(file => URL.revokeObjectURL(file.url));
+            convertedFiles = [];
+            convertedImageGrid.innerHTML = '';
+            resultsSection.style.display = 'none';
+            updateDownloadAllConvertedButtonState();
+            updateStatus('All converted images cleared.');
+        });
+
+        function updateDownloadAllConvertedButtonState() {
+            downloadAllConvertedBtn.style.display = convertedFiles.length > 0 ? 'flex' : 'none';
+        }
+
+        convertedImageGrid.addEventListener('click', (e) => {
+            const downloadBtn = e.target.closest('.download-converted-btn');
+            if (downloadBtn) {
+                const fileName = downloadBtn.dataset.fileName;
+                const fileUrl = downloadBtn.dataset.fileUrl;
+                saveAs(fileUrl, fileName);
+                updateStatus(`Downloading ${fileName}...`, 'info');
+            }
+        });
+
+        downloadAllConvertedBtn.addEventListener('click', async () => {
+            if (convertedFiles.length === 0) {
+                updateStatus('No converted images to download.', 'error');
+                return;
+            }
+
+            updateStatus('Preparing ZIP for download...', 'info');
+            const zip = new JSZip();
+            convertedFiles.forEach(file => {
+                zip.file(file.name, file.blob);
+            });
+
+            try {
+                const content = await zip.generateAsync({ type: 'blob' });
+                saveAs(content, 'converted_images.zip');
+                updateStatus('ZIP file downloaded successfully!', 'success');
+            } catch (error) {
+                console.error('Error generating ZIP:', error);
+                updateStatus('Failed to create ZIP file.', 'error');
+            }
+        });
+
+        // Initial Setup
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUserData();
+            outputFormatSelect.dispatchEvent(new Event('change'));
+            jpegQualityInput.dispatchEvent(new Event('input'));
+            updateConvertButtonState();
+            updateClearAllUploadsButtonState();
+            updateDownloadAllConvertedButtonState();
+
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+            }
+        });
+    </script>
+</body>
+</html>
