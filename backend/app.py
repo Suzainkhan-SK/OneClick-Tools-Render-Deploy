@@ -50,7 +50,7 @@ CORS(app,
 # Session configuration - UPDATED
 app.config['SESSION_COOKIE_NAME'] = 'oneclick_session'
 app.config['SESSION_COOKIE_HTTPONLY'] = True
-app.config['SESSION_COOKIE_SECURE'] = False  # Set to True in production with HTTPS
+app.config['SESSION_COOKIE_SECURE'] = True  # Set to True in production with HTTPS
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Changed from None to Lax
 app.config['SESSION_COOKIE_DOMAIN'] = None  # Explicitly set to None for localhost
 app.config['SESSION_COOKIE_PATH'] = '/'
