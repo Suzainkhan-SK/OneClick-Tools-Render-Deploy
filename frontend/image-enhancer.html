@@ -223,7 +223,7 @@
                                         <i class="fas fa-cloud-upload-alt"></i>
                                         <h3>Drag & Drop Your Image</h3>
                                         <p>or <span class="browse-link" role="button" tabindex="0" aria-label="Browse files to upload">Browse Files</span></p>
-                                        <small class="file-types">Supported: JPG, PNG, TIFF, WEBP</small>
+                                        <small class="file-types">Supported: JPG, PNG, TIFF, WEBP (Max 10MB)</small>
                                     </div>
                                 </div>
                                 <div class="image-preview" id="imagePreview" style="display: none;">
@@ -253,9 +253,9 @@
                                     <label for="outputFormat">Output Format</label>
                                     <div class="select-wrapper">
                                         <select id="outputFormat" aria-label="Select output format">
-                                            <option value="JPG" selected>JPG</option>
-                                            <option value="PNG">PNG</option>
-                                            <option value="WEBP">WEBP</option>
+                                            <option value="jpg" selected>JPG</option>
+                                            <option value="png">PNG</option>
+                                            <option value="webp">WEBP</option>
                                         </select>
                                         <i class="fas fa-chevron-down"></i>
                                     </div>
@@ -469,7 +469,6 @@
                     if (this.classList.contains('browse-link')) {
                         document.getElementById('imageUpload').click();
                     } else if (this.classList.contains('divider')) {
-                        // Focus the slider for keyboard interaction
                         document.getElementById('comparisonSlider').focus();
                     } else {
                         this.click();
@@ -498,6 +497,14 @@
             const comparisonSlider = document.getElementById('comparisonSlider');
             const divider = document.getElementById('divider');
 
+            const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+            const VALID_MIME_TYPES = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp'];
+            const MIME_TYPE_MAP = {
+                'jpg': 'image/jpeg',
+                'png': 'image/png',
+                'webp': 'image/webp'
+            };
+
             let selectedFile = null;
             let originalSrc = null;
             let enhancedImageUrl = null;
@@ -505,7 +512,10 @@
             function resetUI() {
                 selectedFile = null;
                 originalSrc = null;
-                enhancedImageUrl = null;
+                if (enhancedImageUrl) {
+                    URL.revokeObjectURL(enhancedImageUrl);
+                    enhancedImageUrl = null;
+                }
                 imageUpload.value = '';
                 imagePreview.style.display = 'none';
                 dropZone.style.display = 'flex';
@@ -547,6 +557,20 @@
                 });
             }
 
+            // Validate image file
+            function validateFile(file) {
+                if (!file) {
+                    return 'No file selected.';
+                }
+                if (!VALID_MIME_TYPES.includes(file.type)) {
+                    return `Unsupported file type: ${file.type}. Please upload JPG, PNG, TIFF, or WEBP.`;
+                }
+                if (file.size > MAX_FILE_SIZE) {
+                    return `File size exceeds 10MB limit: ${(file.size / (1024 * 1024)).toFixed(2)}MB.`;
+                }
+                return null;
+            }
+
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 dropZone.classList.add('highlight');
@@ -573,12 +597,17 @@
             });
 
             removeImageBtn.addEventListener('click', resetUI);
-
             clearResultsBtn.addEventListener('click', resetUI);
 
             enhanceButton.addEventListener('click', async () => {
                 if (!selectedFile) {
                     showError('Please upload an image first.');
+                    return;
+                }
+
+                const validationError = validateFile(selectedFile);
+                if (validationError) {
+                    showError(validationError);
                     return;
                 }
 
@@ -598,12 +627,41 @@
                         credentials: 'include'
                     });
 
+                    // Log response details for debugging
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', [...response.headers.entries()]);
+
                     if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.message || 'Enhancement failed.');
+                        let errorMessage = `HTTP ${response.status}: `;
+                        try {
+                            const errorData = await response.json();
+                            errorMessage += errorData.message || 'Unknown error';
+                        } catch {
+                            errorMessage += 'Failed to parse error response';
+                        }
+                        throw new Error(errorMessage);
+                    }
+
+                    const contentType = response.headers.get('content-type') || '';
+                    const expectedMimeType = MIME_TYPE_MAP[outputFormatSelect.value.toLowerCase()];
+                    if (!contentType.includes(expectedMimeType)) {
+                        console.warn(`Unexpected Content-Type: ${contentType}, expected: ${expectedMimeType}`);
+                        throw new Error(`Invalid response format: Expected ${expectedMimeType}, got ${contentType}`);
                     }
 
                     const blob = await response.blob();
+                    console.log('Blob size:', blob.size, 'Type:', blob.type);
+
+                    // Validate blob
+                    if (blob.size === 0 || !VALID_MIME_TYPES.includes(blob.type)) {
+                        throw new Error(`Invalid image data: Size=${blob.size}, Type=${blob.type}`);
+                    }
+
+                    // Clean up previous URL if exists
+                    if (enhancedImageUrl) {
+                        URL.revokeObjectURL(enhancedImageUrl);
+                    }
+
                     enhancedImageUrl = URL.createObjectURL(blob);
                     const fileName = `enhanced-image-${Date.now()}.${outputFormatSelect.value.toLowerCase()}`;
 
@@ -703,36 +761,33 @@
             }
 
             function handleFile(file) {
-                if (file && file.type.startsWith('image/')) {
-                    selectedFile = file;
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        previewImage.src = e.target.result;
-                        originalSrc = e.target.result;
-                        imagePreview.style.display = 'flex';
-                        dropZone.style.display = 'none';
-                        enhanceButton.disabled = false;
-                        showStatusMessage('Image ready for enhancement.', 'success');
-                    };
-                    reader.onerror = () => {
-                        showError('Failed to read file: ' + file.name);
-                        enhanceButton.disabled = true;
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    showError('Please upload a valid image file (JPG, PNG, TIFF, WEBP).');
+                const validationError = validateFile(file);
+                if (validationError) {
+                    showError(validationError);
                     enhanceButton.disabled = true;
+                    return;
                 }
+
+                selectedFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImage.src = e.target.result;
+                    originalSrc = e.target.result;
+                    imagePreview.style.display = 'flex';
+                    dropZone.style.display = 'none';
+                    enhanceButton.disabled = false;
+                    showStatusMessage('Image ready for enhancement.', 'success');
+                };
+                reader.onerror = () => {
+                    showError('Failed to read file: ' + file.name);
+                    enhanceButton.disabled = true;
+                };
+                reader.readAsDataURL(file);
             }
 
             // Initialize UI
             resetUI();
         }
-
-        // Initialize on DOM load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Authentication check is handled in the main DOMContentLoaded listener
-        });
     </script>
 </body>
 </html>
