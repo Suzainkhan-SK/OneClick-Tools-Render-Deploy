@@ -10,34 +10,34 @@
 </head>
 <body>
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-rocket"></i>
-            <span>OneClick</span>
+            <span>OneClick-Tools</span>
         </div>
         <div class="mobile-user">
-            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
         </div>
     </header>
 
     <!-- Navigation Sidebar -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
         <div class="sidebar-header">
             <div class="logo-wrapper">
                 <i class="fas fa-rocket logo-icon"></i>
-                <h1 class="logo-text">OneClick</h1>
+                <h1 class="logo-text">OneClick-Tools</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="user-profile">
             <div class="user-avatar">
-                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
                 <div class="status-indicator"></div>
             </div>
             <div class="user-info">
@@ -47,29 +47,29 @@
         </div>
         
         <div class="sidebar-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
         </div>
         
-        <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="dashboard.html">
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
                     <div class="menu-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
                     <div class="menu-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <span class="menu-text">Recent</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
                     <div class="menu-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -79,56 +79,56 @@
             <li class="menu-divider">
                 <span>Categories</span>
             </li>
-            <li class="menu-item">
-                <a href="pdf-tools.html">
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
                     <div class="menu-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <span class="menu-text">PDF Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="image-tools.html">
+            <li class="menu-item" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
                     <div class="menu-icon">
                         <i class="fas fa-image"></i>
                     </div>
                     <span class="menu-text">Image Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="video-tools.html">
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
                     <div class="menu-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <span class="menu-text">Video Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="audio-tools.html">
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
                     <div class="menu-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <span class="menu-text">Audio Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="text-tools.html">
+            <li class="menu-item active" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
                     <div class="menu-icon">
                         <i class="fas fa-font"></i>
                     </div>
                     <span class="menu-text">Text Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="ai-chatbots.html">
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
                     <div class="menu-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <span class="menu-text">AI Chat Bots</span>
                 </a>
             </li>
-            <li class="menu-item active">
-                <a href="utility-tools.html">
+            <li class="menu-item" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
                     <div class="menu-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -139,22 +139,22 @@
         
         <div class="sidebar-footer">
             <div class="theme-toggle">
-                <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <span>Dark Mode</span>
                 </button>
             </div>
             
             <div class="footer-links">
-                <a href="profile.html">
+                <a href="profile.html" data-tooltip="User Profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="settings.html">
+                <a href="settings.html" data-tooltip="Settings">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="#" id="logoutBtn">
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -163,27 +163,27 @@
     </nav>
 
     <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" aria-label="Main content">
         <header class="content-header">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2>Word Counter</h2>
             </div>
             <div class="header-right">
                 <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
                     </button>
                 </div>
                 <div class="user-menu">
                     <div class="user-avatar-sm">
-                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,9 @@
             </div>
 
             <div class="tool-content">
-                <a href="utility-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Utility Tools</a>
+                <a href="text-tools.html" class="back-button" aria-label="Back to Text Tools">
+                    <i class="fas fa-arrow-left"></i> Back to Text Tools
+                </a>
 
                 <div class="generator-card">
                     <div class="card-icon">
@@ -213,14 +215,20 @@
 
                         <div class="input-group">
                             <label for="textInput">Enter Text</label>
-                            <textarea id="textInput" placeholder="Paste or type your text here..." rows="8"></textarea>
+                            <textarea id="textInput" placeholder="Paste or type your text here..." rows="8" aria-label="Enter text to count"></textarea>
                             <small>Enter text to count words, characters, sentences, and paragraphs.</small>
                         </div>
 
                         <div class="tool-actions-bottom">
-                            <button class="tool-btn secondary" id="clearBtn" disabled><i class="fas fa-times"></i> Clear</button>
-                            <button class="tool-btn" id="countBtn" disabled><i class="fas fa-calculator"></i> Count</button>
-                            <button class="tool-btn" id="copyBtn" disabled><i class="fas fa-copy"></i> Copy Text</button>
+                            <button class="tool-btn secondary" id="clearBtn" disabled aria-label="Clear text input">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                            <button class="tool-btn" id="countBtn" disabled aria-label="Count text statistics">
+                                <i class="fas fa-calculator"></i> Count
+                            </button>
+                            <button class="tool-btn" id="copyBtn" disabled aria-label="Copy text to clipboard">
+                                <i class="fas fa-copy"></i> Copy Text
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -279,74 +287,62 @@
         </section>
     </main>
 
-    <script src="js/api.js"></script>
     <script>
-        // Sidebar Logic
+        // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
 
         function openSidebar() {
             sidebar.classList.add('mobile-open');
             sidebarOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
         }
 
         function closeSidebar() {
             sidebar.classList.remove('mobile-open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
         }
 
         mobileMenuToggle.addEventListener('click', openSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
         sidebarToggle.addEventListener('click', closeSidebar);
 
-        const desktopMenuToggle = document.getElementById('menuToggle');
         desktopMenuToggle.addEventListener('click', function() {
             if (window.innerWidth > 1024) {
                 sidebar.classList.toggle('collapsed');
                 document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
             } else {
                 openSidebar();
             }
         });
 
-        // Theme Toggle Logic
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const themeText = themeToggle.querySelector('span');
         
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeText.textContent = 'Light Mode';
         }
 
@@ -355,7 +351,11 @@
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 try {
-                    await window.oneClickAPI.logout();
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
                     alert('Logout successful!');
                     window.location.href = 'index.html';
                 } catch (error) {
@@ -368,40 +368,70 @@
         });
 
         // Authentication Check and User Data Loading
-        async function loadUserData() {
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
 
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
+                if (response.ok && data.success && data.user) {
                     updateUserUI(data.user);
+                    init(); // Initialize word counter logic after user data is loaded
                 } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
+                    window.location.href = 'login.html';
                 }
             } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
+                console.error('Auth check error:', error);
                 window.location.href = 'login.html';
             }
-        }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
 
         function updateUserUI(user) {
             document.getElementById('userName').textContent = user.full_name || user.email;
             document.getElementById('userEmail').textContent = user.email;
-            
             const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
         }
 
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .error-close').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
         // Word Counter Logic
-        document.addEventListener('DOMContentLoaded', () => {
+        function init() {
             const textInput = document.getElementById('textInput');
             const countBtn = document.getElementById('countBtn');
             const clearBtn = document.getElementById('clearBtn');
@@ -421,7 +451,7 @@
                 errorDiv.innerHTML = `
                     <i class="fas fa-exclamation-circle"></i>
                     <span>${message}</span>
-                    <button class="error-close">&times;</button>
+                    <button class="error-close" aria-label="Close error message">&times;</button>
                 `;
                 
                 document.querySelectorAll('.error-notification').forEach(el => el.remove());
@@ -445,7 +475,7 @@
             }
 
             // Update status message
-            function updateStatus(message, type = 'info') {
+            function showStatusMessage(message, type = 'info') {
                 statusMessage.textContent = message;
                 statusMessage.className = `status-message ${type}`;
             }
@@ -483,9 +513,9 @@
             textInput.addEventListener('input', () => {
                 updateButtonStates();
                 if (textInput.value.trim().length === 0) {
-                    updateStatus('Ready to count', 'info');
+                    showStatusMessage('Ready to count', 'info');
                 } else {
-                    updateStatus('Input ready', 'info');
+                    showStatusMessage('Input ready', 'info');
                 }
             });
 
@@ -499,7 +529,7 @@
                 sentenceCount.textContent = '0';
                 paragraphCount.textContent = '0';
                 updateButtonStates();
-                updateStatus('Ready to count', 'info');
+                showStatusMessage('Ready to count', 'info');
             });
 
             // Count button logic
@@ -511,7 +541,7 @@
                 }
 
                 countBtn.disabled = true;
-                updateStatus('Counting text...', 'info');
+                showStatusMessage('Counting text...', 'info');
 
                 setTimeout(() => {
                     try {
@@ -522,7 +552,7 @@
                         sentenceCount.textContent = stats.sentences;
                         paragraphCount.textContent = stats.paragraphs;
                         resultSection.style.display = 'block';
-                        updateStatus('Text counted successfully!', 'success');
+                        showStatusMessage('Text counted successfully!', 'success');
                         updateButtonStates();
                     } catch (error) {
                         showError(`Failed to count text: ${error.message}`);
@@ -541,7 +571,7 @@
                 textInput.select();
                 try {
                     document.execCommand('copy');
-                    updateStatus('Text copied to clipboard!', 'success');
+                    showStatusMessage('Text copied to clipboard!', 'success');
                 } catch (error) {
                     console.error('Copy failed:', error);
                     showError('Failed to copy text.');
@@ -549,27 +579,8 @@
             });
 
             // Initial setup
-            loadUserData();
             updateButtonStates();
-
-            // Close mobile sidebar on outside click
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 1024) {
-                    closeSidebar();
-                    sidebar.classList.remove('collapsed');
-                    document.querySelector('.main-content').classList.remove('expanded');
-                }
-            });
-        });
+        }
     </script>
 </body>
 </html>
