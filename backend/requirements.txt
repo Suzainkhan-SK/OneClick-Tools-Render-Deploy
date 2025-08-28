@@ -13,3 +13,4 @@ python-docx
 requests
 werkzeug
 gunicorn
+pytesseract
