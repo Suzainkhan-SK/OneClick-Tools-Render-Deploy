@@ -47,15 +47,25 @@ CORS(app,
      allow_headers=["*"],
      expose_headers=["*"])
 
-# Session configuration - UPDATED
+
+if os.getenv('RENDER'):  # Render sets this environment variable automatically
+    # Production settings (HTTPS)
+    app.config['SESSION_COOKIE_SECURE'] = True
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+else:
+    # Development settings (HTTP)
+    app.config['SESSION_COOKIE_SECURE'] = False
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+# Common session settings
 app.config['SESSION_COOKIE_NAME'] = 'oneclick_session'
 app.config['SESSION_COOKIE_HTTPONLY'] = True
-app.config['SESSION_COOKIE_SECURE'] = True  # Set to True in production with HTTPS
-app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Changed from None to Lax
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
+
 app.config['SESSION_COOKIE_DOMAIN'] = None  # Explicitly set to None for localhost
 app.config['SESSION_COOKIE_PATH'] = '/'
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
 app.config['SESSION_REFRESH_EACH_REQUEST'] = True
+# Session configuration - UPDATED
+
 
 @app.before_request
 def log_session_info():
