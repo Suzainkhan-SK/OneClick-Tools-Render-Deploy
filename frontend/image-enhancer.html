@@ -211,25 +211,23 @@
                     <div class="card-content">
                         <div class="enhancer-header">
                             <h2>Enhance Your Image</h2>
-                            <div class="status-message" id="statusMessage">
-                                <span>Ready to enhance!</span>
-                            </div>
+                            <div class="status-message info" id="statusMessage">Ready to enhance!</div>
                         </div>
 
                         <div class="enhancer-body">
                             <!-- Image Upload Section -->
                             <div class="upload-section">
-                                <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/tiff,image/webp" style="display: none;">
-                                <div class="drop-zone" id="dropZone">
+                                <input type="file" id="imageUpload" accept="image/jpeg,image/png,image/tiff,image/webp" hidden aria-label="Upload image for enhancement">
+                                <div class="drop-zone" id="dropZone" role="region" aria-label="Drag and drop image">
                                     <div class="drop-content">
                                         <i class="fas fa-cloud-upload-alt"></i>
                                         <h3>Drag & Drop Your Image</h3>
-                                        <p>or <span class="browse-link">Browse Files</span></p>
+                                        <p>or <span class="browse-link" role="button" tabindex="0" aria-label="Browse files to upload">Browse Files</span></p>
                                         <small class="file-types">Supported: JPG, PNG, TIFF, WEBP</small>
                                     </div>
                                 </div>
                                 <div class="image-preview" id="imagePreview" style="display: none;">
-                                    <img id="previewImage" src="" alt="Image Preview">
+                                    <img id="previewImage" src="" alt="Image preview">
                                     <button class="tool-btn secondary remove-image-btn" id="removeImageBtn" aria-label="Remove uploaded image">
                                         <i class="fas fa-times"></i> Remove
                                     </button>
@@ -240,27 +238,33 @@
                             <div class="options-grid">
                                 <div class="option-group">
                                     <label for="upscaleFactor">Upscale Factor</label>
-                                    <select id="upscaleFactor">
-                                        <option value="2" selected>2x (Default)</option>
-                                        <option value="4">4x</option>
-                                        <option value="8">8x</option>
-                                        <option value="16">16x (Max)</option>
-                                    </select>
+                                    <div class="select-wrapper">
+                                        <select id="upscaleFactor" aria-label="Select upscale factor">
+                                            <option value="2" selected>2x (Default)</option>
+                                            <option value="4">4x</option>
+                                            <option value="8">8x</option>
+                                            <option value="16">16x (Max)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
                                     <small>Increase image resolution by this factor.</small>
                                 </div>
                                 <div class="option-group">
                                     <label for="outputFormat">Output Format</label>
-                                    <select id="outputFormat">
-                                        <option value="JPG" selected>JPG</option>
-                                        <option value="PNG">PNG</option>
-                                        <option value="WEBP">WEBP</option>
-                                    </select>
+                                    <div class="select-wrapper">
+                                        <select id="outputFormat" aria-label="Select output format">
+                                            <option value="JPG" selected>JPG</option>
+                                            <option value="PNG">PNG</option>
+                                            <option value="WEBP">WEBP</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
                                     <small>Choose the desired output image format.</small>
                                 </div>
                             </div>
 
                             <!-- Enhance Button -->
-                            <button id="enhanceButton" class="tool-btn" disabled aria-label="Enhance Image">
+                            <button id="enhanceButton" class="tool-btn" disabled aria-label="Enhance image">
                                 <i class="fas fa-magic"></i> Enhance Image
                             </button>
                         </div>
@@ -276,10 +280,10 @@
                         </button>
                     </div>
                     <div class="before-after-container">
-                        <div class="image-wrapper">
-                            <img id="originalImage" class="before-image" src="" alt="Original Image">
-                            <img id="enhancedImage" class="after-image" src="" alt="Enhanced Image">
-                            <div class="divider" id="divider">
+                        <div class="image-wrapper" role="region" aria-label="Before and after image comparison">
+                            <img id="originalImage" class="before-image" src="" alt="Original image">
+                            <img id="enhancedImage" class="after-image" src="" alt="Enhanced image">
+                            <div class="divider" id="divider" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Adjust before/after comparison">
                                 <div class="handle">
                                     <i class="fas fa-grip-lines-vertical"></i>
                                 </div>
@@ -324,7 +328,6 @@
         </div>
     </main>
 
-    <script src="js/api.js"></script>
     <script>
         // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -459,43 +462,90 @@
         });
 
         // Keyboard Accessibility
-        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .remove-image-btn').forEach(element => {
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .remove-image-btn, .browse-link, .divider').forEach(element => {
             element.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    this.click();
+                    if (this.classList.contains('browse-link')) {
+                        document.getElementById('imageUpload').click();
+                    } else if (this.classList.contains('divider')) {
+                        // Focus the slider for keyboard interaction
+                        document.getElementById('comparisonSlider').focus();
+                    } else {
+                        this.click();
+                    }
                 }
             });
         });
 
         // Image Enhancer Logic
-        const imageUpload = document.getElementById('imageUpload');
-        const dropZone = document.getElementById('dropZone');
-        const browseLink = document.querySelector('.browse-link');
-        const imagePreview = document.getElementById('imagePreview');
-        const previewImage = document.getElementById('previewImage');
-        const removeImageBtn = document.getElementById('removeImageBtn');
-        const upscaleFactorSelect = document.getElementById('upscaleFactor');
-        const outputFormatSelect = document.getElementById('outputFormat');
-        const enhanceButton = document.getElementById('enhanceButton');
-        const statusMessage = document.getElementById('statusMessage');
-        const resultsSection = document.getElementById('resultsSection');
-        const originalImage = document.getElementById('originalImage');
-        const enhancedImage = document.getElementById('enhancedImage');
-        const downloadEnhancedBtn = document.getElementById('downloadEnhancedBtn');
-        const clearResultsBtn = document.getElementById('clearResultsBtn');
-        const comparisonSlider = document.getElementById('comparisonSlider');
-        const divider = document.getElementById('divider');
-
-        let selectedFile = null;
-        let originalSrc = null;
-
         function init() {
-            dropZone.style.display = 'flex';
-            imagePreview.style.display = 'none';
-            resultsSection.style.display = 'none';
-            updateStatus('Upload an image to get started.');
-            updateSlider(50);
+            const imageUpload = document.getElementById('imageUpload');
+            const dropZone = document.getElementById('dropZone');
+            const browseLink = document.querySelector('.browse-link');
+            const imagePreview = document.getElementById('imagePreview');
+            const previewImage = document.getElementById('previewImage');
+            const removeImageBtn = document.getElementById('removeImageBtn');
+            const upscaleFactorSelect = document.getElementById('upscaleFactor');
+            const outputFormatSelect = document.getElementById('outputFormat');
+            const enhanceButton = document.getElementById('enhanceButton');
+            const statusMessage = document.getElementById('statusMessage');
+            const resultsSection = document.getElementById('resultsSection');
+            const originalImage = document.getElementById('originalImage');
+            const enhancedImage = document.getElementById('enhancedImage');
+            const downloadEnhancedBtn = document.getElementById('downloadEnhancedBtn');
+            const clearResultsBtn = document.getElementById('clearResultsBtn');
+            const comparisonSlider = document.getElementById('comparisonSlider');
+            const divider = document.getElementById('divider');
+
+            let selectedFile = null;
+            let originalSrc = null;
+            let enhancedImageUrl = null;
+
+            function resetUI() {
+                selectedFile = null;
+                originalSrc = null;
+                enhancedImageUrl = null;
+                imageUpload.value = '';
+                imagePreview.style.display = 'none';
+                dropZone.style.display = 'flex';
+                resultsSection.style.display = 'none';
+                downloadEnhancedBtn.style.display = 'none';
+                enhanceButton.disabled = true;
+                originalImage.src = '';
+                enhancedImage.src = '';
+                comparisonSlider.value = 50;
+                updateSlider(50);
+                showStatusMessage('Ready to enhance!', 'info');
+            }
+
+            // Show status message
+            function showStatusMessage(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = `status-message ${type}`;
+            }
+
+            // Show error notification
+            function showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-notification';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${message}</span>
+                    <button class="error-close" aria-label="Close error message">&times;</button>
+                `;
+                
+                document.querySelectorAll('.error-notification').forEach(el => el.remove());
+                document.querySelector('.enhancer-card .card-content').prepend(errorDiv);
+                
+                setTimeout(() => {
+                    errorDiv.remove();
+                }, 5000);
+                
+                errorDiv.querySelector('.error-close').addEventListener('click', () => {
+                    errorDiv.remove();
+                });
+            }
 
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
@@ -522,21 +572,13 @@
                 }
             });
 
-            removeImageBtn.addEventListener('click', () => {
-                selectedFile = null;
-                imageUpload.value = '';
-                imagePreview.style.display = 'none';
-                dropZone.style.display = 'flex';
-                enhanceButton.disabled = true;
-                updateStatus('Upload an image to get started.', 'info');
-                clearResults();
-            });
+            removeImageBtn.addEventListener('click', resetUI);
 
-            clearResultsBtn.addEventListener('click', clearResults);
+            clearResultsBtn.addEventListener('click', resetUI);
 
             enhanceButton.addEventListener('click', async () => {
                 if (!selectedFile) {
-                    updateStatus('Please upload an image first.', 'error');
+                    showError('Please upload an image first.');
                     return;
                 }
 
@@ -547,7 +589,7 @@
 
                 enhanceButton.disabled = true;
                 enhanceButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enhancing...';
-                updateStatus('Enhancing image... This may take a moment.', 'info');
+                showStatusMessage('Enhancing image... This may take a moment.', 'info');
 
                 try {
                     const response = await fetch('/api/enhance-image', {
@@ -556,26 +598,30 @@
                         credentials: 'include'
                     });
 
-                    const data = await response.json();
-
-                    if (response.ok && data.success) {
-                        originalImage.src = originalSrc;
-                        enhancedImage.src = data.enhanced_image_url;
-                        downloadEnhancedBtn.href = data.enhanced_image_url;
-                        downloadEnhancedBtn.download = `enhanced-image-${Date.now()}.${outputFormatSelect.value.toLowerCase()}`;
-                        resultsSection.style.display = 'block';
-                        downloadEnhancedBtn.style.display = 'flex';
-                        updateStatus('Image enhanced successfully!', 'success');
-                        comparisonSlider.value = 50;
-                        updateSlider(50);
-                    } else {
-                        updateStatus(`Enhancement failed: ${data.message || 'Unknown error'}`, 'error');
-                        resultsSection.style.display = 'none';
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Enhancement failed.');
                     }
+
+                    const blob = await response.blob();
+                    enhancedImageUrl = URL.createObjectURL(blob);
+                    const fileName = `enhanced-image-${Date.now()}.${outputFormatSelect.value.toLowerCase()}`;
+
+                    originalImage.src = originalSrc;
+                    enhancedImage.src = enhancedImageUrl;
+                    downloadEnhancedBtn.href = enhancedImageUrl;
+                    downloadEnhancedBtn.download = fileName;
+                    resultsSection.style.display = 'block';
+                    downloadEnhancedBtn.style.display = 'flex';
+                    showStatusMessage('Image enhanced successfully!', 'success');
+                    comparisonSlider.value = 50;
+                    updateSlider(50);
+
                 } catch (error) {
                     console.error('Error during image enhancement:', error);
-                    updateStatus(`An unexpected error occurred: ${error.message}`, 'error');
+                    showError(`Enhancement failed: ${error.message}`);
                     resultsSection.style.display = 'none';
+                    downloadEnhancedBtn.style.display = 'none';
                 } finally {
                     enhanceButton.disabled = false;
                     enhanceButton.innerHTML = '<i class="fas fa-magic"></i> Enhance Image';
@@ -591,6 +637,7 @@
                 animationFrameId = requestAnimationFrame(() => {
                     enhancedImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
                     divider.style.left = `${value}%`;
+                    divider.setAttribute('aria-valuenow', value);
                 });
             }
 
@@ -598,6 +645,18 @@
 
             comparisonSlider.addEventListener('input', (e) => {
                 const value = e.target.value;
+                debouncedUpdateSlider(value);
+            });
+
+            // Keyboard interaction for divider
+            comparisonSlider.addEventListener('keydown', (e) => {
+                let value = parseInt(comparisonSlider.value);
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                    value = Math.max(0, value - 5);
+                } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                    value = Math.min(100, value + 5);
+                }
+                comparisonSlider.value = value;
                 debouncedUpdateSlider(value);
             });
 
@@ -642,39 +701,38 @@
                     timeout = setTimeout(later, wait);
                 };
             }
-        }
 
-        function updateStatus(message, type = 'info') {
-            statusMessage.innerHTML = `<span>${message}</span>`;
-            statusMessage.className = `status-message ${type}`;
-        }
-
-        function handleFile(file) {
-            if (file && file.type.startsWith('image/')) {
-                selectedFile = file;
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    previewImage.src = e.target.result;
-                    originalSrc = e.target.result;
-                    imagePreview.style.display = 'flex';
-                    dropZone.style.display = 'none';
-                    enhanceButton.disabled = false;
-                    updateStatus('Image ready for enhancement.', 'success');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                updateStatus('Please upload a valid image file (JPG, PNG, TIFF, WEBP).', 'error');
-                enhanceButton.disabled = true;
+            function handleFile(file) {
+                if (file && file.type.startsWith('image/')) {
+                    selectedFile = file;
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        previewImage.src = e.target.result;
+                        originalSrc = e.target.result;
+                        imagePreview.style.display = 'flex';
+                        dropZone.style.display = 'none';
+                        enhanceButton.disabled = false;
+                        showStatusMessage('Image ready for enhancement.', 'success');
+                    };
+                    reader.onerror = () => {
+                        showError('Failed to read file: ' + file.name);
+                        enhanceButton.disabled = true;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    showError('Please upload a valid image file (JPG, PNG, TIFF, WEBP).');
+                    enhanceButton.disabled = true;
+                }
             }
+
+            // Initialize UI
+            resetUI();
         }
 
-        function clearResults() {
-            originalImage.src = '';
-            enhancedImage.src = '';
-            resultsSection.style.display = 'none';
-            downloadEnhancedBtn.style.display = 'none';
-            updateStatus('Upload an image to get started.', 'info');
-        }
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Authentication check is handled in the main DOMContentLoaded listener
+        });
     </script>
 </body>
 </html>
