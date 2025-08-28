@@ -95,81 +95,69 @@
                 icon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         });
-
-        // Form submission
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
     
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-        const btnLoader = document.getElementById('btnLoader');
-        const btnText = document.querySelector('.btn-text');
-        const authBtn = document.querySelector('.auth-btn');
-        
-        btnText.style.opacity = '0';
-        btnLoader.style.display = 'flex';
-        authBtn.disabled = true;
-
-        console.log('Attempting login...'); // Debug log
-
-        const response = await fetch('/api/login', {  // Use relative URL
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: 'include', // This is crucial for cookies/sessions
-            body: JSON.stringify({ email, password })
-        });
-
-        console.log('Response status:', response.status); // Debug log
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Response data:', data); // Debug log
-        
-        if (data.success) {
-            // Store user data in localStorage for the dashboard
-            localStorage.setItem('user', JSON.stringify(data.user));
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            alert('Login successful! Redirecting to dashboard...');
-            window.location.href = 'dashboard.html';
-        } else {
-            alert('Login failed: ' + data.message);
-        }
-    } catch (error) {
-        console.error('Login error:', error);
-        alert('Login error: ' + error.message);
-    } finally {
-        const btnLoader = document.getElementById('btnLoader');
-        const btnText = document.querySelector('.btn-text');
-        const authBtn = document.querySelector('.auth-btn');
-        
-        if (btnText) btnText.style.opacity = '1';
-        if (btnLoader) btnLoader.style.display = 'none';
-        if (authBtn) authBtn.disabled = false;
-    }
-});
-// Check if user is already logged in
-document.addEventListener('DOMContentLoaded', function() {
-            const userData = localStorage.getItem('user');
-            if (userData) {
-                // Pre-fill email if user exists
-                const user = JSON.parse(userData);
-                document.getElementById('email').value = user.email;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+    
+            try {
+                const btnLoader = document.getElementById('btnLoader');
+                const btnText = document.querySelector('.btn-text');
+                const authBtn = document.querySelector('.auth-btn');
                 
-                // Check if session is still valid
-                checkSessionValidity();
+                btnText.style.opacity = '0';
+                btnLoader.style.display = 'flex';
+                authBtn.disabled = true;
+    
+                console.log('Attempting login...'); // Debug log
+    
+                const response = await fetch('/api/login', {  // Use relative URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    credentials: 'include', // This is crucial for cookies/sessions
+                    body: JSON.stringify({ email, password })
+                });
+    
+                console.log('Response status:', response.status); // Debug log
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+    
+                const data = await response.json();
+                console.log('Response data:', data); // Debug log
+                
+                if (data.success) {
+                    // Store user data in localStorage for the dashboard
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    alert('Login successful! Redirecting to dashboard...');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('Login error: ' + error.message);
+            } finally {
+                const btnLoader = document.getElementById('btnLoader');
+                const btnText = document.querySelector('.btn-text');
+                const authBtn = document.querySelector('.auth-btn');
+                
+                if (btnText) btnText.style.opacity = '1';
+                if (btnLoader) btnLoader.style.display = 'none';
+                if (authBtn) authBtn.disabled = false;
             }
         });
-
-        // Function to check if session is still valid
-        async function checkSessionValidity() {
+    
+        // ✅ On page load, check if session is already valid
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
                 const response = await fetch('/api/user', {
                     method: 'GET',
@@ -178,18 +166,23 @@ document.addEventListener('DOMContentLoaded', function() {
                         'Accept': 'application/json'
                     }
                 });
-                
+    
                 if (response.ok) {
                     const data = await response.json();
-                    if (data.success) {
-                        // Session is valid, redirect to dashboard
+                    if (data.success && data.user) {
+                        // ✅ Session valid → redirect to dashboard
                         window.location.href = 'dashboard.html';
+                        return;
                     }
                 }
+    
+                // ❌ No valid session → stay on login page
+                console.log('No active session, showing login form');
             } catch (error) {
-                console.log('No valid session, staying on login page');
+                console.log('Session check failed, staying on login page');
             }
-        }
+        });
     </script>
+    
 </body>
 </html>

@@ -424,184 +424,186 @@
     </main>
 
     <script src="js/api.js"></script>
-    <script>
-        // Sidebar Toggle Functions
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const desktopMenuToggle = document.getElementById('menuToggle');
+<script>
+    // Sidebar Toggle Functions
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const desktopMenuToggle = document.getElementById('menuToggle');
 
-        function openSidebar() {
-            sidebar.classList.add('mobile-open');
-            sidebarOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            sidebar.setAttribute('aria-hidden', 'false');
-        }
+    function openSidebar() {
+        sidebar.classList.add('mobile-open');
+        sidebarOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        sidebar.setAttribute('aria-hidden', 'false');
+    }
 
-        function closeSidebar() {
-            sidebar.classList.remove('mobile-open');
-            sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            sidebar.setAttribute('aria-hidden', 'true');
-        }
+    function closeSidebar() {
+        sidebar.classList.remove('mobile-open');
+        sidebarOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        sidebar.setAttribute('aria-hidden', 'true');
+    }
 
-        mobileMenuToggle.addEventListener('click', openSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-        sidebarToggle.addEventListener('click', closeSidebar);
+    mobileMenuToggle.addEventListener('click', openSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+    sidebarToggle.addEventListener('click', closeSidebar);
 
-        desktopMenuToggle.addEventListener('click', function() {
-            if (window.innerWidth > 1024) {
-                sidebar.classList.toggle('collapsed');
-                document.querySelector('.main-content').classList.toggle('expanded');
-                const icon = sidebarToggle.querySelector('i');
-                icon.classList.toggle('fa-times');
-                icon.classList.toggle('fa-chevron-left');
-                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
-            } else {
-                openSidebar();
-            }
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const themeText = themeToggle.querySelector('span');
-        
-        themeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            themeIcon.classList.toggle('fa-moon', !isDarkMode);
-            themeIcon.classList.toggle('fa-sun', isDarkMode);
-            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        });
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            themeText.textContent = 'Light Mode';
-        }
-
-        // Logout Functionality
-        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
-            e.preventDefault();
-            if (confirm('Are you sure you want to logout?')) {
-                try {
-                    await window.oneClickAPI.logout();
-                    alert('Logout successful!');
-                    window.location.href = 'index.html';
-                } catch (error) {
-                    console.error('Logout error:', error);
-                    alert('Logout failed. Please try again.');
-                    localStorage.removeItem('user');
-                    window.location.href = 'index.html';
-                }
-            }
-        });
-
-        // Authentication Check and User Data Loading
-document.addEventListener('DOMContentLoaded', async function() {
-    try {
-        // First check server session
-        const data = await window.oneClickAPI.getCurrentUser();
-
-        if (data.success && data.user) {
-            // ✅ Valid session
-            window.oneClickAPI.setLocalUser(data.user);
-            updateUserUI(data.user);
-            showContent();
+    desktopMenuToggle.addEventListener('click', function() {
+        if (window.innerWidth > 1024) {
+            sidebar.classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('expanded');
+            const icon = sidebarToggle.querySelector('i');
+            icon.classList.toggle('fa-times');
+            icon.classList.toggle('fa-chevron-left');
+            sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
         } else {
-            // ❌ No session
+            openSidebar();
+        }
+    });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const themeText = themeToggle.querySelector('span');
+    
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        themeIcon.classList.toggle('fa-moon', !isDarkMode);
+        themeIcon.classList.toggle('fa-sun', isDarkMode);
+        themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        themeText.textContent = 'Light Mode';
+    }
+
+    // ✅ Logout Functionality (no localhost hardcoding)
+    document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+        e.preventDefault();
+        if (confirm('Are you sure you want to logout?')) {
+            try {
+                await fetch('/api/logout', {   // relative path works on localhost + Render
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                localStorage.removeItem('user');
+                alert('Logout successful!');
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('Logout failed. Please try again.');
+                localStorage.removeItem('user');
+                window.location.href = 'index.html';
+            }
+        }
+    });
+
+    // ✅ Authentication Check and User Data Loading
+    document.addEventListener('DOMContentLoaded', async function() {
+        try {
+            const response = await fetch('/api/user', {   // relative path instead of localhost
+                method: 'GET',
+                credentials: 'include'
+            });
+            const data = await response.json();
+
+            if (response.ok && data.success && data.user) {
+                updateUserUI(data.user);
+                showContent();
+            } else {
+                window.location.href = 'login.html';
+            }
+        } catch (error) {
+            console.error('Auth check error:', error);
             window.location.href = 'login.html';
         }
 
-    } catch (error) {
-        console.error('Auth check error:', error);
-        window.location.href = 'login.html';
+        // Click outside to close sidebar on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 1024 && 
+                sidebar.classList.contains('mobile-open') &&
+                !sidebar.contains(event.target) &&
+                !mobileMenuToggle.contains(event.target)) {
+                closeSidebar();
+            }
+        });
+    });
+
+    function updateUserUI(user) {
+        document.getElementById('userName').textContent = user.full_name || user.email;
+        document.getElementById('userEmail').textContent = user.email;
+        document.getElementById('welcomeName').textContent = user.full_name || user.email.split('@')[0];
+        document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+        document.getElementById('welcomeAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+        
+        const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+        document.getElementById('userAvatar').src = avatarUrl;
+        document.getElementById('mobileUserAvatar').src = avatarUrl;
+        document.querySelector('.user-avatar-sm img').src = avatarUrl;
+        document.getElementById('welcomeAvatar').src = avatarUrl;
     }
 
-    // Click outside to close sidebar on mobile
-    document.addEventListener('click', function(event) {
-        if (window.innerWidth <= 1024 && 
-            sidebar.classList.contains('mobile-open') &&
-            !sidebar.contains(event.target) &&
-            !mobileMenuToggle.contains(event.target)) {
+    function showContent() {
+        document.getElementById('loadingSpinner').style.display = 'none';
+        document.getElementById('welcomeSection').removeAttribute('hidden');
+        document.getElementById('quickAccessSection').removeAttribute('hidden');
+        document.getElementById('categoriesSection').removeAttribute('hidden');
+    }
+
+    // Category Card Toggle
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.tool-link, .view-all-link')) return;
+            this.classList.toggle('expanded');
+            this.setAttribute('aria-expanded', this.classList.contains('expanded'));
+        });
+    });
+
+    // Favorite Button Toggle
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    document.querySelectorAll('.tool-btn.favorite').forEach(button => {
+        const toolId = button.closest('.tool-card').dataset.toolId;
+        if (favorites.includes(toolId)) {
+            button.classList.add('active');
+        }
+        button.addEventListener('click', function() {
+            const isActive = this.classList.toggle('active');
+            if (isActive) {
+                favorites.push(toolId);
+            } else {
+                const index = favorites.indexOf(toolId);
+                if (index > -1) favorites.splice(index, 1);
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            this.setAttribute('aria-label', `Toggle favorite for ${this.closest('.tool-card').querySelector('h4').textContent}`);
+        });
+    });
+
+    // Handle Window Resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 1024) {
             closeSidebar();
+            sidebar.classList.remove('collapsed');
+            document.querySelector('.main-content').classList.remove('expanded');
+            sidebar.setAttribute('aria-expanded', 'true');
         }
     });
-});
 
-
-        function updateUserUI(user) {
-            document.getElementById('userName').textContent = user.full_name || user.email;
-            document.getElementById('userEmail').textContent = user.email;
-            document.getElementById('welcomeName').textContent = user.full_name || user.email.split('@')[0];
-            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
-            document.getElementById('welcomeAvatar').alt = `Avatar for ${user.full_name || user.email}`;
-            
-            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.getElementById('userAvatar').src = avatarUrl;
-            document.getElementById('mobileUserAvatar').src = avatarUrl;
-            document.querySelector('.user-avatar-sm img').src = avatarUrl;
-            document.getElementById('welcomeAvatar').src = avatarUrl;
-        }
-
-        function showContent() {
-            document.getElementById('loadingSpinner').style.display = 'none';
-            document.getElementById('welcomeSection').removeAttribute('hidden');
-            document.getElementById('quickAccessSection').removeAttribute('hidden');
-            document.getElementById('categoriesSection').removeAttribute('hidden');
-        }
-
-        // Category Card Toggle
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (e.target.closest('.tool-link, .view-all-link')) return;
-                this.classList.toggle('expanded');
-                this.setAttribute('aria-expanded', this.classList.contains('expanded'));
-            });
-        });
-
-        // Favorite Button Toggle
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        document.querySelectorAll('.tool-btn.favorite').forEach(button => {
-            const toolId = button.closest('.tool-card').dataset.toolId;
-            if (favorites.includes(toolId)) {
-                button.classList.add('active');
-            }
-            button.addEventListener('click', function() {
-                const isActive = this.classList.toggle('active');
-                if (isActive) {
-                    favorites.push(toolId);
-                } else {
-                    const index = favorites.indexOf(toolId);
-                    if (index > -1) favorites.splice(index, 1);
-                }
-                localStorage.setItem('favorites', JSON.stringify(favorites));
-                this.setAttribute('aria-label', `Toggle favorite for ${this.closest('.tool-card').querySelector('h4').textContent}`);
-            });
-        });
-
-        // Handle Window Resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 1024) {
-                closeSidebar();
-                sidebar.classList.remove('collapsed');
-                document.querySelector('.main-content').classList.remove('expanded');
-                sidebar.setAttribute('aria-expanded', 'true');
+    // Keyboard Accessibility
+    document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .welcome-btn').forEach(element => {
+        element.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
             }
         });
-
-        // Keyboard Accessibility
-        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .welcome-btn').forEach(element => {
-            element.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
