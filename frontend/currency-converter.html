@@ -10,34 +10,34 @@
 </head>
 <body>
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-rocket"></i>
-            <span>OneClick</span>
+            <span>OneClick-Tools</span>
         </div>
         <div class="mobile-user">
-            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
         </div>
     </header>
 
     <!-- Navigation Sidebar -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
         <div class="sidebar-header">
             <div class="logo-wrapper">
                 <i class="fas fa-rocket logo-icon"></i>
-                <h1 class="logo-text">OneClick</h1>
+                <h1 class="logo-text">OneClick-Tools</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="user-profile">
             <div class="user-avatar">
-                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
                 <div class="status-indicator"></div>
             </div>
             <div class="user-info">
@@ -47,29 +47,29 @@
         </div>
         
         <div class="sidebar-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
         </div>
         
-        <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="dashboard.html">
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
                     <div class="menu-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
                     <div class="menu-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <span class="menu-text">Recent</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
                     <div class="menu-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -79,56 +79,56 @@
             <li class="menu-divider">
                 <span>Categories</span>
             </li>
-            <li class="menu-item">
-                <a href="pdf-tools.html">
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
                     <div class="menu-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <span class="menu-text">PDF Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="image-tools.html">
+            <li class="menu-item" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
                     <div class="menu-icon">
                         <i class="fas fa-image"></i>
                     </div>
                     <span class="menu-text">Image Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="video-tools.html">
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
                     <div class="menu-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <span class="menu-text">Video Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="audio-tools.html">
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
                     <div class="menu-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <span class="menu-text">Audio Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="text-tools.html">
+            <li class="menu-item" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
                     <div class="menu-icon">
                         <i class="fas fa-font"></i>
                     </div>
                     <span class="menu-text">Text Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="ai-chatbots.html">
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
                     <div class="menu-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <span class="menu-text">AI Chat Bots</span>
                 </a>
             </li>
-            <li class="menu-item active">
-                <a href="utility-tools.html">
+            <li class="menu-item active" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
                     <div class="menu-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -139,22 +139,22 @@
         
         <div class="sidebar-footer">
             <div class="theme-toggle">
-                <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <span>Dark Mode</span>
                 </button>
             </div>
             
             <div class="footer-links">
-                <a href="profile.html">
+                <a href="profile.html" data-tooltip="User Profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="settings.html">
+                <a href="settings.html" data-tooltip="Settings">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="#" id="logoutBtn">
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -163,27 +163,27 @@
     </nav>
 
     <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" aria-label="Main content">
         <header class="content-header">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2>Currency Converter</h2>
             </div>
             <div class="header-right">
                 <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
                     </button>
                 </div>
                 <div class="user-menu">
                     <div class="user-avatar-sm">
-                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
             </section>
 
             <section class="tool-content">
-                <a href="utility-tools.html" class="back-button">
+                <a href="utility-tools.html" class="back-button" aria-label="Back to Utility Tools">
                     <i class="fas fa-arrow-left"></i> Back to Utilities
                 </a>
 
@@ -211,7 +211,7 @@
                     <div class="card-content">
                         <div class="converter-header">
                             <h2>Live Currency Converter</h2>
-                            <div class="last-updated" id="lastUpdated">
+                            <div class="last-updated" id="lastUpdated" aria-live="polite">
                                 <i class="fas fa-sync-alt"></i>
                                 <span>Loading exchange rates...</span>
                             </div>
@@ -221,7 +221,7 @@
                             <div class="input-group">
                                 <label for="amount">Amount</label>
                                 <div class="amount-input">
-                                    <input type="number" id="amount" placeholder="Enter amount" value="100" min="0" step="0.01">
+                                    <input type="number" id="amount" placeholder="Enter amount" value="100" min="0" step="0.01" aria-label="Amount to convert">
                                     <span class="currency-symbol" id="fromSymbol">$</span>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@
                                 <div class="from-currency">
                                     <label for="fromCurrency">From</label>
                                     <div class="currency-dropdown">
-                                        <select id="fromCurrency">
+                                        <select id="fromCurrency" aria-label="Select source currency">
                                             <option value="USD" selected>US Dollar (USD)</option>
                                             <option value="EUR">Euro (EUR)</option>
                                             <option value="GBP">British Pound (GBP)</option>
@@ -241,12 +241,12 @@
                                             <option value="CNY">Chinese Yuan (CNY)</option>
                                             <option value="INR">Indian Rupee (INR)</option>
                                         </select>
-                                        <i class="fas fa-chevron-down"></i>
+                                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                     </div>
                                 </div>
 
                                 <div class="swap-currencies">
-                                    <button id="swapButton" class="tool-btn swap-btn">
+                                    <button id="swapButton" class="tool-btn swap-btn" aria-label="Swap currencies">
                                         <i class="fas fa-exchange-alt"></i>
                                     </button>
                                 </div>
@@ -254,7 +254,7 @@
                                 <div class="to-currency">
                                     <label for="toCurrency">To</label>
                                     <div class="currency-dropdown">
-                                        <select id="toCurrency">
+                                        <select id="toCurrency" aria-label="Select target currency">
                                             <option value="EUR" selected>Euro (EUR)</option>
                                             <option value="USD">US Dollar (USD)</option>
                                             <option value="GBP">British Pound (GBP)</option>
@@ -265,16 +265,16 @@
                                             <option value="CNY">Chinese Yuan (CNY)</option>
                                             <option value="INR">Indian Rupee (INR)</option>
                                         </select>
-                                        <i class="fas fa-chevron-down"></i>
+                                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                     </div>
                                 </div>
                             </div>
 
-                            <button id="convertButton" class="tool-btn">
+                            <button id="convertButton" class="tool-btn" aria-label="Convert currency">
                                 <i class="fas fa-sync-alt"></i> Convert Currency
                             </button>
 
-                            <div class="result-container">
+                            <div class="result-container" id="resultContainer" role="region" aria-live="polite" aria-label="Conversion results">
                                 <div class="result-amount" id="resultAmount">0.00</div>
                                 <div class="result-details">
                                     <span id="fromAmount">100 USD</span> = 
@@ -317,11 +317,11 @@
                 <section class="popular-conversions">
                     <h2>Popular Conversions</h2>
                     <div class="conversion-buttons">
-                        <button class="tool-btn quick-convert" data-from="USD" data-to="EUR">USD to EUR</button>
-                        <button class="tool-btn quick-convert" data-from="EUR" data-to="GBP">EUR to GBP</button>
-                        <button class="tool-btn quick-convert" data-from="GBP" data-to="USD">GBP to USD</button>
-                        <button class="tool-btn quick-convert" data-from="USD" data-to="JPY">USD to JPY</button>
-                        <button class="tool-btn quick-convert" data-from="USD" data-to="INR">USD to INR</button>
+                        <button class="tool-btn quick-convert" data-from="USD" data-to="EUR" aria-label="Convert USD to EUR">USD to EUR</button>
+                        <button class="tool-btn quick-convert" data-from="EUR" data-to="GBP" aria-label="Convert EUR to GBP">EUR to GBP</button>
+                        <button class="tool-btn quick-convert" data-from="GBP" data-to="USD" aria-label="Convert GBP to USD">GBP to USD</button>
+                        <button class="tool-btn quick-convert" data-from="USD" data-to="JPY" aria-label="Convert USD to JPY">USD to JPY</button>
+                        <button class="tool-btn quick-convert" data-from="USD" data-to="INR" aria-label="Convert USD to INR">USD to INR</button>
                     </div>
                 </section>
 
@@ -329,12 +329,12 @@
                 <section class="rate-table">
                     <h2>Today's Exchange Rates</h2>
                     <div class="table-container">
-                        <table id="ratesTable">
+                        <table id="ratesTable" role="grid" aria-label="Exchange rates table">
                             <thead>
                                 <tr>
-                                    <th>Currency</th>
-                                    <th>Code</th>
-                                    <th>Rate</th>
+                                    <th scope="col">Currency</th>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Rate</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -349,128 +349,8 @@
         </div>
     </main>
 
-    <script src="js/api.js"></script>
     <script>
-        // Sidebar Logic
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-
-        function openSidebar() {
-            sidebar.classList.add('mobile-open');
-            sidebarOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeSidebar() {
-            sidebar.classList.remove('mobile-open');
-            sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        mobileMenuToggle.addEventListener('click', openSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-        sidebarToggle.addEventListener('click', closeSidebar);
-
-        const desktopMenuToggle = document.getElementById('menuToggle');
-        desktopMenuToggle.addEventListener('click', function() {
-            if (window.innerWidth > 1024) {
-                sidebar.classList.toggle('collapsed');
-                document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
-            } else {
-                openSidebar();
-            }
-        });
-
-        // Theme Toggle Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const themeText = themeToggle.querySelector('span');
-        
-        themeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-            themeText.textContent = 'Light Mode';
-        }
-
-        // Logout Functionality
-        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
-            e.preventDefault();
-            if (confirm('Are you sure you want to logout?')) {
-                try {
-                    await window.oneClickAPI.logout();
-                    alert('Logout successful!');
-                    window.location.href = 'index.html';
-                } catch (error) {
-                    console.error('Logout error:', error);
-                    alert('Logout failed. Please try again.');
-                    localStorage.removeItem('user');
-                    window.location.href = 'index.html';
-                }
-            }
-        });
-
-        // Authentication Check and User Data Loading
-        async function loadUserData() {
-            try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
-
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
-                    updateUserUI(data.user);
-                } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
-                }
-            } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
-                window.location.href = 'login.html';
-            }
-        }
-
-        function updateUserUI(user) {
-            document.getElementById('userName').textContent = user.full_name || user.email;
-            document.getElementById('userEmail').textContent = user.email;
-            
-            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
-        }
-
-        // Converter Logic
+        // Currency Converter Logic
         const API_KEY = '2955dc729052af0a694dbe37';
         const BASE_URL = 'https://v6.exchangerate-api.com/v6';
         
@@ -504,7 +384,7 @@
                 const response = await fetch(`${BASE_URL}/${API_KEY}/latest/${baseCurrency}`);
                 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch exchange rates');
+                    throw new Error(`HTTP error ${response.status}`);
                 }
                 
                 const data = await response.json();
@@ -531,8 +411,8 @@
             const fromCurr = fromCurrency.value;
             const toCurr = toCurrency.value;
             
-            if (isNaN(amount) || amount <= 0) {
-                showError('Please enter a valid amount');
+            if (isNaN(amount) || amount < 0) {
+                showError('Please enter a valid positive amount');
                 return;
             }
             
@@ -593,10 +473,11 @@
             popularCurrencies.forEach(currency => {
                 if (exchangeRates[currency]) {
                     const row = document.createElement('tr');
+                    row.setAttribute('role', 'row');
                     row.innerHTML = `
-                        <td>${getCurrencyName(currency)}</td>
-                        <td>${currency}</td>
-                        <td>${formatNumber(exchangeRates[currency], 4)}</td>
+                        <td role="gridcell">${getCurrencyName(currency)}</td>
+                        <td role="gridcell">${currency}</td>
+                        <td role="gridcell">${formatNumber(exchangeRates[currency], 4)}</td>
                     `;
                     tbody.appendChild(row);
                 }
@@ -615,8 +496,8 @@
         function showLoading() {
             lastUpdatedEl.querySelector('span').textContent = 'Loading exchange rates...';
             ratesTable.querySelector('tbody').innerHTML = `
-                <tr>
-                    <td colspan="3" class="loading-text">Loading exchange rates...</td>
+                <tr role="row">
+                    <td colspan="3" class="loading-text" role="gridcell">Loading exchange rates...</td>
                 </tr>
             `;
         }
@@ -627,7 +508,7 @@
             errorDiv.innerHTML = `
                 <i class="fas fa-exclamation-circle"></i>
                 <span>${message}</span>
-                <button class="error-close">&times;</button>
+                <button class="error-close" aria-label="Close error message">&times;</button>
             `;
             
             document.querySelectorAll('.error-notification').forEach(el => el.remove());
@@ -642,14 +523,159 @@
             });
         }
 
+        // Sidebar Toggle Functions
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
+        }
+
+        mobileMenuToggle.addEventListener('click', openSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarToggle.addEventListener('click', closeSidebar);
+
+        desktopMenuToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+                document.querySelector('.main-content').classList.toggle('expanded');
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
+            } else {
+                openSidebar();
+            }
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
+                    alert('Logout successful!');
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Authentication Check and User Data Loading
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
+
+                if (response.ok && data.success && data.user) {
+                    updateUserUI(data.user);
+                    init(); // Initialize currency converter logic after user data is loaded
+                } else {
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+                window.location.href = 'login.html';
+            }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        function updateUserUI(user) {
+            document.getElementById('userName').textContent = user.full_name || user.email;
+            document.getElementById('userEmail').textContent = user.email;
+            const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
+        }
+
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .quick-convert, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .error-close, #amount, #fromCurrency, #toCurrency').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Currency Converter Initialization
         function init() {
             updateCurrencySymbol();
             fetchExchangeRates();
             
             convertButton.addEventListener('click', convertCurrency);
             swapButton.addEventListener('click', swapCurrencies);
-            fromCurrency.addEventListener('change', updateCurrencySymbol);
-            fromCurrency.addEventListener('change', () => fetchExchangeRates(fromCurrency.value));
+            fromCurrency.addEventListener('change', () => {
+                updateCurrencySymbol();
+                fetchExchangeRates(fromCurrency.value);
+            });
             toCurrency.addEventListener('change', convertCurrency);
             amountInput.addEventListener('input', convertCurrency);
             
@@ -662,27 +688,6 @@
                 });
             });
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadUserData();
-            init();
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-        });
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 1024) {
-                closeSidebar();
-                sidebar.classList.remove('collapsed');
-                document.querySelector('.main-content').classList.remove('expanded');
-            }
-        });
     </script>
 </body>
 </html>

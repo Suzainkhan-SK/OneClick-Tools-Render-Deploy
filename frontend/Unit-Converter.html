@@ -10,34 +10,34 @@
 </head>
 <body>
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-rocket"></i>
-            <span>OneClick</span>
+            <span>OneClick-Tools</span>
         </div>
         <div class="mobile-user">
-            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
         </div>
     </header>
 
     <!-- Navigation Sidebar -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
         <div class="sidebar-header">
             <div class="logo-wrapper">
                 <i class="fas fa-rocket logo-icon"></i>
-                <h1 class="logo-text">OneClick</h1>
+                <h1 class="logo-text">OneClick-Tools</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="user-profile">
             <div class="user-avatar">
-                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
                 <div class="status-indicator"></div>
             </div>
             <div class="user-info">
@@ -47,29 +47,29 @@
         </div>
         
         <div class="sidebar-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
         </div>
         
-        <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="dashboard.html">
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
                     <div class="menu-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
                     <div class="menu-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <span class="menu-text">Recent</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
                     <div class="menu-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -79,56 +79,56 @@
             <li class="menu-divider">
                 <span>Categories</span>
             </li>
-            <li class="menu-item">
-                <a href="pdf-tools.html">
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
                     <div class="menu-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <span class="menu-text">PDF Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="image-tools.html">
+            <li class="menu-item" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
                     <div class="menu-icon">
                         <i class="fas fa-image"></i>
                     </div>
                     <span class="menu-text">Image Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="video-tools.html">
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
                     <div class="menu-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <span class="menu-text">Video Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="audio-tools.html">
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
                     <div class="menu-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <span class="menu-text">Audio Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="text-tools.html">
+            <li class="menu-item" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
                     <div class="menu-icon">
                         <i class="fas fa-font"></i>
                     </div>
                     <span class="menu-text">Text Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="ai-chatbots.html">
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
                     <div class="menu-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <span class="menu-text">AI Chat Bots</span>
                 </a>
             </li>
-            <li class="menu-item active">
-                <a href="utility-tools.html">
+            <li class="menu-item active" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
                     <div class="menu-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -139,22 +139,22 @@
         
         <div class="sidebar-footer">
             <div class="theme-toggle">
-                <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <span>Dark Mode</span>
                 </button>
             </div>
             
             <div class="footer-links">
-                <a href="profile.html">
+                <a href="profile.html" data-tooltip="User Profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="settings.html">
+                <a href="settings.html" data-tooltip="Settings">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="#" id="logoutBtn">
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -163,27 +163,27 @@
     </nav>
 
     <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" aria-label="Main content">
         <header class="content-header">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2>Unit Converter</h2>
             </div>
             <div class="header-right">
                 <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
                     </button>
                 </div>
                 <div class="user-menu">
                     <div class="user-avatar-sm">
-                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,9 @@
             </div>
 
             <div class="tool-content">
-                <a href="utility-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Utility Tools</a>
+                <a href="utility-tools.html" class="back-button" aria-label="Back to Utility Tools">
+                    <i class="fas fa-arrow-left"></i> Back to Utility Tools
+                </a>
 
                 <div class="converter-card">
                     <div class="card-icon">
@@ -208,47 +210,51 @@
                     <div class="card-content">
                         <div class="converter-header">
                             <h2>Perform Conversion</h2>
-                            <span class="status-message info" id="statusMessage">Ready to convert</span>
+                            <span class="status-message info" id="statusMessage" aria-live="polite">Ready to convert</span>
                         </div>
 
                         <div class="input-group">
                             <label for="categorySelect">Select Category</label>
                             <div class="select-wrapper">
-                                <select id="categorySelect"></select>
-                                <i class="fas fa-chevron-down"></i>
+                                <select id="categorySelect" aria-label="Select measurement category"></select>
+                                <i class="fas fa-chevron-down" aria-hidden="true"></i>
                             </div>
                         </div>
 
                         <div class="input-group">
                             <label for="valueInput">Value to Convert</label>
-                            <input type="number" id="valueInput" placeholder="Enter value" value="1">
+                            <input type="number" id="valueInput" placeholder="Enter value" value="1" min="0" step="any" aria-label="Value to convert">
                         </div>
 
                         <div class="unit-selection-grid">
                             <div class="from-unit">
                                 <label for="fromUnitSelect">From Unit</label>
                                 <div class="select-wrapper">
-                                    <select id="fromUnitSelect"></select>
-                                    <i class="fas fa-chevron-down"></i>
+                                    <select id="fromUnitSelect" aria-label="Select source unit"></select>
+                                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="swap-currencies">
-                                <button id="swapUnitsBtn" class="tool-btn secondary" title="Swap Units"><i class="fas fa-arrows-alt-h"></i></button>
+                                <button id="swapUnitsBtn" class="tool-btn secondary" title="Swap Units" aria-label="Swap units">
+                                    <i class="fas fa-arrows-alt-h"></i>
+                                </button>
                             </div>
                             <div class="to-unit">
                                 <label for="toUnitSelect">To Unit</label>
                                 <div class="select-wrapper">
-                                    <select id="toUnitSelect"></select>
-                                    <i class="fas fa-chevron-down"></i>
+                                    <select id="toUnitSelect" aria-label="Select target unit"></select>
+                                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
 
                         <div class="tool-actions-bottom">
-                            <button id="convertBtn" class="tool-btn"><i class="fas fa-calculator"></i> Convert Unit</button>
+                            <button id="convertBtn" class="tool-btn" aria-label="Convert unit">
+                                <i class="fas fa-calculator"></i> Convert Unit
+                            </button>
                         </div>
 
-                        <div id="resultContainer" class="result-container" style="display: none;">
+                        <div id="resultContainer" class="result-container" style="display: none;" role="region" aria-live="polite" aria-label="Conversion results">
                             <p class="result-amount" id="convertedValue"></p>
                             <p class="result-details" id="conversionDetails"></p>
                         </div>
@@ -276,74 +282,62 @@
         </section>
     </main>
 
-    <script src="js/api.js"></script>
     <script>
-        // Sidebar Logic
+        // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
 
         function openSidebar() {
             sidebar.classList.add('mobile-open');
             sidebarOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
         }
 
         function closeSidebar() {
             sidebar.classList.remove('mobile-open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
         }
 
         mobileMenuToggle.addEventListener('click', openSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
         sidebarToggle.addEventListener('click', closeSidebar);
 
-        const desktopMenuToggle = document.getElementById('menuToggle');
         desktopMenuToggle.addEventListener('click', function() {
             if (window.innerWidth > 1024) {
                 sidebar.classList.toggle('collapsed');
                 document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
             } else {
                 openSidebar();
             }
         });
 
-        // Theme Toggle Logic
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const themeText = themeToggle.querySelector('span');
         
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeText.textContent = 'Light Mode';
         }
 
@@ -352,7 +346,11 @@
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 try {
-                    await window.oneClickAPI.logout();
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
                     alert('Logout successful!');
                     window.location.href = 'index.html';
                 } catch (error) {
@@ -365,40 +363,70 @@
         });
 
         // Authentication Check and User Data Loading
-        async function loadUserData() {
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
 
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
+                if (response.ok && data.success && data.user) {
                     updateUserUI(data.user);
+                    init(); // Initialize unit converter logic after user data is loaded
                 } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
+                    window.location.href = 'login.html';
                 }
             } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
+                console.error('Auth check error:', error);
                 window.location.href = 'login.html';
             }
-        }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
 
         function updateUserUI(user) {
             document.getElementById('userName').textContent = user.full_name || user.email;
             document.getElementById('userEmail').textContent = user.email;
-            
             const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
         }
 
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .error-close, #valueInput, #categorySelect, #fromUnitSelect, #toUnitSelect').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
         // Unit Converter Logic
-        document.addEventListener('DOMContentLoaded', async () => {
+        function init() {
             const categorySelect = document.getElementById('categorySelect');
             const fromUnitSelect = document.getElementById('fromUnitSelect');
             const toUnitSelect = document.getElementById('toUnitSelect');
@@ -420,7 +448,7 @@
                 errorDiv.innerHTML = `
                     <i class="fas fa-exclamation-circle"></i>
                     <span>${message}</span>
-                    <button class="error-close">&times;</button>
+                    <button class="error-close" aria-label="Close error message">&times;</button>
                 `;
                 
                 document.querySelectorAll('.error-notification').forEach(el => el.remove());
@@ -435,54 +463,66 @@
                 });
             }
 
-            const updateStatus = (message, type = 'info') => {
+            function showStatusMessage(message, type = 'info') {
                 statusMessage.textContent = message;
                 statusMessage.className = `status-message ${type}`;
-            };
+            }
 
-            const fetchCategories = async () => {
+            async function fetchCategories() {
                 try {
-                    updateStatus('Fetching categories...', 'info');
-                    const response = await window.oneClickAPI.request('/unit-converter/categories');
-                    if (response.success) {
-                        allCategories = response.categories;
-                        categorySelect.innerHTML = allCategories.map(cat => `<option value="${cat}">${cat.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</option>`).join('');
-                        updateStatus('Categories loaded.', 'success');
+                    showStatusMessage('Fetching categories...', 'info');
+                    const response = await fetch('/unit-converter/categories', {
+                        method: 'GET',
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    if (response.ok && data.success) {
+                        allCategories = data.categories;
+                        categorySelect.innerHTML = allCategories.map(cat => 
+                            `<option value="${cat}">${cat.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</option>`
+                        ).join('');
+                        showStatusMessage('Categories loaded.', 'success');
                         if (allCategories.length > 0) {
                             await fetchUnitsForCategory(categorySelect.value);
                         }
                     } else {
-                        showError(`Failed to load categories: ${response.message}`);
+                        throw new Error(data.message || 'Failed to load categories');
                     }
                 } catch (error) {
                     console.error('Error fetching categories:', error);
                     showError(`Error loading categories: ${error.message}`);
                 }
-            };
+            }
 
-            const fetchUnitsForCategory = async (category) => {
+            async function fetchUnitsForCategory(category) {
                 if (unitsByCategory[category]) {
                     populateUnitSelects(unitsByCategory[category]);
                     return;
                 }
                 try {
-                    updateStatus(`Fetching units for ${category.replace(/_/g, ' ')}...`, 'info');
-                    const response = await window.oneClickAPI.request(`/unit-converter/units/${category}`);
-                    if (response.success) {
-                        unitsByCategory[category] = response.units;
-                        populateUnitSelects(response.units);
-                        updateStatus('Units loaded.', 'success');
+                    showStatusMessage(`Fetching units for ${category.replace(/_/g, ' ')}...`, 'info');
+                    const response = await fetch(`/unit-converter/units/${category}`, {
+                        method: 'GET',
+                        credentials: 'include'
+                    });
+                    const data = await response.json();
+                    if (response.ok && data.success) {
+                        unitsByCategory[category] = data.units;
+                        populateUnitSelects(data.units);
+                        showStatusMessage('Units loaded.', 'success');
                     } else {
-                        showError(`Failed to load units: ${response.message}`);
+                        throw new Error(data.message || 'Failed to load units');
                     }
                 } catch (error) {
                     console.error(`Error fetching units for ${category}:`, error);
                     showError(`Error loading units: ${error.message}`);
                 }
-            };
+            }
 
-            const populateUnitSelects = (units) => {
-                const optionsHtml = units.map(unit => `<option value="${unit}">${unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</option>`).join('');
+            function populateUnitSelects(units) {
+                const optionsHtml = units.map(unit => 
+                    `<option value="${unit}">${unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</option>`
+                ).join('');
                 fromUnitSelect.innerHTML = optionsHtml;
                 toUnitSelect.innerHTML = optionsHtml;
 
@@ -493,7 +533,7 @@
                     fromUnitSelect.value = units[0];
                     toUnitSelect.value = units[0];
                 }
-            };
+            }
 
             categorySelect.addEventListener('change', (event) => {
                 fetchUnitsForCategory(event.target.value);
@@ -510,33 +550,39 @@
                     return;
                 }
 
-                if (isNaN(parseFloat(value))) {
-                    showError('Value must be a number.');
+                const parsedValue = parseFloat(value);
+                if (isNaN(parsedValue) || parsedValue < 0) {
+                    showError('Value must be a positive number.');
                     return;
                 }
 
                 convertBtn.disabled = true;
-                updateStatus('Converting...', 'info');
+                showStatusMessage('Converting...', 'info');
                 resultContainer.style.display = 'none';
 
                 try {
-                    const response = await window.oneClickAPI.request('/unit-converter/convert', {
+                    const response = await fetch('/unit-converter/convert', {
                         method: 'POST',
-                        body: {
-                            value: parseFloat(value),
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            value: parsedValue,
                             from_unit: fromUnit,
                             to_unit: toUnit,
                             category: category
-                        }
+                        })
                     });
+                    const data = await response.json();
 
-                    if (response.success) {
-                        convertedValueDisplay.textContent = `${response.converted_value.toFixed(6)} ${response.to_unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
-                        conversionDetailsDisplay.textContent = `${response.original_value} ${response.from_unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} = ${response.converted_value.toFixed(6)} ${response.to_unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
+                    if (response.ok && data.success) {
+                        convertedValueDisplay.textContent = `${data.converted_value.toFixed(6)} ${data.to_unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
+                        conversionDetailsDisplay.textContent = `${data.original_value} ${data.from_unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())} = ${data.converted_value.toFixed(6)} ${data.to_unit.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
                         resultContainer.style.display = 'block';
-                        updateStatus('Conversion successful!', 'success');
+                        showStatusMessage('Conversion successful!', 'success');
                     } else {
-                        showError(`Conversion failed: ${response.message}`);
+                        throw new Error(data.message || 'Conversion failed');
                     }
                 } catch (error) {
                     console.error('Error during conversion:', error);
@@ -553,27 +599,8 @@
             });
 
             // Initial setup
-            loadUserData();
             fetchCategories();
-
-            // Close mobile sidebar on outside click
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 1024) {
-                    closeSidebar();
-                    sidebar.classList.remove('collapsed');
-                    document.querySelector('.main-content').classList.remove('expanded');
-                }
-            });
-        });
+        }
     </script>
 </body>
 </html>

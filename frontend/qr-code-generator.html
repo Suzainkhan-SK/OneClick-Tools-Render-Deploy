@@ -10,34 +10,34 @@
 </head>
 <body>
     <!-- Mobile Header -->
-    <header class="mobile-header">
-        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+    <header class="mobile-header" aria-label="Mobile navigation header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobile-logo">
             <i class="fas fa-rocket"></i>
-            <span>OneClick</span>
+            <span>OneClick-Tools</span>
         </div>
         <div class="mobile-user">
-            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="mobileUserAvatar">
+            <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="mobileUserAvatar">
         </div>
     </header>
 
     <!-- Navigation Sidebar -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Main navigation" aria-hidden="true">
         <div class="sidebar-header">
             <div class="logo-wrapper">
                 <i class="fas fa-rocket logo-icon"></i>
-                <h1 class="logo-text">OneClick</h1>
+                <h1 class="logo-text">OneClick-Tools</h1>
             </div>
-            <button class="sidebar-toggle" id="sidebarToggle">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
         <div class="user-profile">
             <div class="user-avatar">
-                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar" id="userAvatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar" id="userAvatar">
                 <div class="status-indicator"></div>
             </div>
             <div class="user-info">
@@ -47,29 +47,29 @@
         </div>
         
         <div class="sidebar-search">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search tools..." id="sidebarSearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Search tools..." id="sidebarSearch" aria-label="Search tools">
         </div>
         
-        <ul class="sidebar-menu">
-            <li class="menu-item">
-                <a href="dashboard.html">
+        <ul class="sidebar-menu" role="menubar">
+            <li class="menu-item" role="none">
+                <a href="dashboard.html" role="menuitem" data-tooltip="Home Dashboard">
                     <div class="menu-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Recent Activity">
                     <div class="menu-icon">
                         <i class="fas fa-history"></i>
                     </div>
                     <span class="menu-text">Recent</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="#">
+            <li class="menu-item" role="none">
+                <a href="#" role="menuitem" data-tooltip="Favorite Tools">
                     <div class="menu-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -79,56 +79,56 @@
             <li class="menu-divider">
                 <span>Categories</span>
             </li>
-            <li class="menu-item">
-                <a href="pdf-tools.html">
+            <li class="menu-item" role="none">
+                <a href="pdf-tools.html" role="menuitem" data-tooltip="PDF Tools">
                     <div class="menu-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
                     <span class="menu-text">PDF Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="image-tools.html">
+            <li class="menu-item" role="none">
+                <a href="image-tools.html" role="menuitem" data-tooltip="Image Tools">
                     <div class="menu-icon">
                         <i class="fas fa-image"></i>
                     </div>
                     <span class="menu-text">Image Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="video-tools.html">
+            <li class="menu-item" role="none">
+                <a href="video-tools.html" role="menuitem" data-tooltip="Video Tools">
                     <div class="menu-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <span class="menu-text">Video Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="audio-tools.html">
+            <li class="menu-item" role="none">
+                <a href="audio-tools.html" role="menuitem" data-tooltip="Audio Tools">
                     <div class="menu-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <span class="menu-text">Audio Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="text-tools.html">
+            <li class="menu-item" role="none">
+                <a href="text-tools.html" role="menuitem" data-tooltip="Text Tools">
                     <div class="menu-icon">
                         <i class="fas fa-font"></i>
                     </div>
                     <span class="menu-text">Text Tools</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="ai-chatbots.html">
+            <li class="menu-item" role="none">
+                <a href="ai-chatbots.html" role="menuitem" data-tooltip="AI Chat Bots">
                     <div class="menu-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <span class="menu-text">AI Chat Bots</span>
                 </a>
             </li>
-            <li class="menu-item active">
-                <a href="utility-tools.html">
+            <li class="menu-item active" role="none">
+                <a href="utility-tools.html" role="menuitem" data-tooltip="Utility Tools">
                     <div class="menu-icon">
                         <i class="fas fa-tools"></i>
                     </div>
@@ -139,22 +139,22 @@
         
         <div class="sidebar-footer">
             <div class="theme-toggle">
-                <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                     <span>Dark Mode</span>
                 </button>
             </div>
             
             <div class="footer-links">
-                <a href="profile.html">
+                <a href="profile.html" data-tooltip="User Profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="settings.html">
+                <a href="settings.html" data-tooltip="Settings">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="#" id="logoutBtn">
+                <a href="#" id="logoutBtn" data-tooltip="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -163,27 +163,27 @@
     </nav>
 
     <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" aria-label="Main content">
         <header class="content-header">
             <div class="header-left">
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
                 <h2>QR Code Generator</h2>
             </div>
             <div class="header-right">
                 <div class="header-actions">
-                    <button class="action-btn" title="Notifications">
+                    <button class="action-btn" title="Notifications" data-tooltip="View Notifications" aria-label="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
                     </button>
                 </div>
                 <div class="user-menu">
                     <div class="user-avatar-sm">
-                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User Avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User avatar">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,9 @@
             </div>
 
             <div class="tool-content">
-                <a href="utility-tools.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Utility Tools</a>
+                <a href="utility-tools.html" class="back-button" aria-label="Back to Utility Tools">
+                    <i class="fas fa-arrow-left"></i> Back to Utility Tools
+                </a>
 
                 <div class="generator-card">
                     <div class="card-icon">
@@ -208,71 +210,77 @@
                     <div class="card-content">
                         <div class="generator-header">
                             <h2>Generate QR Code</h2>
-                            <span class="status-message info" id="statusMessage">Ready to generate</span>
+                            <span class="status-message info" id="statusMessage" aria-live="polite">Ready to generate</span>
                         </div>
 
                         <div class="input-group">
                             <label for="qrInput">Text or URL</label>
-                            <textarea id="qrInput" placeholder="Enter text or URL to encode" rows="4"></textarea>
+                            <textarea id="qrInput" placeholder="Enter text or URL to encode" rows="4" aria-label="Text or URL for QR code"></textarea>
                         </div>
 
                         <div class="options-grid">
                             <div class="option-group">
                                 <label for="qrSize">QR Code Size</label>
                                 <div class="select-wrapper">
-                                    <select id="qrSize">
+                                    <select id="qrSize" aria-label="Select QR code size">
                                         <option value="150">150x150 px</option>
                                         <option value="200" selected>200x200 px</option>
                                         <option value="300">300x300 px</option>
                                         <option value="500">500x500 px</option>
                                     </select>
-                                    <i class="fas fa-chevron-down"></i>
+                                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                 </div>
                                 <small>Choose the size of the QR code image.</small>
                             </div>
                             <div class="option-group">
                                 <label for="qrColor">QR Code Color</label>
-                                <input type="color" id="qrColor" value="#000000">
+                                <input type="color" id="qrColor" value="#000000" aria-label="Select QR code color">
                                 <small>Pick the color for the QR code pattern.</small>
                             </div>
                             <div class="option-group">
                                 <label for="qrBgColor">Background Color</label>
-                                <input type="color" id="qrBgColor" value="#ffffff">
+                                <input type="color" id="qrBgColor" value="#ffffff" aria-label="Select QR code background color">
                                 <small>Pick the background color for the QR code.</small>
                             </div>
                             <div class="option-group">
                                 <label for="qrErrorCorrection">Error Correction</label>
                                 <div class="select-wrapper">
-                                    <select id="qrErrorCorrection">
+                                    <select id="qrErrorCorrection" aria-label="Select QR code error correction level">
                                         <option value="L">Low (7%)</option>
                                         <option value="M" selected>Medium (15%)</option>
                                         <option value="Q">Quartile (25%)</option>
                                         <option value="H">High (30%)</option>
                                     </select>
-                                    <i class="fas fa-chevron-down"></i>
+                                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                                 </div>
                                 <small>Higher levels improve scan reliability.</small>
                             </div>
                         </div>
 
                         <div class="tool-actions-bottom">
-                            <button class="tool-btn secondary" id="clearBtn" disabled><i class="fas fa-times"></i> Clear</button>
-                            <button class="tool-btn" id="generateBtn" disabled><i class="fas fa-qrcode"></i> Generate QR Code</button>
+                            <button class="tool-btn secondary" id="clearBtn" disabled aria-label="Clear input and reset options">
+                                <i class="fas fa-times"></i> Clear
+                            </button>
+                            <button class="tool-btn" id="generateBtn" disabled aria-label="Generate QR code">
+                                <i class="fas fa-qrcode"></i> Generate QR Code
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-section" id="resultSection" style="display: none;" role="region" aria-live="polite" aria-label="QR code preview">
                     <div class="result-header">
                         <h3>Generated QR Code</h3>
                     </div>
                     <div class="qr-preview">
-                        <div class="qr-loading" id="qrLoading" style="display: none;">
+                        <div class="qr-loading" id="qrLoading" style="display: none;" aria-hidden="true">
                             <i class="fas fa-spinner fa-spin"></i> Generating...
                         </div>
-                        <div id="qrCanvas"></div>
+                        <div id="qrCanvas" aria-label="Generated QR code"></div>
                         <div class="qr-actions">
-                            <button class="tool-btn" id="downloadBtn" disabled><i class="fas fa-download"></i> Download PNG</button>
+                            <button class="tool-btn" id="downloadBtn" disabled aria-label="Download QR code as PNG">
+                                <i class="fas fa-download"></i> Download PNG
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -298,75 +306,63 @@
         </section>
     </main>
 
-    <script src="js/api.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Sidebar Logic
+        // Sidebar Toggle Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const desktopMenuToggle = document.getElementById('menuToggle');
 
         function openSidebar() {
             sidebar.classList.add('mobile-open');
             sidebarOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            sidebar.setAttribute('aria-hidden', 'false');
         }
 
         function closeSidebar() {
             sidebar.classList.remove('mobile-open');
             sidebarOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            sidebar.setAttribute('aria-hidden', 'true');
         }
 
         mobileMenuToggle.addEventListener('click', openSidebar);
         sidebarOverlay.addEventListener('click', closeSidebar);
         sidebarToggle.addEventListener('click', closeSidebar);
 
-        const desktopMenuToggle = document.getElementById('menuToggle');
         desktopMenuToggle.addEventListener('click', function() {
             if (window.innerWidth > 1024) {
                 sidebar.classList.toggle('collapsed');
                 document.querySelector('.main-content').classList.toggle('expanded');
-                
-                const icon = document.querySelector('.sidebar-toggle i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-chevron-left');
-                } else {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-times');
-                }
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.toggle('fa-times');
+                icon.classList.toggle('fa-chevron-left');
+                sidebar.setAttribute('aria-expanded', !sidebar.classList.contains('collapsed'));
             } else {
                 openSidebar();
             }
         });
 
-        // Theme Toggle Logic
+        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const themeText = themeToggle.querySelector('span');
         
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                themeText.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                themeText.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeIcon.classList.toggle('fa-moon', !isDarkMode);
+            themeIcon.classList.toggle('fa-sun', isDarkMode);
+            themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeText.textContent = 'Light Mode';
         }
 
@@ -375,7 +371,11 @@
             e.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 try {
-                    await window.oneClickAPI.logout();
+                    await fetch('/api/logout', {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    localStorage.removeItem('user');
                     alert('Logout successful!');
                     window.location.href = 'index.html';
                 } catch (error) {
@@ -388,40 +388,70 @@
         });
 
         // Authentication Check and User Data Loading
-        async function loadUserData() {
+        document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const localUser = window.oneClickAPI.getLocalUser();
-                if (localUser) {
-                    updateUserUI(localUser);
-                }
+                const response = await fetch('/api/user', {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+                const data = await response.json();
 
-                const data = await window.oneClickAPI.getCurrentUser();
-                if (data.success) {
-                    window.oneClickAPI.setLocalUser(data.user);
+                if (response.ok && data.success && data.user) {
                     updateUserUI(data.user);
+                    init(); // Initialize QR code generator logic after user data is loaded
                 } else {
-                    throw new Error(data.message || 'Failed to fetch user data');
+                    window.location.href = 'login.html';
                 }
             } catch (error) {
-                console.error('Error loading user data:', error);
-                alert('Session expired or failed to load profile. Please login again.');
+                console.error('Auth check error:', error);
                 window.location.href = 'login.html';
             }
-        }
+
+            // Click outside to close sidebar on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 1024 && 
+                    sidebar.classList.contains('mobile-open') &&
+                    !sidebar.contains(event.target) &&
+                    !mobileMenuToggle.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        });
 
         function updateUserUI(user) {
             document.getElementById('userName').textContent = user.full_name || user.email;
             document.getElementById('userEmail').textContent = user.email;
-            
             const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || user.email)}&background=4361ee&color=fff`;
-            document.querySelectorAll('#userAvatar, #mobileUserAvatar, .user-avatar-sm img').forEach(img => {
-                img.src = avatarUrl;
-                img.alt = user.full_name || user.email;
-            });
+            document.getElementById('userAvatar').src = avatarUrl;
+            document.getElementById('mobileUserAvatar').src = avatarUrl;
+            document.querySelector('.user-avatar-sm img').src = avatarUrl;
+            document.getElementById('userAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.getElementById('mobileUserAvatar').alt = `Avatar for ${user.full_name || user.email}`;
+            document.querySelector('.user-avatar-sm img').alt = `Avatar for ${user.full_name || user.email}`;
         }
 
+        // Handle Window Resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeSidebar();
+                sidebar.classList.remove('collapsed');
+                document.querySelector('.main-content').classList.remove('expanded');
+                sidebar.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Keyboard Accessibility
+        document.querySelectorAll('.menu-item a, .tool-btn, .action-btn, .theme-btn, .sidebar-toggle, .mobile-menu-toggle, .back-button, .error-close, #qrInput, #qrSize, #qrColor, #qrBgColor, #qrErrorCorrection').forEach(element => {
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
         // QR Code Generator Logic
-        document.addEventListener('DOMContentLoaded', () => {
+        function init() {
             const qrInput = document.getElementById('qrInput');
             const qrSize = document.getElementById('qrSize');
             const qrColor = document.getElementById('qrColor');
@@ -444,7 +474,7 @@
                 errorDiv.innerHTML = `
                     <i class="fas fa-exclamation-circle"></i>
                     <span>${message}</span>
-                    <button class="error-close">&times;</button>
+                    <button class="error-close" aria-label="Close error message">&times;</button>
                 `;
                 
                 document.querySelectorAll('.error-notification').forEach(el => el.remove());
@@ -478,7 +508,7 @@
             }
 
             // Update status message
-            function updateStatus(message, type = 'info') {
+            function showStatusMessage(message, type = 'info') {
                 statusMessage.textContent = message;
                 statusMessage.className = `status-message ${type}`;
             }
@@ -487,9 +517,9 @@
             qrInput.addEventListener('input', () => {
                 updateButtonStates();
                 if (qrInput.value.trim().length === 0) {
-                    updateStatus('Ready to generate', 'info');
+                    showStatusMessage('Ready to generate', 'info');
                 } else {
-                    updateStatus('Input ready', 'info');
+                    showStatusMessage('Input ready', 'info');
                 }
             });
 
@@ -504,7 +534,7 @@
                 qrCanvas.innerHTML = '';
                 qrCodeInstance = null;
                 updateButtonStates();
-                updateStatus('Ready to generate', 'info');
+                showStatusMessage('Ready to generate', 'info');
             });
 
             // Generate QR Code
@@ -530,7 +560,7 @@
                 }
 
                 generateBtn.disabled = true;
-                updateStatus('Generating QR code...', 'info');
+                showStatusMessage('Generating QR code...', 'info');
                 qrLoading.style.display = 'flex';
                 resultSection.style.display = 'none';
 
@@ -548,7 +578,7 @@
 
                         resultSection.style.display = 'block';
                         qrLoading.style.display = 'none';
-                        updateStatus('QR code generated successfully!', 'success');
+                        showStatusMessage('QR code generated successfully!', 'success');
                         downloadBtn.disabled = false;
                     } catch (error) {
                         console.error('Error generating QR code:', error);
@@ -579,31 +609,12 @@
                 link.click();
                 document.body.removeChild(link);
 
-                updateStatus('QR code downloaded!', 'success');
+                showStatusMessage('QR code downloaded!', 'success');
             });
 
             // Initial setup
-            loadUserData();
             updateButtonStates();
-
-            // Close mobile sidebar on outside click
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 1024 && 
-                    sidebar.classList.contains('mobile-open') &&
-                    !sidebar.contains(event.target) &&
-                    !mobileMenuToggle.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 1024) {
-                    closeSidebar();
-                    sidebar.classList.remove('collapsed');
-                    document.querySelector('.main-content').classList.remove('expanded');
-                }
-            });
-        });
+        }
     </script>
 </body>
 </html>
