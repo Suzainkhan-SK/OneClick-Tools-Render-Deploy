@@ -253,7 +253,7 @@
                                     <label for="outputFormat">Output Format</label>
                                     <div class="select-wrapper">
                                         <select id="outputFormat" aria-label="Select output format">
-                                            <option value="jpg" selected>JPG</option>
+                                            <option value="jpeg" selected>JPG</option>
                                             <option value="png">PNG</option>
                                             <option value="webp">WEBP</option>
                                         </select>
@@ -500,7 +500,7 @@
             const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
             const VALID_MIME_TYPES = ['image/jpeg', 'image/png', 'image/tiff', 'image/webp'];
             const MIME_TYPE_MAP = {
-                'jpg': 'image/jpeg',
+                'jpeg': 'image/jpeg',
                 'png': 'image/png',
                 'webp': 'image/webp'
             };
@@ -631,6 +631,16 @@
                     console.log('Response status:', response.status);
                     console.log('Response headers:', [...response.headers.entries()]);
 
+                    const contentType = response.headers.get('content-type') || '';
+                    const expectedMimeType = MIME_TYPE_MAP[outputFormatSelect.value.toLowerCase()];
+                    console.log('Content-Type:', contentType, 'Expected:', expectedMimeType);
+
+                    if (contentType.includes('application/json')) {
+                        const data = await response.json();
+                        console.log('JSON response:', data);
+                        throw new Error(data.message || `Server returned JSON instead of image: HTTP ${response.status}`);
+                    }
+
                     if (!response.ok) {
                         let errorMessage = `HTTP ${response.status}: `;
                         try {
@@ -642,10 +652,7 @@
                         throw new Error(errorMessage);
                     }
 
-                    const contentType = response.headers.get('content-type') || '';
-                    const expectedMimeType = MIME_TYPE_MAP[outputFormatSelect.value.toLowerCase()];
                     if (!contentType.includes(expectedMimeType)) {
-                        console.warn(`Unexpected Content-Type: ${contentType}, expected: ${expectedMimeType}`);
                         throw new Error(`Invalid response format: Expected ${expectedMimeType}, got ${contentType}`);
                     }
 
@@ -758,6 +765,19 @@
                     clearTimeout(timeout);
                     timeout = setTimeout(later, wait);
                 };
+            }
+
+            function validateFile(file) {
+                if (!file) {
+                    return 'No file selected.';
+                }
+                if (!VALID_MIME_TYPES.includes(file.type)) {
+                    return `Unsupported file type: ${file.type}. Please upload JPG, PNG, TIFF, or WEBP.`;
+                }
+                if (file.size > MAX_FILE_SIZE) {
+                    return `File size exceeds 10MB limit: ${(file.size / (1024 * 1024)).toFixed(2)}MB.`;
+                }
+                return null;
             }
 
             function handleFile(file) {
