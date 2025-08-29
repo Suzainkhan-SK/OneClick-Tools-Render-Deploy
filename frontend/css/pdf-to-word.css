@@ -44,27 +44,85 @@ body.dark-mode {
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Global box-sizing */
+/* Global box-sizing and overflow control */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
+/* Navigation Bar Styles */
+.mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 100vw;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.mobile-menu-toggle {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    min-width: 36px;
+    min-height: 36px;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mobile-logo i {
+    font-size: 1.2rem;
+}
+
+.mobile-user img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.content-header {
+    display: none;
+}
+
 /* Tool Page Layout */
 .tool-page {
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: var(--bg-secondary);
-    min-height: calc(100vh - var(--header-height));
-    width: 100%;
+    min-height: calc(100vh - 60px);
+    width: 100vw;
     max-width: 100%;
+    margin-top: 60px;
+    overflow-x: hidden;
 }
 
 /* Hero Section */
 .tool-hero {
     position: relative;
-    padding: 2rem 1rem;
-    margin-bottom: 1.5rem;
+    padding: 1.5rem 0.5rem;
+    margin-bottom: 1rem;
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 70%, var(--accent) 100%);
@@ -79,7 +137,7 @@ body.dark-mode {
     width: 100%;
     height: 100%;
     background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.1"%3E%3Cpath fill="%23ffffff" d="M100 0L200 100L100 200L0 100z"/%3E%3C/svg%3E');
-    background-size: 50px;
+    background-size: 40px;
     z-index: 1;
 }
 
@@ -88,25 +146,24 @@ body.dark-mode {
     z-index: 2;
     text-align: center;
     max-width: 100%;
-    margin: 0 auto;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
 }
 
 .tool-hero h1 {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     animation: fadeInDown 0.8s ease-out;
 }
 
 .tool-hero p {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.4;
     opacity: 0.9;
     animation: fadeIn 1s ease-out 0.2s both;
 }
@@ -115,23 +172,20 @@ body.dark-mode {
 .tool-content {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
+    width: 100%;
 }
 
+/* Back Button */
 .back-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1rem;
+    gap: 0.4rem;
+    font-size: 0.9rem;
     color: var(--primary);
     text-decoration: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     transition: var(--transition);
-}
-
-.back-button:hover {
-    color: var(--primary-dark);
-    transform: translateX(-4px);
 }
 
 /* Converter Card */
@@ -139,53 +193,54 @@ body.dark-mode {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: 0.75rem;
     box-shadow: var(--shadow-md);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.5rem;
     position: relative;
     overflow: hidden;
     width: 100%;
 }
 
 .card-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
 
 .card-content {
     flex: 1;
+    overflow: hidden;
 }
 
 .converter-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .converter-header h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--text-primary);
     font-weight: 600;
 }
 
 .status-message {
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.6rem;
     border-radius: var(--border-radius-sm);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
@@ -206,13 +261,13 @@ body.dark-mode {
 
 /* Upload Section */
 .upload-section {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .drop-zone {
     border: 2px dashed var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
     transition: var(--transition);
     background: var(--bg-primary);
@@ -228,62 +283,59 @@ body.dark-mode {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .drop-content i {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--primary);
 }
 
 .drop-content h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
-    margin: 0.5rem 0;
+    margin: 0.4rem 0;
 }
 
 .browse-link {
     color: var(--primary);
     cursor: pointer;
     text-decoration: underline;
-}
-
-.browse-link:hover {
-    color: var(--primary-dark);
+    font-size: 0.9rem;
 }
 
 .file-types {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 
 .pdf-info-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .pdf-info-card {
     position: relative;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
-    padding: 0.5rem;
+    padding: 0.4rem;
     background: var(--bg-primary);
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .pdf-info-card .file-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
 }
 
 .pdf-info-card .file-name {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-primary);
     flex: 1;
     overflow: hidden;
@@ -293,14 +345,14 @@ body.dark-mode {
 
 .remove-pdf-btn {
     position: absolute;
-    top: 0.25rem;
-    right: 0.25rem;
+    top: 0.2rem;
+    right: 0.2rem;
     background: var(--error);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,19 +362,19 @@ body.dark-mode {
 
 /* Conversion Options */
 .conversion-options {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .conversion-options h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .options-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.5rem;
 }
 
 .option-group {
@@ -331,9 +383,9 @@ body.dark-mode {
 }
 
 .option-group label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-primary);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     font-weight: 500;
 }
 
@@ -343,10 +395,10 @@ body.dark-mode {
 
 .select-wrapper select {
     width: 100%;
-    padding: 0.6rem;
+    padding: 0.5rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
     background: var(--bg-primary);
     appearance: none;
@@ -356,36 +408,37 @@ body.dark-mode {
 .select-wrapper select:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
 }
 
 .select-wrapper i {
     position: absolute;
-    right: 0.75rem;
+    right: 0.6rem;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-secondary);
+    font-size: 0.8rem;
 }
 
 .checkbox-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.3rem;
 }
 
 .checkbox-wrapper input[type="checkbox"] {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1rem;
+    height: 1rem;
     accent-color: var(--primary);
 }
 
 .checkbox-wrapper .checkbox-label {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
 }
 
 .option-group small {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     margin-top: 0.2rem;
 }
@@ -393,25 +446,26 @@ body.dark-mode {
 /* Tool Actions */
 .tool-actions {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     justify-content: flex-end;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .tool-btn {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--border-radius-sm);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.3rem;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     border: none;
     cursor: pointer;
     transition: var(--transition);
+    min-height: 36px;
 }
 
 .tool-btn.secondary {
@@ -431,31 +485,31 @@ body.dark-mode {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: 0.75rem;
     box-shadow: var(--shadow-md);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .progress-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .progress-header h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
 }
 
 .progress-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
 }
 
 .progress-bar-container {
     width: 100%;
-    height: 8px;
+    height: 6px;
     background: var(--bg-tertiary);
     border-radius: var(--border-radius-sm);
     overflow: hidden;
@@ -475,21 +529,21 @@ body.dark-mode {
 .loading-spinner {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.95rem;
+    gap: 0.3rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
     background: var(--bg-primary);
-    padding: 0.75rem;
+    padding: 0.5rem;
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-sm);
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
     justify-content: center;
 }
 
 .current-file {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
     display: block;
 }
 
@@ -498,34 +552,34 @@ body.dark-mode {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: 0.75rem;
     box-shadow: var(--shadow-md);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .results-header {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .results-header h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
 }
 
 .converted-word-card {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
+    gap: 0.5rem;
+    padding: 0.5rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
     background: var(--bg-primary);
 }
 
 .converted-word-card .file-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
 }
 
 .word-info {
@@ -533,35 +587,36 @@ body.dark-mode {
 }
 
 .word-info h4 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .word-stats {
     display: flex;
-    gap: 0.75rem;
-    font-size: 0.85rem;
+    gap: 0.5rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .download-btn {
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
 }
 
 /* Info Grid */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
 }
 
 .info-card {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: 0.75rem;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
@@ -569,56 +624,98 @@ body.dark-mode {
 }
 
 .info-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
 }
 
 .info-card h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     font-weight: 600;
 }
 
 .info-card p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.3;
+}
+
+/* Notification Styles */
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    max-width: 100%;
+    width: calc(100% - 1rem);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.notification.info {
+    background-color: #e7f3fe;
+    color: #31708f;
+}
+
+.notification.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.notification.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.notification-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    min-width: 36px;
+    min-height: 36px;
 }
 
 /* Error Notification */
 .error-notification {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 70px;
+    right: 0.5rem;
     background: var(--error);
     color: white;
-    padding: 0.75rem;
+    padding: 0.5rem;
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-md);
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    z-index: 1000;
+    gap: 0.3rem;
+    z-index: 1001;
     animation: slideInRight 0.3s ease-out;
-    max-width: calc(100% - 20px);
+    max-width: calc(100% - 1rem);
+    width: calc(100% - 1rem);
 }
 
 .error-notification .error-close {
     background: none;
     border: none;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
+    min-width: 36px;
+    min-height: 36px;
 }
 
 /* Animations */
@@ -655,7 +752,11 @@ body.dark-mode {
 @media (pointer: coarse) {
     .converter-card:hover,
     .pdf-info-card:hover,
-    .info-card:hover {
+    .info-card:hover,
+    .back-button:hover,
+    .tool-btn:hover,
+    .remove-pdf-btn:hover,
+    .browse-link:hover {
         transform: none;
         box-shadow: var(--shadow-md);
         background: var(--bg-primary);
@@ -670,210 +771,159 @@ body.dark-mode {
     .info-card:hover .info-icon {
         transform: none;
     }
-
-    .back-button:hover,
-    .tool-btn:hover,
-    .remove-pdf-btn:hover,
-    .browse-link:hover {
-        transform: none;
-        box-shadow: none;
-    }
 }
 
 /* Responsive Design */
+@media (min-width: 1025px) {
+    .mobile-header {
+        display: none;
+    }
+
+    .content-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        width: 100%;
+        max-width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-header {
+        display: none;
+    }
+
+    .mobile-header {
+        display: flex;
+    }
+}
+
 @media (max-width: 768px) {
     .tool-page {
-        padding: 0.75rem;
+        padding: 0.4rem;
+        margin-top: 60px;
     }
 
     .tool-hero {
-        padding: 1.5rem 0.75rem;
+        padding: 1rem 0.4rem;
     }
 
     .tool-hero h1 {
-        font-size: 1.8rem;
-        gap: 0.5rem;
+        font-size: 1.6rem;
+        gap: 0.4rem;
     }
 
     .tool-hero p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .converter-card {
-        padding: 0.75rem;
-        gap: 0.5rem;
+        padding: 0.6rem;
+        gap: 0.4rem;
     }
 
     .card-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
     }
 
     .converter-header h2 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .drop-zone {
-        padding: 1rem;
+        padding: 0.75rem;
     }
 
     .drop-content i {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .drop-content h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .options-grid {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
 
     .option-group label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .select-wrapper select {
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.4rem;
+        font-size: 0.85rem;
     }
 
     .tool-actions {
         flex-direction: column;
         align-items: stretch;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
 
     .tool-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 0.5rem 1rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
     }
 
     .progress-section {
-        padding: 0.75rem;
+        padding: 0.6rem;
     }
 
     .progress-header h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .results-section {
-        padding: 0.75rem;
+        padding: 0.6rem;
     }
 
     .results-header h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .converted-word-card {
-        padding: 0.5rem;
-        gap: 0.5rem;
+        padding: 0.4rem;
+        gap: 0.4rem;
     }
 
     .info-grid {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0.5rem;
     }
 
     .info-card {
-        padding: 0.75rem;
+        padding: 0.6rem;
     }
 
     .info-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
     }
 
     .info-card h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
     .tool-page {
-        padding: 0.5rem;
+        padding: 0.3rem;
     }
 
     .tool-hero {
-        padding: 1rem 0.5rem;
-    }
-
-    .tool-hero h1 {
-        font-size: 1.6rem;
-    }
-
-    .tool-hero p {
-        font-size: 0.9rem;
-    }
-
-    .converter-card {
-        padding: 0.5rem;
-    }
-
-    .card-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 1.1rem;
-    }
-
-    .pdf-info-card .file-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-
-    .pdf-info-card .file-name {
-        font-size: 0.75rem;
-    }
-
-    .remove-pdf-btn {
-        width: 18px;
-        height: 18px;
-        font-size: 0.8rem;
-    }
-
-    .tool-btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.85rem;
-    }
-
-    .converted-word-card .file-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
-
-    .word-info h4 {
-        font-size: 0.9rem;
-    }
-
-    .word-stats {
-        font-size: 0.8rem;
-    }
-
-    .download-btn {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.85rem;
-    }
-
-    .info-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 360px) {
-    .tool-page {
-        padding: 0.25rem;
-    }
-
-    .tool-hero {
-        padding: 0.75rem 0.25rem;
+        padding: 0.75rem 0.3rem;
     }
 
     .tool-hero h1 {
@@ -885,25 +935,140 @@ body.dark-mode {
     }
 
     .converter-card {
-        padding: 0.4rem;
+        padding: 0.5rem;
     }
 
-    .drop-zone {
-        padding: 0.75rem;
+    .card-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
     }
 
-    .options-grid {
-        gap: 0.4rem;
+    .pdf-info-card .file-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .pdf-info-card .file-name {
+        font-size: 0.7rem;
+    }
+
+    .remove-pdf-btn {
+        width: 16px;
+        height: 16px;
+        font-size: 0.7rem;
     }
 
     .tool-btn {
         padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .converted-word-card .file-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .word-info h4 {
+        font-size: 0.85rem;
+    }
+
+    .word-stats {
+        font-size: 0.75rem;
+    }
+
+    .download-btn {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .info-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .tool-page {
+        padding: 0.2rem;
+    }
+
+    .tool-hero {
+        padding: 0.5rem 0.2rem;
+    }
+
+    .tool-hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .tool-hero p {
         font-size: 0.8rem;
+    }
+
+    .converter-card {
+        padding: 0.4rem;
+    }
+
+    .drop-zone {
+        padding: 0.5rem;
+    }
+
+    .options-grid {
+        gap: 0.3rem;
+    }
+
+    .tool-btn {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.7rem;
     }
 
     .progress-section,
     .results-section,
     .info-card {
-        padding: 0.5rem;
+        padding: 0.4rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .tool-page {
+        padding: 0.15rem;
+    }
+
+    .tool-hero {
+        padding: 0.4rem 0.15rem;
+    }
+
+    .tool-hero h1 {
+        font-size: 1.2rem;
+    }
+
+    .tool-hero p {
+        font-size: 0.75rem;
+    }
+
+    .mobile-header {
+        padding: 0.3rem;
+        height: 50px;
+    }
+
+    .mobile-menu-toggle {
+        font-size: 1rem;
+        padding: 0.3rem;
+    }
+
+    .mobile-logo {
+        font-size: 1rem;
+    }
+
+    .mobile-logo i {
+        font-size: 1rem;
+    }
+
+    .mobile-user img {
+        width: 28px;
+        height: 28px;
     }
 }
