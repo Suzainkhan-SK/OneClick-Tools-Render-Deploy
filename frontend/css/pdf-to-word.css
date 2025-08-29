@@ -188,6 +188,11 @@ body {
     transition: var(--transition);
 }
 
+.back-button:hover {
+    color: var(--primary-dark);
+    transform: translateX(-4px);
+}
+
 /* Converter Card */
 .converter-card {
     background: var(--bg-primary);
@@ -205,6 +210,27 @@ body {
     width: 100%;
 }
 
+.converter-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.converter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.converter-card:hover::before {
+    left: 100%;
+}
+
 .card-icon {
     width: 36px;
     height: 36px;
@@ -217,6 +243,10 @@ body {
     font-size: 1.2rem;
     flex-shrink: 0;
     transition: transform 0.3s ease;
+}
+
+.converter-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .card-content {
@@ -304,6 +334,10 @@ body {
     font-size: 0.9rem;
 }
 
+.browse-link:hover {
+    color: var(--primary-dark);
+}
+
 .file-types {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -326,6 +360,11 @@ body {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+}
+
+.pdf-info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
 }
 
 .pdf-info-card .file-icon {
@@ -358,6 +397,11 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: var(--transition);
+}
+
+.remove-pdf-btn:hover {
+    background: var(--error);
+    transform: scale(1.1);
 }
 
 /* Conversion Options */
@@ -468,9 +512,18 @@ body {
     min-height: 36px;
 }
 
+.tool-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
+}
+
 .tool-btn.secondary {
     background: linear-gradient(135deg, var(--text-secondary) 0%, var(--text-muted) 100%);
     color: var(--bg-primary);
+}
+
+.tool-btn.secondary:hover {
+    box-shadow: 0 6px 15px rgba(108, 117, 125, 0.3);
 }
 
 .tool-btn:disabled {
@@ -623,6 +676,27 @@ body {
     overflow: hidden;
 }
 
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.info-card:hover::before {
+    left: 100%;
+}
+
 .info-icon {
     width: 36px;
     height: 36px;
@@ -635,6 +709,10 @@ body {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
+}
+
+.info-card:hover .info-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .info-card h3 {
@@ -745,31 +823,6 @@ body {
     }
     to {
         transform: translateX(0);
-    }
-}
-
-/* Disable hover effects on touch devices */
-@media (pointer: coarse) {
-    .converter-card:hover,
-    .pdf-info-card:hover,
-    .info-card:hover,
-    .back-button:hover,
-    .tool-btn:hover,
-    .remove-pdf-btn:hover,
-    .browse-link:hover {
-        transform: none;
-        box-shadow: var(--shadow-md);
-        background: var(--bg-primary);
-    }
-
-    .converter-card:hover::before,
-    .info-card:hover::before {
-        left: -100%;
-    }
-
-    .converter-card:hover .card-icon,
-    .info-card:hover .info-icon {
-        transform: none;
     }
 }
 
