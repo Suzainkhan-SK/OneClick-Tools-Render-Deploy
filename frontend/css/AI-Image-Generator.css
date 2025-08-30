@@ -469,7 +469,14 @@ body {
     font-size: 0.7rem;
 }
 
-/* Tool Buttons */
+/* Tool Actions */
+.tool-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+}
+
 .tool-btn {
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius-sm);
@@ -535,12 +542,13 @@ body {
     font-weight: 600;
 }
 
-.results-section .tool-btn {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
+.results-section .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
 }
 
-.converted-word-card {
+.image-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
@@ -548,12 +556,12 @@ body {
     transition: var(--transition);
 }
 
-.converted-word-card:hover {
+.image-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-sm);
 }
 
-.converted-word-card img {
+.image-card img {
     width: 100%;
     height: auto;
     border-radius: var(--border-radius-sm);
@@ -582,7 +590,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .modal-content {
@@ -598,23 +606,20 @@ body {
 
 .modal-content img {
     max-width: 100%;
-    max-height: 70vh;
+    max-height: 65vh;
     border-radius: var(--border-radius-sm);
 }
 
 .close-button {
     position: absolute;
-    top: 8px;
-    right: 10px;
+    top: 0.5rem;
+    right: 0.75rem;
     font-size: 1.2rem;
     color: var(--text-primary);
     cursor: pointer;
     transition: var(--transition);
     min-width: 36px;
     min-height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .close-button:hover {
@@ -622,7 +627,7 @@ body {
 }
 
 .modal-download-btn {
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
     padding: 0.4rem 0.6rem;
     font-size: 0.8rem;
 }
@@ -712,7 +717,7 @@ body {
     align-items: center;
     gap: 0.3rem;
     z-index: 1001;
-    animation: fadeIn 0.3s ease-out;
+    animation: slideInRight 0.3s ease-out;
     max-width: calc(100% - 1rem);
     width: calc(100% - 1rem);
 }
@@ -897,6 +902,10 @@ body {
     .options-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+
+    .results-section .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
 
 @media (max-width: 1024px) {
@@ -990,6 +999,12 @@ body {
         font-size: 0.65rem;
     }
 
+    .tool-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+    }
+
     .tool-btn {
         padding: 0.4rem 0.75rem;
         font-size: 0.8rem;
@@ -1003,8 +1018,17 @@ body {
         font-size: 0.9rem;
     }
 
-    .converted-word-card {
+    .results-section .image-grid {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+
+    .image-card {
         padding: 0.4rem;
+    }
+
+    .modal-content {
+        padding: 0.5rem;
     }
 
     .info-grid {
@@ -1054,21 +1078,34 @@ body {
         font-size: 1rem;
     }
 
+    .input-group label {
+        font-size: 0.8rem;
+    }
+
+    .input-group textarea {
+        padding: 0.3rem;
+        font-size: 0.8rem;
+    }
+
+    .input-group small {
+        font-size: 0.7rem;
+    }
+
     .tool-btn {
         padding: 0.4rem 0.6rem;
         font-size: 0.75rem;
     }
 
-    .converted-word-card {
-        padding: 0.4rem;
-    }
-
-    .modal-content {
+    .results-section {
         padding: 0.5rem;
     }
 
-    .close-button {
-        font-size: 1rem;
+    .image-card img {
+        margin-bottom: 0.4rem;
+    }
+
+    .modal-content img {
+        max-height: 60vh;
     }
 
     .modal-download-btn {
