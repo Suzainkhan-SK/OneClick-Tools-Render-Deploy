@@ -458,25 +458,18 @@ body {
 .strengths-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.3rem;
 }
 
 .strength-tag {
     background-color: var(--primary);
     color: white;
     padding: 0.2rem 0.5rem;
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 0.7rem;
 }
 
-/* Tool Actions */
-.tool-actions {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: flex-end;
-    margin-bottom: 0.75rem;
-}
-
+/* Tool Buttons */
 .tool-btn {
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius-sm);
@@ -544,7 +537,7 @@ body {
 
 .results-section .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 0.5rem;
 }
 
@@ -565,12 +558,12 @@ body {
     width: 100%;
     height: auto;
     border-radius: var(--border-radius-sm);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .image-actions {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.3rem;
     justify-content: center;
 }
 
@@ -590,7 +583,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1001;
+    z-index: 1000;
 }
 
 .modal-content {
@@ -606,7 +599,7 @@ body {
 
 .modal-content img {
     max-width: 100%;
-    max-height: 65vh;
+    max-height: 60vh;
     border-radius: var(--border-radius-sm);
 }
 
@@ -628,7 +621,7 @@ body {
 
 .modal-download-btn {
     margin-top: 0.5rem;
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 0.75rem;
     font-size: 0.8rem;
 }
 
@@ -703,35 +696,6 @@ body {
     line-height: 1.3;
 }
 
-/* Error Notification */
-.error-notification {
-    position: fixed;
-    top: calc(var(--header-height) + 10px);
-    right: 0.5rem;
-    background: var(--error);
-    color: white;
-    padding: 0.5rem;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-md);
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    z-index: 1001;
-    animation: slideInRight 0.3s ease-out;
-    max-width: calc(100% - 1rem);
-    width: calc(100% - 1rem);
-}
-
-.error-notification .error-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    min-width: 36px;
-    min-height: 36px;
-}
-
 /* Animations */
 @keyframes fadeInDown {
     from {
@@ -753,13 +717,8 @@ body {
     }
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
 }
 
 /* Responsive Design */
@@ -899,12 +858,21 @@ body {
         font-size: 1.3rem;
     }
 
+    .input-group textarea {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
     .options-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
     .results-section .image-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .modal-content {
+        padding: 1rem;
     }
 }
 
@@ -966,9 +934,21 @@ body {
         font-size: 1.1rem;
     }
 
+    .input-group {
+        margin-bottom: 0.6rem;
+    }
+
+    .input-group label {
+        font-size: 0.8rem;
+    }
+
     .input-group textarea {
         padding: 0.4rem;
         font-size: 0.85rem;
+    }
+
+    .input-group small {
+        font-size: 0.7rem;
     }
 
     .options-grid {
@@ -999,12 +979,6 @@ body {
         font-size: 0.65rem;
     }
 
-    .tool-actions {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.4rem;
-    }
-
     .tool-btn {
         padding: 0.4rem 0.75rem;
         font-size: 0.8rem;
@@ -1019,7 +993,7 @@ body {
     }
 
     .results-section .image-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 0.4rem;
     }
 
@@ -1027,8 +1001,20 @@ body {
         padding: 0.4rem;
     }
 
+    .image-actions {
+        gap: 0.2rem;
+    }
+
+    .results-actions {
+        margin-top: 0.6rem;
+    }
+
     .modal-content {
-        padding: 0.5rem;
+        padding: 0.6rem;
+    }
+
+    .modal-content img {
+        max-height: 50vh;
     }
 
     .info-grid {
@@ -1078,8 +1064,8 @@ body {
         font-size: 1rem;
     }
 
-    .input-group label {
-        font-size: 0.8rem;
+    .converter-header h2 {
+        font-size: 1rem;
     }
 
     .input-group textarea {
@@ -1087,25 +1073,17 @@ body {
         font-size: 0.8rem;
     }
 
-    .input-group small {
-        font-size: 0.7rem;
-    }
-
     .tool-btn {
         padding: 0.4rem 0.6rem;
         font-size: 0.75rem;
     }
 
-    .results-section {
-        padding: 0.5rem;
-    }
-
-    .image-card img {
-        margin-bottom: 0.4rem;
+    .results-section .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
     .modal-content img {
-        max-height: 60vh;
+        max-height: 45vh;
     }
 
     .modal-download-btn {
